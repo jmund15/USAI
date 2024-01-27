@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnpsgogmt5of6"]
 
 [ext_resource type="Script" path="res://MainScene.cs" id="1_ci164"]
-[ext_resource type="Script" path="res://Managers/PlayerManager.cs" id="1_e4i2j"]
+[ext_resource type="Script" path="res://Managers/InputManager.cs" id="2_pn3rr"]
 
 [node name="Main Scene" type="Node"]
 script = ExtResource("1_ci164")
@@ -28,7 +28,7 @@ offset_bottom = 40.0
 
 [node name="LevelManager" type="Node" parent="."]
 
-[node name="PlayerManager" type="Node" parent="."]
-script = ExtResource("1_e4i2j")
-
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("2_pn3rr")
