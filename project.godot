@@ -14,6 +14,11 @@ config/name="USA.I."
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Events="*res://Global/Events.cs"
+Global="*res://Global/Global.cs"
+
 [dotnet]
 
 project/assembly_name="USA.I."
