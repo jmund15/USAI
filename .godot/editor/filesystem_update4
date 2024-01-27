@@ -1,0 +1,31 @@
+res://Mingames/DebateMinigame/debate_question.tscn
+res://main_scene.tscn
+res://Mingames/DebateMinigame/debate_minigame.tscn
+res://External Assets/BaseTopDownScripts/Enemy.cs
+res://External Assets/BaseTopDownScripts/HUD.cs
+res://External Assets/BaseTopDownScripts/Interactable.cs
+res://External Assets/BaseTopDownScripts/Level.cs
+res://External Assets/BaseTopDownScripts/MainMenu.cs
+res://External Assets/BaseTopDownScripts/Map.cs
+res://External Assets/BaseTopDownScripts/MapManager.cs
+res://External Assets/BaseTopDownScripts/PauseMenu.cs
+res://External Assets/BaseTopDownScripts/Player.cs
+res://External Assets/BaseTopDownScripts/Projectile.cs
+res://External Assets/BaseTopDownScripts/ProjectileEnergyBall.cs
+res://External Assets/BaseTopDownScripts/ProjectileManager.cs
+res://External Assets/BaseTopDownScripts/TopDownCharacter.cs
+res://Global/Events.cs
+res://Global/Global.cs
+res://MainScene.cs
+res://Managers/PlayerManager.cs
+res://Mingames/DebateMinigame/DebateMinigame.cs
+res://Mingames/DebateMinigame/DebateQuestion.cs
+res://Characters/candidate.tscn
+res://Characters/Candidate.cs
+res://Managers/GameManager.cs
+res://test.cs
+res://Mingames/select_screen.tscn
+res://Mingames/SelectScreen/select_screen.tscn
+res://Mingames/intro_scene.tscn
+res://Mingames/SelectScreen/SelectScreen.cs
+res://Mingames/SelectScreen/base_player_select.tscn

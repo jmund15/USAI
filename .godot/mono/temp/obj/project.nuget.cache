@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "7icDS7BK6/FKEOh9HkfZUgI0YxHqz2hjRWzheMpxbc0baIJx6f+ouBdwFNbTqIQu32TIOc8HAUyYvySeD7vRag==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jmund\\GAME DEVELOPMENT\\Godot Projects\\USAI\\USA.I..csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jmund\\.nuget\\packages\\godot.sourcegenerators\\4.2.1\\godot.sourcegenerators.4.2.1.nupkg.sha512",
+    "C:\\Users\\jmund\\.nuget\\packages\\godotsharp\\4.2.1\\godotsharp.4.2.1.nupkg.sha512",
+    "C:\\Users\\jmund\\.nuget\\packages\\godotsharpeditor\\4.2.1\\godotsharpeditor.4.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}
