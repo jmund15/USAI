@@ -96,7 +96,7 @@ public partial class PlayerManager : Node
     #endregion
 
     #region SIGNAL_LISTENERS
-
+    /*
     public override void _UnhandledInput(InputEvent @event)
     {
         if (!IsMaxPlayers && @event.IsAction("playerJoin"))
@@ -140,7 +140,7 @@ public partial class PlayerManager : Node
             }
             InputMap.ActionEraseEvent("playerJoin", @event);
         }
-    }
+    }*/
 
     #endregion
 
