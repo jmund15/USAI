@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://l0cv08syxkna"]
+[gd_scene load_steps=8 format=3 uid="uid://d0ppbdqatqs0l"]
 
-[ext_resource type="Texture2D" uid="uid://ca8wanhk2qfur" path="res://Characters/player_movement.png" id="1_r0g2o"]
+[ext_resource type="Texture2D" path="res://Characters/player_movement.png" id="1_r0g2o"]
 
 [sub_resource type="Animation" id="Animation_w6p0c"]
 length = 0.001

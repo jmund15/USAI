@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://qbfg3dshq40r"]
+[gd_scene load_steps=3 format=3 uid="uid://02cmgq20t62p"]
 
 [ext_resource type="Script" path="res://Mingames/SelectScreen/SelectScreen.cs" id="1_dcbi8"]
-[ext_resource type="PackedScene" uid="uid://l0cv08syxkna" path="res://Mingames/SelectScreen/base_player_select.tscn" id="2_jovfd"]
+[ext_resource type="PackedScene" uid="uid://d0ppbdqatqs0l" path="res://Mingames/SelectScreen/base_player_select.tscn" id="2_jovfd"]
 
 [node name="SelectScreen" type="Node2D"]
 script = ExtResource("1_dcbi8")

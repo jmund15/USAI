@@ -1,11 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://d21vmlkcvilh1"]
+[gd_scene load_steps=8 format=3 uid="uid://d0fa8blh5qgwk"]
 
 [ext_resource type="Script" path="res://Characters/Candidate.cs" id="1_372gl"]
-[ext_resource type="Texture2D" uid="uid://ca8wanhk2qfur" path="res://Characters/player_movement.png" id="2_s1g12"]
+[ext_resource type="Texture2D" path="res://Characters/player_movement.png" id="2_s1g12"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ty7p"]
 radius = 30.0
 height = 115.0
+
+[sub_resource type="Animation" id="Animation_bpllh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Char:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Suit:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_1ueqr"]
 resource_name = "idleRight"
@@ -34,33 +61,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_bpllh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Char:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Suit:frame_coords")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qe614"]
