@@ -7,12 +7,7 @@ public partial class Events : Node
     
 
     [Signal]
-    public delegate void EnemyDetectPlayerEventHandler(TopDownCharacter body);
-    
-	[Signal]
-	public delegate void ProjectileFireEventHandler(ProjectileType projectileType, Vector2 startingPosition, Vector2 direction);
-	[Signal]
-	public delegate void HomingProjectileFireEventHandler(ProjectileType projectileType, Vector2 startingPosition, Node2D target);
+    public delegate void LaunchMinigameEventHandler(Minigame minigame);
 
 	public override void _Ready()
 	{

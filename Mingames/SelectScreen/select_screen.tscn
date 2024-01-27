@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://qbfg3dshq40r"]
+
+[ext_resource type="Script" path="res://Mingames/SelectScreen/SelectScreen.cs" id="1_dcbi8"]
+[ext_resource type="PackedScene" uid="uid://l0cv08syxkna" path="res://Mingames/SelectScreen/base_player_select.tscn" id="2_jovfd"]
+
+[node name="SelectScreen" type="Node2D"]
+script = ExtResource("1_dcbi8")
+
+[node name="Player1Select" parent="." instance=ExtResource("2_jovfd")]
+position = Vector2(-375, 0)
+
+[node name="Player2Select" parent="." instance=ExtResource("2_jovfd")]
+position = Vector2(-125, 0)
+
+[node name="Player3Select" parent="." instance=ExtResource("2_jovfd")]
+position = Vector2(125, 0)
+
+[node name="Player4Select" parent="." instance=ExtResource("2_jovfd")]
+position = Vector2(375, 0)

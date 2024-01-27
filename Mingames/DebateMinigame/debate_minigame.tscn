@@ -5,5 +5,7 @@
 [node name="DebateMinigame" type="Node2D"]
 script = ExtResource("1_qa01p")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true

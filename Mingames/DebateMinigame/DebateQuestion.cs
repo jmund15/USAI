@@ -7,7 +7,8 @@ public partial class DebateQuestion : Node2D
 	private string _labelText;
 	private int _baseFallSpeed = 15;
 	private int _fallSpeed;
-
+	private Vector2 test = new Vector2(0,0);
+	 
 	private Label _questionLabel;
 	private Theme _labelTheme;
 	private Area2D _labelArea;
@@ -24,12 +25,23 @@ public partial class DebateQuestion : Node2D
 		_labelRectangleShape = _labelCollisionShape.Shape as RectangleShape2D;
 
         _questionLabel.Text = _labelText;
-        _labelRectangleShape.Size = _questionLabel.GetMinimumSize();
+		GD.Print(_labelText + " - LABEL SIZE: " + _questionLabel.Size);
+		_labelRectangleShape.SetDeferred("size", _questionLabel.Size);
+        //_labelRectangleShape.Size = _questionLabel.Size;
+        //GD.Print("NEW COL SIZE: " + _labelRectangleShape.Size);
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
+		if (_labelRectangleShape.Size != _questionLabel.Size)
+		{
+            _labelRectangleShape.Size = _questionLabel.Size;
+        }
+		if (Position.Y > 300)
+		{
+			QueueFree();
+		}
 	}
 
     public override void _PhysicsProcess(double delta)

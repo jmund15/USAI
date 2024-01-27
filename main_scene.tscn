@@ -3,30 +3,28 @@
 [ext_resource type="Script" path="res://MainScene.cs" id="1_ci164"]
 [ext_resource type="Script" path="res://Managers/PlayerManager.cs" id="1_e4i2j"]
 
-[node name="Main Scene" type="Node"]
+[node name="MainScene" type="Node"]
 script = ExtResource("1_ci164")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Main Menu" type="Control" parent="CanvasLayer"]
+[node name="MainMenu" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Pause Menu" type="Control" parent="CanvasLayer"]
+[node name="PauseMenu" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="LevelManager" type="Node" parent="."]
 
 [node name="PlayerManager" type="Node" parent="."]
 script = ExtResource("1_e4i2j")
