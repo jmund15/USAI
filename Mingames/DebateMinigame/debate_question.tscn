@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqnsxsjvk22dw"]
+
+[ext_resource type="Script" path="res://Mingames/DebateMinigame/DebateQuestion.cs" id="1_e8jfm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lunt1"]
+bg_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8j217"]
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d62w"]
+size = Vector2(50, 25)
+
+[node name="DebateQuestion" type="Node2D"]
+script = ExtResource("1_e8jfm")
+
+[node name="QuestionText" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -11.5
+offset_right = 57.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lunt1")
+text = "Foreign Policy?"
+label_settings = SubResource("LabelSettings_8j217")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1d62w")

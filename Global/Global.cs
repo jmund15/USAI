@@ -5,6 +5,7 @@ public partial class Global : Node
 {
 	private Events _signalBus;
 
+	public const float PixelTopOfScreen = 100; // DON'T KNOW
 	public const float LowestPixelSize = 0.01f;
 
 	// Called when the node enters the scene tree for the first time.
