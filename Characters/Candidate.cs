@@ -7,6 +7,9 @@ public partial class Candidate : CharacterBody2D
     #region CLASS_VARIABLES
     public int PlayerNum { get; set; }
     public string PlayerName { get; set; }
+    public string CharacterSelected { get; set; }
+    public Color SuitColor { get; set; }
+
 
     public Vector2 CharacterSize { get; protected set; }
 
@@ -51,6 +54,8 @@ public partial class Candidate : CharacterBody2D
 
         _animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         _animPlayer.AnimationFinished += OnAnimationFinished;
+
+        _suitSprite.Modulate = SuitColor;
     }
     public override void _Process(double delta)
     {

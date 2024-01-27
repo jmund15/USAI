@@ -1,3 +1,11 @@
+res://main_scene.tscn
+res://Mingames/DebateMinigame/debate_minigame.tscn
+res://Mingames/DebateMinigame/debate_question.tscn
+res://Characters/candidate.tscn
+res://Mingames/SelectScreen/select_screen.tscn
+res://Mingames/intro_scene.tscn
+res://Mingames/SelectScreen/base_player_select.tscn
+res://Characters/Candidate.cs
 res://External Assets/BaseTopDownScripts/HUD.cs
 res://External Assets/BaseTopDownScripts/Interactable.cs
 res://External Assets/BaseTopDownScripts/Level.cs
@@ -10,18 +18,10 @@ res://External Assets/BaseTopDownScripts/TopDownCharacter.cs
 res://Global/Events.cs
 res://Global/Global.cs
 res://MainScene.cs
-res://Mingames/SelectScreen/SelectScreen.cs
-res://Characters/Candidate.cs
-res://Mingames/DebateMinigame/DebateQuestion.cs
-res://Mingames/DebateMinigame/DebateMinigame.cs
-res://Managers/PlayerManager.cs
-res://main_scene.tscn
 res://Managers/GameManager.cs
 res://Managers/InputManager.cs
+res://Managers/PlayerManager.cs
+res://Mingames/DebateMinigame/DebateMinigame.cs
+res://Mingames/DebateMinigame/DebateQuestion.cs
+res://Mingames/SelectScreen/SelectScreen.cs
 res://test.cs
-res://Mingames/DebateMinigame/debate_minigame.tscn
-res://Mingames/DebateMinigame/debate_question.tscn
-res://Characters/candidate.tscn
-res://Mingames/SelectScreen/select_screen.tscn
-res://Mingames/intro_scene.tscn
-res://Mingames/SelectScreen/base_player_select.tscn

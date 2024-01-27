@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d0fa8blh5qgwk"]
 
 [ext_resource type="Script" path="res://Characters/Candidate.cs" id="1_372gl"]
-[ext_resource type="Texture2D" path="res://Characters/player_movement.png" id="2_s1g12"]
+[ext_resource type="Texture2D" uid="uid://ca8wanhk2qfur" path="res://Characters/player_movement.png" id="2_s1g12"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ty7p"]
 radius = 30.0

@@ -32,6 +32,9 @@ public partial class SelectScreen : Node2D
 		_player4Anim.Play("idleNotHillary");
 
 		GD.Print("init select screen");
+
+
+
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
