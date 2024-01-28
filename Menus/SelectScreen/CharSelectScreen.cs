@@ -93,7 +93,7 @@ public partial class CharSelectScreen : Node2D
 			((Node2D)_player1Anim.GetParent()).Show();
 			_player1Anim.Play("idle" + getAnimName(_p1Select.head));
 
-			GetNode<Sprite2D>("P1SelectVis/PlayerSuit").Modulate = new Color(_p1Select.red, _p1Select.green, _p1Select.blue);
+            GetNode<Sprite2D>("P1SelectVis/PlayerSuit").Modulate = new Color(_p1Select.red, _p1Select.green, _p1Select.blue);
         }
 		else { ((Node2D)_player1Anim.GetParent()).Hide(); }
 
@@ -197,6 +197,9 @@ public partial class CharSelectScreen : Node2D
 
             playerNum++;
         }
+
+        GetNode<CanvasLayer>("CanvasLayer").Hide();
+
 		_global.CurtainAnim.Play("closeCurtain");
         await Task.Delay(TimeSpan.FromSeconds(1.5f));
         EmitSignal(SignalName.StartGame);
