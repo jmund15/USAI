@@ -94,11 +94,11 @@ public partial class DebateMinigame : Node2D
 
         foreach (var player in _global.Players)
         {
-            var playerLabel = new Label { Text = player.PlayerName + "'s Debate Performance: 0"};
+            var playerLabel = new Label { Text = player.PlayerName + "'s Debate Performance:\n0"};
             playerLabel.Modulate = player.SuitColor;
             playerLabel.HorizontalAlignment = HorizontalAlignment.Center;
             playerLabel.VerticalAlignment = VerticalAlignment.Top;
-            playerLabel.LabelSettings = new LabelSettings() { FontSize = 28 };
+            playerLabel.LabelSettings = new LabelSettings() { FontSize = 20 };
             switch (player.PlayerNum)
             {
                 case 1:
@@ -178,7 +178,7 @@ public partial class DebateMinigame : Node2D
             if (player.IsAlive)
             {
                 player.DebateScore += 1;
-                GetNode<Label>("playerLabel" + player.PlayerNum).Text = player.PlayerName + "'s Debate Performance: " + player.DebateScore;
+                GetNode<Label>("playerLabel" + player.PlayerNum).Text = player.PlayerName + "'s Debate Performance:\n" + player.DebateScore;
             }
         }
     }

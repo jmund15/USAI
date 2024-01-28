@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\USERS\\JMUND\\GAME DEVELOPMENT\\GODOT PROJECTS\\USAI\\USA.I..csproj": {}
+    "C:\\Users\\jmund\\GAME DEVELOPMENT\\Godot Projects\\USAI\\USA.I..csproj": {}
   },
   "projects": {
-    "C:\\USERS\\JMUND\\GAME DEVELOPMENT\\GODOT PROJECTS\\USAI\\USA.I..csproj": {
+    "C:\\Users\\jmund\\GAME DEVELOPMENT\\Godot Projects\\USAI\\USA.I..csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\USERS\\JMUND\\GAME DEVELOPMENT\\GODOT PROJECTS\\USAI\\USA.I..csproj",
+        "projectUniqueName": "C:\\Users\\jmund\\GAME DEVELOPMENT\\Godot Projects\\USAI\\USA.I..csproj",
         "projectName": "USA.I.",
-        "projectPath": "C:\\USERS\\JMUND\\GAME DEVELOPMENT\\GODOT PROJECTS\\USAI\\USA.I..csproj",
+        "projectPath": "C:\\Users\\jmund\\GAME DEVELOPMENT\\Godot Projects\\USAI\\USA.I..csproj",
         "packagesPath": "C:\\Users\\jmund\\.nuget\\packages\\",
-        "outputPath": "C:\\USERS\\JMUND\\GAME DEVELOPMENT\\GODOT PROJECTS\\USAI\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\Users\\jmund\\GAME DEVELOPMENT\\Godot Projects\\USAI\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
