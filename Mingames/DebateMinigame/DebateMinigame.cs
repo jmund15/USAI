@@ -13,11 +13,15 @@ public partial class DebateMinigame : Node2D
     private PackedScene _debateQuestion;
 
     private Timer _minigameTimer;
+    private Label _minigameTime;
 
     private Timer _spawnTimer;
     private Timer _scoreTimer;
 
-    private Vector2 _spawnTimeInterval = new Vector2(2.5f, 5f);
+    private Sprite2D _audienceSprite;
+    private AnimationPlayer _audienceAnimPlayer;
+
+    private Vector2 _spawnTimeInterval = new Vector2(2.5f, 4.5f);
     //private Vector2 _spawnAmtInterval = new Vector2(1, 2);
     private Vector2 _spawnPosInterval = new Vector2(150, 950);
     private float _funnyQuestionOdds = 0.1f;
@@ -39,6 +43,10 @@ public partial class DebateMinigame : Node2D
         _signalBus.DebatePlayerOut += OnPlayerOut;
 
         _debateQuestion = GD.Load<PackedScene>("res://Mingames/DebateMinigame/debate_question.tscn");
+
+        _audienceSprite = GetNode<Sprite2D>("Audience");
+        _audienceAnimPlayer = GetNode<AnimationPlayer>("AudienceAnim");
+        _audienceAnimPlayer.Play("audienceCelebrate");
 
         _debateQuestions.Add(1, "Foreign Policy?");
         _debateQuestions.Add(2, "National Debt??");
@@ -71,7 +79,8 @@ public partial class DebateMinigame : Node2D
                 _funnyQuestions.Add(7, "Did " + _global.Players[i].PlayerName + "\nreally encourage public nudity\nat their last pep rally?");
             }
         }
-        
+
+        _minigameTime = GetNode<Label>("GameTime");
 
         _minigameTimer = GetNode<Timer>("GameTimer");
         _spawnTimer = GetNode<Timer>("SpawnTimer");
@@ -121,11 +130,13 @@ public partial class DebateMinigame : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        _minigameTime.Text = "Debate Ends in:\n" + (int)_minigameTimer.TimeLeft + " Seconds!";
+
         if (!_halfTimeLeft && _minigameTimer.TimeLeft != 0 && _minigameTimer.TimeLeft < _minigameTimer.WaitTime/2)
         {
             GD.Print("half time reached: " + _minigameTimer.TimeLeft);
             _halfTimeLeft = true;
-            _spawnTimeInterval = new Vector2(1.5f, 3.5f);
+            _spawnTimeInterval = new Vector2(1.5f, 3f);
             _funnyQuestionOdds = 0.3f;
             _speedMult = 750f;
         }
@@ -134,7 +145,7 @@ public partial class DebateMinigame : Node2D
             GD.Print("15 time reached: " + _minigameTimer.TimeLeft);
 
             _fifteenLeft = true;
-            _spawnTimeInterval = new Vector2(1f, 2f);
+            _spawnTimeInterval = new Vector2(0.75f, 2f);
             _funnyQuestionOdds = 0.5f;
             _speedMult = 1000f;
         }

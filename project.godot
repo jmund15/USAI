@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Events="*res://Global/Events.cs"
 Global="*res://Global/Global.cs"
 
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=600
+
 [dotnet]
 
 project/assembly_name="USA.I."

@@ -1,11 +1,9 @@
-res://Mingames/RigMinigame/rig_minigame.tscn
 res://main_scene.tscn
 res://Mingames/DebateMinigame/debate_minigame.tscn
-res://Characters/candidate.tscn
+res://Mingames/RigMinigame/rig_minigame.tscn
 res://Mingames/RigMinigame/ballot.tscn
+res://Mingames/BabyMinigame/baby_minigame.tscn
 res://Mingames/RigMinigame/voting_scene.tscn
-res://Mingames/RigMinigame/player_rig_game.tscn
-res://Mingames/DebateMinigame/debate_question.tscn
 res://Characters/Candidate.cs
 res://External Assets/BaseTopDownScripts/HUD.cs
 res://External Assets/BaseTopDownScripts/Interactable.cs

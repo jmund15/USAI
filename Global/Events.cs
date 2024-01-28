@@ -12,6 +12,12 @@ public partial class Events : Node
     [Signal]
     public delegate void DebatePlayerOutEventHandler(int playerNum);
 
+    [Signal]
+    public delegate void ThrowBabyEventHandler();
+
+    [Signal]
+    public delegate void ThrowSelectChangeEventHandler(bool right);
+
     //[Signal]
     //public delegate void DebtPlayerStunnedEventHandler(int playerNum);
 

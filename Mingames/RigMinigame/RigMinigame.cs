@@ -159,10 +159,15 @@ public partial class RigMinigame : Node2D
 
     private void ClawAnimation(Node2D claw, AnimationPlayer clawAnimPlayer)
     {
-        clawAnimPlayer.Play("ClawOpen");
+        clawAnimPlayer.Play("clawOpen");
 
         var clawTween = GetTree().CreateTween();
         clawTween.TweenProperty(claw, "position:y", 0, 1f);
         clawTween.TweenProperty(claw.GetNode<Node2D>("Claw"), "frame", 0, 0);
+        //clawTween.TweenCallback(Callable.From(() => ClawClose(clawAnimPlayer)));
+    }
+    private void ClawClose(AnimationPlayer clawAnimPlayer)
+    {
+        clawAnimPlayer.Play("clawClose");
     }
 }

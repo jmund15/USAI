@@ -1,9 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5bqt6fbhdch8"]
+[gd_scene load_steps=10 format=3 uid="uid://b5bqt6fbhdch8"]
 
 [ext_resource type="Script" path="res://Mingames/DebateMinigame/DebateMinigame.cs" id="1_qa01p"]
+[ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="2_x0luq"]
+[ext_resource type="Texture2D" uid="uid://dhwd5qro51vdr" path="res://Mingames/BabyMinigame/audience.png" id="3_1a8jn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sopfx"]
-size = Vector2(800, 50)
+size = Vector2(1000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phsge"]
+size = Vector2(50, 250)
+
+[sub_resource type="Animation" id="Animation_0g4bd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audience:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vv4cd"]
+resource_name = "audienceCelebrate"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audience:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5g736"]
+_data = {
+"RESET": SubResource("Animation_0g4bd"),
+"audienceCelebrate": SubResource("Animation_vv4cd")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ec5ic"]
+font_size = 48
 
 [node name="DebateMinigame" type="Node2D"]
 script = ExtResource("1_qa01p")
@@ -19,24 +65,47 @@ one_shot = true
 [node name="Floor" type="StaticBody2D" parent="."]
 collision_layer = 2
 
+[node name="BG" type="Sprite2D" parent="Floor"]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_x0luq")
+hframes = 5
+frame = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(550, 575)
+position = Vector2(550, 519)
 shape = SubResource("RectangleShape2D_sopfx")
 
-[node name="ColorRect" type="ColorRect" parent="Floor"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 150.0
-offset_top = 550.0
-offset_right = 950.0
-offset_bottom = 600.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(37, 420)
+shape = SubResource("RectangleShape2D_phsge")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1043, 416)
+shape = SubResource("RectangleShape2D_phsge")
 
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="Audience" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(540, 535)
+scale = Vector2(2, 2)
+texture = ExtResource("3_1a8jn")
+vframes = 4
+
+[node name="AudienceAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5g736")
+}
+
+[node name="GameTime" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 730.0
+offset_bottom = 248.0
+text = "Debate Ends in:"
+label_settings = SubResource("LabelSettings_ec5ic")
+horizontal_alignment = 1
+vertical_alignment = 1

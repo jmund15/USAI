@@ -32,16 +32,16 @@ public partial class Global : Node
 	public List<Candidate> Players { get; set; } = new List<Candidate>();
 	public bool PlayersEnabled { get; set; } = false;
 
+
+	public Sprite2D Curtain;
+    public AnimationPlayer CurtainAnim;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_signalBus = GetNode<Events>("/root/Events");
-	}
 
-	private void OnPlayerTurnHuman()
-	{
-	}
-	private void OnPlayerTurnMonster()
-	{
+		Curtain = GetNode<Sprite2D>("/root/MainScene/Curtain");
+		CurtainAnim = Curtain.GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 }

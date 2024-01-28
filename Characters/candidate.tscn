@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0fa8blh5qgwk"]
+[gd_scene load_steps=11 format=3 uid="uid://d0fa8blh5qgwk"]
 
 [ext_resource type="Script" path="res://Characters/Candidate.cs" id="1_372gl"]
 [ext_resource type="Texture2D" uid="uid://ca8wanhk2qfur" path="res://Characters/player_movement.png" id="2_s1g12"]
 [ext_resource type="PackedScene" uid="uid://duy053e4k1a2w" path="res://Mingames/DebtMinigame/player_debt_game.tscn" id="3_y5ofx"]
 [ext_resource type="PackedScene" uid="uid://cu7bl8eoxwvoh" path="res://Mingames/RigMinigame/player_rig_game.tscn" id="4_i1ro6"]
+[ext_resource type="PackedScene" uid="uid://dtq5fqqwmyi18" path="res://Mingames/BabyMinigame/player_baby_game.tscn" id="5_ph77b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ty7p"]
 radius = 30.0
@@ -140,4 +141,7 @@ shape = SubResource("CapsuleShape2D_6ty7p")
 visible = false
 
 [node name="PlayerRigGame" parent="." instance=ExtResource("4_i1ro6")]
+visible = false
+
+[node name="PlayerBabyGame" parent="." instance=ExtResource("5_ph77b")]
 visible = false

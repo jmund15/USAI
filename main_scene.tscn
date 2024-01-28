@@ -1,8 +1,99 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnpsgogmt5of6"]
+[gd_scene load_steps=9 format=3 uid="uid://cnpsgogmt5of6"]
 
 [ext_resource type="Script" path="res://MainScene.cs" id="1_ci164"]
 [ext_resource type="Script" path="res://Managers/PlayerManager.cs" id="1_e4i2j"]
 [ext_resource type="Script" path="res://Managers/InputManager.cs" id="2_pn3rr"]
+[ext_resource type="Texture2D" uid="uid://bddsm0g6egvtg" path="res://curtain.png" id="4_befbo"]
+
+[sub_resource type="Animation" id="Animation_clpgb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_q3e8i"]
+resource_name = "closeCurtain"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(3, 0), Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_jx6x5"]
+resource_name = "openCurtain"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i354w"]
+_data = {
+"RESET": SubResource("Animation_clpgb"),
+"closeCurtain": SubResource("Animation_q3e8i"),
+"openCurtain": SubResource("Animation_jx6x5")
+}
 
 [node name="MainScene" type="Node"]
 script = ExtResource("1_ci164")
@@ -35,3 +126,15 @@ script = ExtResource("1_e4i2j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="Curtain" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("4_befbo")
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Curtain"]
+libraries = {
+"": SubResource("AnimationLibrary_i354w")
+}

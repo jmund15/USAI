@@ -34,6 +34,13 @@ public partial class Candidate : CharacterBody2D
     private Area2D _rigHitBoxArea;
     private bool _hitBallotRight = true;
 
+    private Node2D _playerBabyGame;
+    private AnimationPlayer _babyAnimPlayer;
+    public Sprite2D BabySelectUI;
+    public bool PerparingCatch = false;
+    public bool HoldingBaby = false;
+    public bool OutBabyGame = false;
+
     public Vector2 Direction { get; set; }
     public float WalkSpeed { get; set; } = 7000f;
     public float RunSpeed { get; set; } = 10000f;
@@ -45,7 +52,7 @@ public partial class Candidate : CharacterBody2D
     public int DebateScore { get; set; } = 0;
     public float DebtScore { get; set; } = 0;
     public float RigScore { get; set; } = 0;   
-
+    public float BabyScore { get; set; } = 0;
     public bool IsAlive { get; set; } = true;
 
     private string _leftInput;
@@ -89,6 +96,11 @@ public partial class Candidate : CharacterBody2D
         _rigHitBoxArea.Monitorable = false;
         _rigHitBoxArea.AreaEntered += OnAreaEnteredHitBoxArea;
         _playerRigGame.Hide();
+
+        _playerBabyGame = GetNode<Node2D>("PlayerBabyGame");
+        _babyAnimPlayer = _playerBabyGame.GetNode<AnimationPlayer>("AnimationPlayer");
+        BabySelectUI = _playerBabyGame.GetNode<Sprite2D>("Select");
+        _playerBabyGame.Hide();
 
         //_signalBus.DebtPlayerStunned += OnDebtPlayerStunned;
 
@@ -146,6 +158,26 @@ public partial class Candidate : CharacterBody2D
                     DebtScore = Mathf.Max(0, DebtScore);
                 }
                 break;
+            case Minigame.BabyKisser:
+                if (HoldingBaby)
+                {
+                    BabyScore += 100 * (float)delta;
+
+                    if (_babyAnimPlayer.CurrentAnimationPosition >= 0.2f && _babyAnimPlayer.CurrentAnimation.Contains("throw"))
+                    {
+                        _signalBus.EmitSignal(nameof(Events.ThrowBaby));
+                        HoldingBaby = false;
+                    }
+                    if (Input.IsActionJustPressed("left1"))
+                    {
+                        _signalBus.EmitSignal(nameof(Events.ThrowSelectChange), false);
+                    }
+                    else if (Input.IsActionJustPressed("right1"))
+                    {
+                        _signalBus.EmitSignal(nameof(Events.ThrowSelectChange), true);
+                    }
+                }
+                break;
             default: break; 
         }
     }
@@ -182,6 +214,7 @@ public partial class Candidate : CharacterBody2D
                 break;
             case Minigame.Debt:
                 break; // NO MOVEMENT
+            case Minigame.BabyKisser: break;
             default: break;
         }
         Velocity = velocity;
@@ -230,6 +263,12 @@ public partial class Candidate : CharacterBody2D
                     _hitBallotRight = false;
                 }
                 break;
+            case Minigame.BabyKisser:
+                if (Input.IsActionJustPressed("A1") && !PerparingCatch && !OutBabyGame)
+                {
+                    _babyAnimPlayer.Play("throw" + CharSelectedName);
+                }
+                break;
             default: break;
         }
     }
@@ -249,6 +288,7 @@ public partial class Candidate : CharacterBody2D
                 _hitboxArea.Monitoring = true;
                 _playerDebtGame.Hide();
                 _playerRigGame.Hide();
+                _playerBabyGame.Hide();
                 break;
             case Minigame.Debt:
                 _charSprite.Hide();
@@ -257,6 +297,7 @@ public partial class Candidate : CharacterBody2D
                 _hitboxArea.Monitoring = false;
                 _playerDebtGame.Show();
                 _playerRigGame.Hide();
+                _playerBabyGame.Hide();
                 break;
             case Minigame.Rig:
                 _charSprite.Hide();
@@ -265,6 +306,16 @@ public partial class Candidate : CharacterBody2D
                 _hitboxArea.Monitoring = false;
                 _playerDebtGame.Hide();
                 _playerRigGame.Show();
+                _playerBabyGame.Hide();
+                break;
+            case Minigame.BabyKisser:
+                _charSprite.Hide();
+                _suitSprite.Hide();
+                _hitboxArea.Monitorable = false;
+                _hitboxArea.Monitoring = false;
+                _playerDebtGame.Hide();
+                _playerRigGame.Hide();
+                _playerBabyGame.Show();
                 break;
             default:
                 break;
@@ -320,6 +371,17 @@ public partial class Candidate : CharacterBody2D
     #endregion
     #region HELPER_FUNCITONS
 
+    public void PrepareCatchBaby()
+    {
+        _babyAnimPlayer.Play("hold" + CharSelectedName);
+        PerparingCatch = true;
+    }
+    public void CatchBaby()
+    {
+        _babyAnimPlayer.Active = true;
+        PerparingCatch = false;
+        HoldingBaby = true;
+    }
     private Vector2 GetRandomDirection()
     {
         var direction = new Vector2();

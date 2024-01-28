@@ -14,7 +14,7 @@ public partial class DebtMinigame : Node2D
 
 	public int DebtGoal { get; private set; } = 100;
 	public bool UsaiPeeking { get; private set; } = false;
-    private float _peekingGracePeriod = 1f;
+    private float _peekingGracePeriod = 0.75f;
 
     private Vector2 _timeIgnoringInterval = new Vector2(2f, 8f);
     private Vector2 _timePeekingInterval = new Vector2(1f, 4f);

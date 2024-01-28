@@ -24,9 +24,9 @@ public partial class PlayerManager : Node
         _candidate = GD.Load<PackedScene>("res://Characters/candidate.tscn");
 
         AddPlayer(1, "JIZZLE", PlayableChar.NotObama, Colors.Black);
-        AddPlayer(2, "JOEL", PlayableChar.NotHillary, Colors.Blue);
-        AddPlayer(3, "JESWY", PlayableChar.NotTrump, Colors.Red);
-        AddPlayer(4, "L-STAR", PlayableChar.NotBiden, Colors.HotPink);
+        //AddPlayer(2, "JOEL", PlayableChar.NotHillary, Colors.Blue);
+        //AddPlayer(3, "JESWY", PlayableChar.NotTrump, Colors.Red);
+        //AddPlayer(4, "L-STAR", PlayableChar.NotBiden, Colors.HotPink);
     }
 
     public override void _Process(double delta)
