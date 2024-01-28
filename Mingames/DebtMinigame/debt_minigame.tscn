@@ -64,12 +64,6 @@ _data = {
 [node name="DebtMinigame" type="Node2D"]
 script = ExtResource("1_6m1sh")
 
-[node name="Usai" type="Sprite2D" parent="."]
-position = Vector2(900, 380)
-scale = Vector2(3, 3)
-texture = ExtResource("2_hiay1")
-hframes = 4
-
 [node name="UsaiTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -78,12 +72,45 @@ libraries = {
 "": SubResource("AnimationLibrary_1js6k")
 }
 
+[node name="BG4" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("3_2en64")
+hframes = 5
+frame = 4
+
+[node name="BG3" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("3_2en64")
+hframes = 5
+frame = 4
+
+[node name="BG2" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("3_2en64")
+hframes = 5
+frame = 2
+
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(540, 300)
 scale = Vector2(2, 2)
 texture = ExtResource("3_2en64")
 hframes = 5
 frame = 1
+
+[node name="Usai" type="Sprite2D" parent="."]
+position = Vector2(900, 380)
+scale = Vector2(3, 3)
+texture = ExtResource("2_hiay1")
+hframes = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ijukn")

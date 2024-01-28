@@ -55,6 +55,35 @@ font_size = 48
 [node name="DebateMinigame" type="Node2D"]
 script = ExtResource("1_qa01p")
 
+[node name="BG2" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -10
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_x0luq")
+hframes = 5
+frame = 4
+
+[node name="BG3" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -10
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_x0luq")
+hframes = 5
+frame = 2
+
+[node name="BG4" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -10
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_x0luq")
+hframes = 5
+
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
@@ -65,20 +94,6 @@ one_shot = true
 
 [node name="Floor" type="StaticBody2D" parent="."]
 collision_layer = 2
-
-[node name="BG2" type="Sprite2D" parent="Floor"]
-position = Vector2(540, 300)
-scale = Vector2(2, 2)
-texture = ExtResource("2_x0luq")
-hframes = 5
-frame = 4
-
-[node name="BG3" type="Sprite2D" parent="Floor"]
-position = Vector2(540, 300)
-scale = Vector2(2, 2)
-texture = ExtResource("2_x0luq")
-hframes = 5
-frame = 2
 
 [node name="BG" type="Sprite2D" parent="Floor"]
 position = Vector2(540, 300)

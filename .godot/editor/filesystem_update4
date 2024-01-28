@@ -1,8 +1,9 @@
+res://Mingames/RigMinigame/rig_minigame.tscn
+res://Mingames/DebtMinigame/debt_minigame.tscn
+res://Mingames/BabyMinigame/baby_minigame.tscn
 res://main_scene.tscn
 res://Mingames/DebateMinigame/debate_minigame.tscn
-res://Mingames/RigMinigame/rig_minigame.tscn
 res://Mingames/RigMinigame/ballot.tscn
-res://Mingames/BabyMinigame/baby_minigame.tscn
 res://Mingames/RigMinigame/voting_scene.tscn
 res://Menus/SelectScreen/select_screen.tscn
 res://Menus/SelectScreen/base_player_select.tscn
@@ -10,33 +11,4 @@ res://Characters/candidate.tscn
 res://Mingames/BabyMinigame/player_baby_game.tscn
 res://Mingames/DebtMinigame/player_debt_game.tscn
 res://Mingames/RigMinigame/player_rig_game.tscn
-res://Characters/Candidate.cs
-res://External Assets/BaseTopDownScripts/HUD.cs
-res://External Assets/BaseTopDownScripts/Interactable.cs
-res://External Assets/BaseTopDownScripts/Level.cs
-res://External Assets/BaseTopDownScripts/MainMenu.cs
-res://External Assets/BaseTopDownScripts/Map.cs
-res://External Assets/BaseTopDownScripts/MapManager.cs
-res://External Assets/BaseTopDownScripts/PauseMenu.cs
-res://External Assets/BaseTopDownScripts/Player.cs
-res://External Assets/BaseTopDownScripts/TopDownCharacter.cs
-res://Global/Events.cs
-res://Global/Global.cs
-res://MainScene.cs
-res://Managers/GameManager.cs
-res://Managers/InputManager.cs
-res://Managers/PlayerManager.cs
-res://Menus/Players/P1Select.cs
-res://Menus/Players/P2Select.cs
-res://Menus/Players/P3Select.cs
-res://Menus/Players/P4Select.cs
-res://Menus/SelectScreen/CharSelectScreen.cs
-res://Mingames/BabyMinigame/BabyMinigame.cs
-res://Mingames/DebateMinigame/DebateMinigame.cs
-res://Mingames/DebateMinigame/DebateQuestion.cs
-res://Mingames/DebtMinigame/DebtMinigame.cs
-res://Mingames/RigMinigame/Ballot.cs
-res://Mingames/RigMinigame/RigMinigame.cs
-res://test.cs
-res://Mingames/DebtMinigame/debt_minigame.tscn
 res://Mingames/intro_scene.tscn

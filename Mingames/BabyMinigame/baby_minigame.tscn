@@ -146,6 +146,32 @@ _data = {
 [node name="BabyMinigame" type="Node2D"]
 script = ExtResource("1_v0h26")
 
+[node name="BG3" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_kyne4")
+hframes = 5
+frame = 4
+
+[node name="BG2" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_kyne4")
+hframes = 5
+frame = 2
+
+[node name="BG4" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_kyne4")
+hframes = 5
+
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(540, 300)
 scale = Vector2(2, 2)
