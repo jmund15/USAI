@@ -39,4 +39,8 @@ script = ExtResource("1_e4i2j")
 [node name="MidStatus" parent="." instance=ExtResource("4_pdo2s")]
 position = Vector2(-587, -316)
 
+[node name="BreakingNews" parent="MidStatus" index="2"]
+position = Vector2(584, 320)
+scale = Vector2(2.15926, 2.17333)
+
 [editable path="MidStatus"]

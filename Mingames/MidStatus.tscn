@@ -30,10 +30,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Chiron" type="Label" parent="TheNews"]
 layout_mode = 0
-offset_left = 742.0
-offset_top = 338.0
-offset_right = 5683.0
-offset_bottom = 424.0
+offset_left = 1036.0
+offset_top = 332.0
+offset_right = 5977.0
+offset_bottom = 418.0
 theme = SubResource("Theme_ubjqq")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -41,7 +41,7 @@ theme_override_constants/outline_size = 11
 text = "??????"
 
 [node name="BreakingNews" type="Sprite2D" parent="."]
-position = Vector2(580, 320)
+position = Vector2(600, 320)
 scale = Vector2(2.12281, 2.17333)
 texture = ExtResource("2_0nhqy")
 hframes = 6
