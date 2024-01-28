@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=3 uid="uid://dp4m6owp74kqt"]
+
+[ext_resource type="Texture2D" uid="uid://br8xb6ly411j7" path="res://Mingames/RigMinigame/vote_box.png" id="1_m5it7"]
+[ext_resource type="Texture2D" uid="uid://br5keb5bk6v47" path="res://Mingames/RigMinigame/arm+paper.png" id="2_yubuw"]
+
+[sub_resource type="Animation" id="Animation_s1v5o"]
+resource_name = "ClawClose"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullClaw/Claw:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(3, 0), Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FullClaw/ClawGripBallot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_xv154"]
+resource_name = "ClawGrip"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullClaw/Claw:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FullClaw/ClawGripBallot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7oddi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullClaw/Claw:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FullClaw/ClawGripBallot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aa4jb"]
+_data = {
+"ClawClose": SubResource("Animation_s1v5o"),
+"ClawOpen": SubResource("Animation_xv154"),
+"RESET": SubResource("Animation_7oddi")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj3ss"]
+size = Vector2(150, 20)
+
+[node name="VotingScene" type="Node2D"]
+
+[node name="FullClaw" type="Node2D" parent="."]
+
+[node name="Claw" type="Sprite2D" parent="FullClaw"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_yubuw")
+hframes = 4
+vframes = 4
+
+[node name="ClawGripBallot" type="Sprite2D" parent="FullClaw"]
+visible = false
+position = Vector2(0, -96)
+scale = Vector2(3, 3)
+texture = ExtResource("2_yubuw")
+hframes = 4
+vframes = 4
+frame = 4
+
+[node name="VotingBoxBehind" type="Sprite2D" parent="."]
+position = Vector2(0, 550)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_m5it7")
+hframes = 2
+
+[node name="VotingBox" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, 550)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_m5it7")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aa4jb")
+}
+
+[node name="VotingBoxHitBox" type="Area2D" parent="."]
+position = Vector2(0, 600)
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VotingBoxHitBox"]
+shape = SubResource("RectangleShape2D_oj3ss")

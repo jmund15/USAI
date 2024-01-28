@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyfsdxetyyghd"]
+
+[ext_resource type="Script" path="res://Mingames/RigMinigame/RigMinigame.cs" id="1_8uym5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_68ivo"]
+font_size = 48
+
+[node name="RigMinigame" type="Node2D"]
+script = ExtResource("1_8uym5")
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="GameTime" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 150.0
+offset_right = 730.0
+offset_bottom = 198.0
+text = "Voting Closes in:"
+label_settings = SubResource("LabelSettings_68ivo")
+horizontal_alignment = 1
+vertical_alignment = 1

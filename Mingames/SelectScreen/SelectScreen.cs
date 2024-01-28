@@ -13,8 +13,11 @@ public partial class SelectScreen : Node2D
 	private AnimationPlayer _player3Anim;
 	private AnimationPlayer _player4Anim;
 
+    [Signal]
+    public delegate void StartGameEventHandler();
+    
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    public override void _Ready()
 	{
 		_player1Select = GetNode<Node2D>("Player1Select");
         _player2Select = GetNode<Node2D>("Player2Select");
@@ -40,5 +43,10 @@ public partial class SelectScreen : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
+		if (Input.IsKeyPressed(Key.Space))
+		{
+			EmitSignal(SignalName.StartGame);
+			QueueFree();
+		}
 	}
 }

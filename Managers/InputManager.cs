@@ -278,6 +278,10 @@ public partial class InputManager : Node
         var _coreActions = InputMap.GetActions();
         foreach (var coreAction in _coreActions)
         {
+            if (coreAction.ToString().Contains("ui"))
+            {
+                continue;
+            }
             if (@event.IsAction(coreAction.ToString()))
             {
                 GD.Print("\n", coreAction.ToString());

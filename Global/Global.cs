@@ -2,14 +2,21 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+public enum PlayableChar
+{
+	NotBiden,
+	NotObama,
+	NotTrump,
+	NotHillary
+}
 public enum Minigame
 {
 	Select,
     Cutscene,
     Debate,
-    Ballot,
+    Rig,
     BabyKisser,
-    TaxFraud
+    Debt
 }
 
 [GlobalClass]

@@ -7,13 +7,13 @@
 script = ExtResource("1_dcbi8")
 
 [node name="Player1Select" parent="." instance=ExtResource("2_jovfd")]
-position = Vector2(-375, 0)
+position = Vector2(200, 300)
 
 [node name="Player2Select" parent="." instance=ExtResource("2_jovfd")]
-position = Vector2(-125, 0)
+position = Vector2(450, 300)
 
 [node name="Player3Select" parent="." instance=ExtResource("2_jovfd")]
-position = Vector2(125, 0)
+position = Vector2(700, 300)
 
 [node name="Player4Select" parent="." instance=ExtResource("2_jovfd")]
-position = Vector2(375, 0)
+position = Vector2(950, 300)

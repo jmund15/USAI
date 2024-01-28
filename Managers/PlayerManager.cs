@@ -19,9 +19,14 @@ public partial class PlayerManager : Node
         _signalBus = GetNode<Events>("/root/Events");
         _global = GetNode<Global>("/root/Global");
 
+        //_signalBus.DebatePlayerOut += OnDebatePlayerOut;
+
         _candidate = GD.Load<PackedScene>("res://Characters/candidate.tscn");
 
-        AddPlayer(1, "JIZZLE");
+        AddPlayer(1, "JIZZLE", PlayableChar.NotObama, Colors.Black);
+        AddPlayer(2, "JOEL", PlayableChar.NotHillary, Colors.Blue);
+        AddPlayer(3, "JESWY", PlayableChar.NotTrump, Colors.Red);
+        AddPlayer(4, "L-STAR", PlayableChar.NotBiden, Colors.HotPink);
     }
 
     public override void _Process(double delta)
@@ -30,10 +35,17 @@ public partial class PlayerManager : Node
     #endregion
 
     #region SIGNAL_LISTENERS
+    private void OnDebatePlayerOut(int playerNum)
+    {
+        foreach (var player in _global.Players)
+        {
+
+        }
+    }
     #endregion
 
     #region HELPER_FUNCITONS
-    public void AddPlayer(int num, string name)
+    public void AddPlayer(int num, string name, PlayableChar character, Color suitColor)
     {
         foreach (var player in _global.Players)
         {
@@ -46,7 +58,7 @@ public partial class PlayerManager : Node
         var newPlayer = _candidate.Instantiate() as Candidate;
         newPlayer.PlayerNum = num;
         newPlayer.PlayerName = name;
-       
+        newPlayer.CharSelected = character;
         AddChild(newPlayer);
         if (!_global.PlayersEnabled)
         {

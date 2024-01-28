@@ -5,8 +5,8 @@ using static System.Net.Mime.MediaTypeNames;
 public partial class DebateQuestion : Node2D
 {
 	private string _labelText;
-	private int _baseFallSpeed = 15;
-	private int _fallSpeed;
+	private int _baseFallSpeed = 10;
+	private float _fallSpeed;
 	private Vector2 test = new Vector2(0,0);
 	 
 	private Label _questionLabel;
@@ -22,13 +22,21 @@ public partial class DebateQuestion : Node2D
 		_questionLabel = GetNode<Label>("QuestionText");
         _labelArea = GetNode<Area2D>("Area2D");
 		_labelCollisionShape = _labelArea.GetNode<CollisionShape2D>("CollisionShape2D");
-		_labelRectangleShape = _labelCollisionShape.Shape as RectangleShape2D;
+		//_labelRectangleShape = _labelCollisionShape.Shape as RectangleShape2D;
+		_labelRectangleShape = new RectangleShape2D();
 
         _questionLabel.Text = _labelText;
-		GD.Print(_labelText + " - LABEL SIZE: " + _questionLabel.Size);
-		_labelRectangleShape.SetDeferred("size", _questionLabel.Size);
-        //_labelRectangleShape.Size = _questionLabel.Size;
+		//GD.Print(_labelText + " - LABEL SIZE: " + _questionLabel.Size);
+		//_labelRectangleShape.SetDeferred("size", _questionLabel.Size);
+        _labelRectangleShape.Size = _questionLabel.Size;
+        _labelCollisionShape.Shape = _labelRectangleShape;
         //GD.Print("NEW COL SIZE: " + _labelRectangleShape.Size);
+
+        //var helpLabel = new Label() { Text = _questionLabel.Text };
+        //AddChild(helpLabel);
+        //      _labelRectangleShape.Size = helpLabel.Size;
+        //_labelCollisionShape.Shape = _labelRectangleShape;
+        //helpLabel.QueueFree();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,7 +46,7 @@ public partial class DebateQuestion : Node2D
 		{
             _labelRectangleShape.Size = _questionLabel.Size;
         }
-		if (Position.Y > 300)
+		if (Position.Y > 550)
 		{
 			QueueFree();
 		}
@@ -51,10 +59,10 @@ public partial class DebateQuestion : Node2D
 
     #region HELPER_FUNCTIONS
 
-    public void SetQuestionText(string text)
+    public void SetQuestionAttr(float speedMult, string text)
 	{
         _labelText = text;
-		_fallSpeed = _baseFallSpeed + text.Length;
+		_fallSpeed = _baseFallSpeed + ((1f / text.Length) * speedMult);
 	}
 
     #endregion

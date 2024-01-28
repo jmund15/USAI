@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static Events;
 
 [GlobalClass]
 public partial class Candidate : CharacterBody2D
@@ -7,9 +8,9 @@ public partial class Candidate : CharacterBody2D
     #region CLASS_VARIABLES
     public int PlayerNum { get; set; }
     public string PlayerName { get; set; }
-    public string CharacterSelected { get; set; }
-    public Color SuitColor { get; set; }
-
+    public PlayableChar CharSelected { get; set; }
+    public string CharSelectedName { get; set; }
+    public Color SuitColor { get; set; } = Colors.Black;
 
     public Vector2 CharacterSize { get; protected set; }
 
@@ -22,13 +23,28 @@ public partial class Candidate : CharacterBody2D
     private Area2D _hitboxArea { get; set; }
     private AnimationPlayer _animPlayer { get; set; }
 
+    private Node2D _playerDebtGame { get; set; }
+    private AnimationPlayer _debtAnimPlayer { get; set; }
+    private Timer _debtStunTimer { get; set; }
+    public bool IsRaisingDebt { get; private set; } = false;
+    public bool IsDebtStunned { get; private set; } = false;
+
+    private Node2D _playerRigGame;
+    private AnimationPlayer _rigAnimPlayer;
+    private Area2D _rigHitBoxArea;
+    private bool _hitBallotRight = true;
+
     public Vector2 Direction { get; set; }
-    public float WalkSpeed { get; set; }
-    public float RunSpeed { get; set; }
+    public float WalkSpeed { get; set; } = 7000f;
+    public float RunSpeed { get; set; } = 10000f;
+    public float JumpVelocity { get; set; } = -400.0f;
+    // Get the gravity from the project settings to be synced with RigidBody nodes.
+    public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
     public float TotalScore { get; set; } = 0;
-    public float DebateScore { get; set; } = 0;
-    private float _debateScoreMultiplyer = 5;
+    public int DebateScore { get; set; } = 0;
+    public float DebtScore { get; set; } = 0;
+    public float RigScore { get; set; } = 0;   
 
     public bool IsAlive { get; set; } = true;
 
@@ -45,6 +61,9 @@ public partial class Candidate : CharacterBody2D
         _signalBus = GetNode<Events>("/root/Events");
         _global = GetNode<Global>("/root/Global");
 
+        _signalBus.MinigameStart += OnMinigameStart;
+        _signalBus.MinigameOver += OnMinigameOver;
+
         _charSprite = GetNode<Sprite2D>("Char");
         _suitSprite = GetNode<Sprite2D>("Suit");
         _hitboxArea = GetNode<Area2D>("HitBoxArea");
@@ -55,8 +74,52 @@ public partial class Candidate : CharacterBody2D
         _animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         _animPlayer.AnimationFinished += OnAnimationFinished;
 
+        _playerDebtGame = GetNode<Node2D>("PlayerDebtGame");
+        _debtAnimPlayer = _playerDebtGame.GetNode<AnimationPlayer>("AnimationPlayer");
+        _debtStunTimer = _playerDebtGame.GetNode<Timer>("StunTimer");
+        _debtStunTimer.Timeout += OnDebtStunTimeout;
+        _debtAnimPlayer.AnimationFinished += OnAnimationFinished;
+        _playerDebtGame.Hide();
+
+        _playerRigGame = GetNode<Node2D>("PlayerRigGame");
+        _rigAnimPlayer = _playerRigGame.GetNode<AnimationPlayer>("AnimationPlayer");
+        _rigAnimPlayer.AnimationFinished += OnAnimationFinished;
+        _rigHitBoxArea = _playerRigGame.GetNode<Area2D>("HandHitBox");
+        _rigHitBoxArea.Monitoring = false;
+        _rigHitBoxArea.Monitorable = false;
+        _rigHitBoxArea.AreaEntered += OnAreaEnteredHitBoxArea;
+        _playerRigGame.Hide();
+
+        //_signalBus.DebtPlayerStunned += OnDebtPlayerStunned;
+
         _suitSprite.Modulate = SuitColor;
+        _playerDebtGame.GetNode<Sprite2D>("Suit").Modulate = SuitColor;
+
+        switch (CharSelected)
+        {
+            case PlayableChar.NotBiden:
+                _charSprite.FrameCoords = new Vector2I(0, 1);
+                _playerDebtGame.GetNode<Sprite2D>("Char").FrameCoords = new Vector2I(0, 2);
+                CharSelectedName = "NotBiden";
+                break;
+            case PlayableChar.NotObama:
+                _charSprite.FrameCoords = new Vector2I(0, 2);
+                _playerDebtGame.GetNode<Sprite2D>("Char").FrameCoords = new Vector2I(0, 3);
+                CharSelectedName = "NotObama";
+                break;
+            case PlayableChar.NotTrump:
+                _charSprite.FrameCoords = new Vector2I(0, 3);
+                _playerDebtGame.GetNode<Sprite2D>("Char").FrameCoords = new Vector2I(0, 4);
+                CharSelectedName = "NotTrump";
+                break;
+            case PlayableChar.NotHillary:
+                _charSprite.FrameCoords = new Vector2I(0, 4);
+                _playerDebtGame.GetNode<Sprite2D>("Char").FrameCoords = new Vector2I(0, 5);
+                CharSelectedName = "NotHillary";
+                break;
+        }
     }
+
     public override void _Process(double delta)
     {
         switch (_global.CurrentMinigame)
@@ -66,7 +129,21 @@ public partial class Candidate : CharacterBody2D
             case Minigame.Debate:
                 if (IsAlive)
                 {
-                    DebateScore += _debateScoreMultiplyer * (float)delta;
+                    // nothing?
+                }
+                break;
+            case Minigame.Debt:
+                if (!IsRaisingDebt)
+                {
+                    if (IsDebtStunned)
+                    {
+                        DebtScore -= 8 * (float)delta;
+                    }
+                    else
+                    {
+                        DebtScore -= 3 * (float)delta;
+                    }
+                    DebtScore = Mathf.Max(0, DebtScore);
                 }
                 break;
             default: break; 
@@ -88,9 +165,23 @@ public partial class Candidate : CharacterBody2D
             case Minigame.Cutscene:
                 return;
             case Minigame.Debate:
-                Direction = Input.GetVector("left", "right", "up", "down").Normalized();
+                Direction = Input.GetVector("left1", "right1", "up1", "down1").Normalized();
                 velocity.X = Direction.X * RunSpeed * (float)delta;
+
+                // Add the gravity.
+                if (!IsOnFloor())
+                {
+                    velocity.Y += gravity * (float)delta;
+                }
+
+                // Handle Jump.
+                if (Input.IsActionJustPressed("A1") && IsOnFloor())
+                {
+                    velocity.Y = JumpVelocity;
+                }
                 break;
+            case Minigame.Debt:
+                break; // NO MOVEMENT
             default: break;
         }
         Velocity = velocity;
@@ -109,33 +200,121 @@ public partial class Candidate : CharacterBody2D
                 }
                 if (Velocity.X < 0)
                 {
-                    _animPlayer.Play("runLeft");
+                    _animPlayer.Play("runRight"); // CHANGE LATER
                 }
                 else if (Velocity.X > 0)
                 {
                     _animPlayer.Play("runRight");
                 }
                 break;
+            case Minigame.Debt:
+                if (Input.IsActionJustPressed("A1") && !IsDebtStunned)
+                {
+                    _debtAnimPlayer.Play("press" + CharSelectedName);
+                    IsRaisingDebt = true;
+                }
+                break;
+            case Minigame.Rig:
+                if (!_rigAnimPlayer.IsPlaying() && Input.IsActionJustPressed("right1"))
+                {
+                    _rigAnimPlayer.Play("swatRight" + CharSelectedName);
+                    _rigHitBoxArea.Monitoring = true;
+                    _rigHitBoxArea.Monitorable = true;
+                    _hitBallotRight = true;
+                }
+                else if (!_rigAnimPlayer.IsPlaying() && Input.IsActionJustPressed("left1"))
+                {
+                    _rigAnimPlayer.Play("swatLeft" + CharSelectedName);
+                    _rigHitBoxArea.Monitoring = true;
+                    _rigHitBoxArea.Monitorable = true;
+                    _hitBallotRight = false;
+                }
+                break;
             default: break;
         }
-        
     }
     #endregion
 
     #region SIGNAL_LISTENERS
-
+    private void OnMinigameStart(Minigame minigame)
+    {
+        switch (minigame)
+        {
+            case Minigame.Cutscene:
+                break;
+            case Minigame.Debate:
+                _charSprite.Show();
+                _suitSprite.Show();
+                _hitboxArea.Monitorable = true;
+                _hitboxArea.Monitoring = true;
+                _playerDebtGame.Hide();
+                _playerRigGame.Hide();
+                break;
+            case Minigame.Debt:
+                _charSprite.Hide();
+                _suitSprite.Hide();
+                _hitboxArea.Monitorable = false;
+                _hitboxArea.Monitoring = false;
+                _playerDebtGame.Show();
+                _playerRigGame.Hide();
+                break;
+            case Minigame.Rig:
+                _charSprite.Hide();
+                _suitSprite.Hide();
+                _hitboxArea.Monitorable = false;
+                _hitboxArea.Monitoring = false;
+                _playerDebtGame.Hide();
+                _playerRigGame.Show();
+                break;
+            default:
+                break;
+        }
+    }
+    private void OnMinigameOver(Minigame minigame)
+    {
+        throw new NotImplementedException();
+    }
+    public void OnDebtPlayerStunned()
+    {
+        IsDebtStunned = true;
+        _playerDebtGame.GetNode<Sprite2D>("Podium").Modulate = new Color("f926ff");
+        _debtStunTimer.Start();
+    }
+    private void OnDebtStunTimeout()
+    {
+        IsDebtStunned = false;
+        _playerDebtGame.GetNode<Sprite2D>("Podium").Modulate = new Color("ffffff");
+    }
     private void OnAreaEnteredHitBoxArea(Area2D area)
     {
-
-        if (area.CollisionLayer == 5) // DEBATE QUESTION
+        if (area.CollisionLayer == 16) // DEBATE QUESTION
         {
-            // "death anim"
+            Hide();
+            ProcessMode = ProcessModeEnum.Disabled;
             IsAlive = false;
+            // "death anim"
+            GD.Print("PLAYER HIT QUESTION");
+            area.GetParent().QueueFree(); // animation later?
+            _signalBus.EmitSignal(nameof(Events.DebatePlayerOut), PlayerNum);
+        }
+        else if (area.CollisionLayer == 32) // BALLOT
+        {
+            Ballot ballot = area.GetParent() as Ballot;
+            ballot.BallotHit(_hitBallotRight);
         }
     }
     private void OnAnimationFinished(StringName animName)
     {
-        throw new NotImplementedException();
+        if (animName.ToString().Contains("press"))
+        {
+            IsRaisingDebt = false;
+            DebtScore += 2;
+        }
+        if (animName.ToString().Contains("swat"))
+        {
+            _rigHitBoxArea.Monitoring = false;
+            _rigHitBoxArea.Monitorable = false;
+        }
     }
 
     #endregion

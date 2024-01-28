@@ -34,3 +34,4 @@ script = ExtResource("2_pn3rr")
 script = ExtResource("1_e4i2j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

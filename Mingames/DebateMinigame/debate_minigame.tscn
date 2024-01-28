@@ -1,11 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5bqt6fbhdch8"]
+[gd_scene load_steps=3 format=3 uid="uid://b5bqt6fbhdch8"]
 
 [ext_resource type="Script" path="res://Mingames/DebateMinigame/DebateMinigame.cs" id="1_qa01p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sopfx"]
+size = Vector2(800, 50)
 
 [node name="DebateMinigame" type="Node2D"]
 script = ExtResource("1_qa01p")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="GameTimer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
+autostart = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(550, 575)
+shape = SubResource("RectangleShape2D_sopfx")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = 550.0
+offset_right = 950.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true

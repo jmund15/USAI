@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Mingames/DebateMinigame/DebateQuestion.cs" id="1_e8jfm"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lunt1"]
-bg_color = Color(0, 0, 0, 0.490196)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7cst"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.588235)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8j217"]
 shadow_size = 2
@@ -27,7 +27,7 @@ offset_right = 57.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_lunt1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_f7cst")
 text = "Foreign Policy?"
 label_settings = SubResource("LabelSettings_8j217")
 horizontal_alignment = 1
