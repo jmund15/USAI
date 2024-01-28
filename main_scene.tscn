@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://MainScene.cs" id="1_ci164"]
 [ext_resource type="Script" path="res://Managers/PlayerManager.cs" id="1_e4i2j"]
 [ext_resource type="Script" path="res://Managers/InputManager.cs" id="2_pn3rr"]
-[ext_resource type="PackedScene" uid="uid://282qc16ltb53" path="res://Menus/CharSelect.tscn" id="4_k2cm0"]
+[ext_resource type="PackedScene" path="res://Menus/CharSelect.tscn" id="4_k2cm0"]
 [ext_resource type="Script" path="res://Menus/CharSelect.cs" id="5_qe620"]
 [ext_resource type="Script" path="res://Menus/Players/P1Select.cs" id="6_fgbrf"]
 [ext_resource type="Script" path="res://Menus/Players/P2Select.cs" id="7_jxxff"]
