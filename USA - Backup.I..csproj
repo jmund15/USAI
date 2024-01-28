@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>USA.I.Empty</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="External Assets\MultiplayerInputScripts_WIP\" />
+  </ItemGroup>
 </Project>

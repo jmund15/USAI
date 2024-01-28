@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnpsgogmt5of6"]
+[gd_scene load_steps=13 format=3 uid="uid://cnpsgogmt5of6"]
 
 [ext_resource type="Script" path="res://MainScene.cs" id="1_ci164"]
 [ext_resource type="Script" path="res://Managers/PlayerManager.cs" id="1_e4i2j"]
 [ext_resource type="Script" path="res://Managers/InputManager.cs" id="2_pn3rr"]
+[ext_resource type="PackedScene" uid="uid://282qc16ltb53" path="res://Menus/CharSelect.tscn" id="4_k2cm0"]
+[ext_resource type="Script" path="res://Menus/CharSelect.cs" id="5_qe620"]
+[ext_resource type="Script" path="res://Menus/Players/P1Select.cs" id="6_fgbrf"]
+[ext_resource type="Script" path="res://Menus/Players/P2Select.cs" id="7_jxxff"]
+[ext_resource type="Script" path="res://Menus/Players/P3Select.cs" id="8_gbrx6"]
+[ext_resource type="Script" path="res://Menus/Players/P4Select.cs" id="9_7sido"]
+
+[sub_resource type="Theme" id="Theme_vqpnp"]
+
+[sub_resource type="Theme" id="Theme_yfx76"]
+default_font_size = 43
+
+[sub_resource type="Theme" id="Theme_khiy6"]
+default_font_size = 68
+GridContainer/constants/h_separation = 28
+GridContainer/constants/v_separation = 10
 
 [node name="MainScene" type="Node"]
 script = ExtResource("1_ci164")
@@ -34,3 +50,1310 @@ script = ExtResource("2_pn3rr")
 script = ExtResource("1_e4i2j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharSelect" parent="." instance=ExtResource("4_k2cm0")]
+script = ExtResource("5_qe620")
+
+[node name="CharacterSelection" type="CanvasLayer" parent="CharSelect"]
+follow_viewport_enabled = true
+
+[node name="P1 Select" type="Control" parent="CharSelect/CharacterSelection"]
+layout_mode = 3
+anchor_left = -0.5
+anchor_top = -0.498
+offset_top = -2.15997
+theme = SubResource("Theme_vqpnp")
+script = ExtResource("6_fgbrf")
+metadata/_edit_use_anchors_ = true
+
+[node name="P1Label" type="Label" parent="CharSelect/CharacterSelection/P1 Select"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.019
+anchor_right = 0.948
+anchor_bottom = 0.148
+offset_left = -0.0800018
+offset_top = -0.26
+offset_right = -0.0800781
+offset_bottom = 0.0800018
+theme = SubResource("Theme_yfx76")
+text = "Press the A Button to Join!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P1Keyboard" type="GridContainer" parent="CharSelect/CharacterSelection/P1 Select"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.139
+anchor_right = 0.9
+anchor_bottom = 0.95
+offset_top = -0.0600052
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_khiy6")
+columns = 8
+
+[node name="A" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../H")
+focus_neighbor_top = NodePath("../Y")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../I")
+text = "A"
+
+[node name="B" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../Z")
+focus_neighbor_right = NodePath("../C")
+focus_neighbor_bottom = NodePath("../J")
+text = "B"
+
+[node name="C" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../B")
+focus_neighbor_top = NodePath("../!")
+focus_neighbor_right = NodePath("../D")
+focus_neighbor_bottom = NodePath("../K")
+text = "C"
+
+[node name="D" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../C")
+focus_neighbor_top = NodePath("../?")
+focus_neighbor_right = NodePath("../E")
+focus_neighbor_bottom = NodePath("../L")
+text = "D"
+
+[node name="E" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../D")
+focus_neighbor_top = NodePath("../At")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../M")
+text = "E"
+
+[node name="F" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../E")
+focus_neighbor_top = NodePath("../Cash")
+focus_neighbor_right = NodePath("../G")
+focus_neighbor_bottom = NodePath("../N")
+text = "F"
+
+[node name="G" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../F")
+focus_neighbor_top = NodePath("../Clear")
+focus_neighbor_right = NodePath("../H")
+focus_neighbor_bottom = NodePath("../O")
+text = "G"
+
+[node name="H" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../G")
+focus_neighbor_top = NodePath("../Enter")
+focus_neighbor_right = NodePath("../A")
+focus_neighbor_bottom = NodePath("../P")
+text = "H"
+
+[node name="I" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../P")
+focus_neighbor_top = NodePath("../A")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../Q")
+text = "I"
+
+[node name="J" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../I")
+focus_neighbor_top = NodePath("../B")
+focus_neighbor_right = NodePath("../K")
+focus_neighbor_bottom = NodePath("../R")
+text = "J"
+
+[node name="K" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../J")
+focus_neighbor_top = NodePath("../C")
+focus_neighbor_right = NodePath("../L")
+focus_neighbor_bottom = NodePath("../S")
+text = "K"
+
+[node name="L" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../K")
+focus_neighbor_top = NodePath("../D")
+focus_neighbor_right = NodePath("../M")
+focus_neighbor_bottom = NodePath("../T")
+text = "L"
+
+[node name="M" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../L")
+focus_neighbor_top = NodePath("../E")
+focus_neighbor_right = NodePath("../N")
+focus_neighbor_bottom = NodePath("../U")
+text = "M"
+
+[node name="N" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../M")
+focus_neighbor_top = NodePath("../F")
+focus_neighbor_right = NodePath("../O")
+focus_neighbor_bottom = NodePath("../W")
+text = "N"
+
+[node name="O" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../N")
+focus_neighbor_top = NodePath("../G")
+focus_neighbor_right = NodePath("../P")
+focus_neighbor_bottom = NodePath("../W")
+text = "O"
+
+[node name="P" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../O")
+focus_neighbor_top = NodePath("../H")
+focus_neighbor_right = NodePath("../I")
+focus_neighbor_bottom = NodePath("../X")
+text = "P"
+
+[node name="Q" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../X")
+focus_neighbor_top = NodePath("../I")
+focus_neighbor_right = NodePath("../R")
+focus_neighbor_bottom = NodePath("../Y")
+text = "Q"
+
+[node name="R" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Q")
+focus_neighbor_top = NodePath("../J")
+focus_neighbor_right = NodePath("../S")
+focus_neighbor_bottom = NodePath("../Z")
+text = "R"
+
+[node name="S" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../R")
+focus_neighbor_top = NodePath("../K")
+focus_neighbor_right = NodePath("../T")
+focus_neighbor_bottom = NodePath("../!")
+text = "S"
+
+[node name="T" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../S")
+focus_neighbor_top = NodePath("../L")
+focus_neighbor_right = NodePath("../U")
+focus_neighbor_bottom = NodePath("../?")
+text = "T"
+
+[node name="U" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../T")
+focus_neighbor_top = NodePath("../M")
+focus_neighbor_right = NodePath("../V")
+focus_neighbor_bottom = NodePath("../At")
+text = "U"
+
+[node name="V" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../U")
+focus_neighbor_top = NodePath("../N")
+focus_neighbor_right = NodePath("../W")
+focus_neighbor_bottom = NodePath("../Cash")
+text = "V"
+
+[node name="W" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../V")
+focus_neighbor_top = NodePath("../O")
+focus_neighbor_right = NodePath("../X")
+focus_neighbor_bottom = NodePath("../Clear")
+text = "W"
+
+[node name="X" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../W")
+focus_neighbor_top = NodePath("../P")
+focus_neighbor_right = NodePath("../Q")
+focus_neighbor_bottom = NodePath("../Enter")
+text = "X"
+
+[node name="Y" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Enter")
+focus_neighbor_top = NodePath("../Q")
+focus_neighbor_right = NodePath("../Z")
+focus_neighbor_bottom = NodePath("../A")
+text = "Y"
+
+[node name="Z" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Y")
+focus_neighbor_top = NodePath("../R")
+focus_neighbor_right = NodePath("../!")
+focus_neighbor_bottom = NodePath("../B")
+text = "Z"
+
+[node name="!" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Z")
+focus_neighbor_top = NodePath("../S")
+focus_neighbor_right = NodePath("../?")
+focus_neighbor_bottom = NodePath("../C")
+text = "!"
+
+[node name="?" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../!")
+focus_neighbor_top = NodePath("../T")
+focus_neighbor_right = NodePath("../At")
+focus_neighbor_bottom = NodePath("../D")
+text = "?"
+
+[node name="At" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../?")
+focus_neighbor_top = NodePath("../U")
+focus_neighbor_right = NodePath("../Cash")
+focus_neighbor_bottom = NodePath("../E")
+text = "@"
+
+[node name="Cash" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../At")
+focus_neighbor_top = NodePath("../V")
+focus_neighbor_right = NodePath("../Clear")
+focus_neighbor_bottom = NodePath("../F")
+text = "$"
+
+[node name="Clear" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cash")
+focus_neighbor_top = NodePath("../W")
+focus_neighbor_right = NodePath("../Enter")
+focus_neighbor_bottom = NodePath("../G")
+text = "Clr"
+
+[node name="Enter" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Clear")
+focus_neighbor_top = NodePath("../X")
+focus_neighbor_right = NodePath("../Y")
+focus_neighbor_bottom = NodePath("../H")
+text = "Ent"
+
+[node name="P1Char" type="GridContainer" parent="CharSelect/CharacterSelection/P1 Select"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 312.0
+offset_right = 768.0
+offset_bottom = 536.0
+
+[node name="HeadChange" type="Button" parent="CharSelect/CharacterSelection/P1 Select/P1Char"]
+layout_mode = 2
+text = "Change Head"
+
+[node name="RedSlider" type="HSlider" parent="CharSelect/CharacterSelection/P1 Select/P1Char"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 250.0
+step = 10.0
+
+[node name="GreenSlider" type="HSlider" parent="CharSelect/CharacterSelection/P1 Select/P1Char"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="BlueSlider" type="HSlider" parent="CharSelect/CharacterSelection/P1 Select/P1Char"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="P2 Select" type="Control" parent="CharSelect/CharacterSelection"]
+layout_mode = 3
+anchor_top = -0.5
+anchor_right = 0.5
+theme = SubResource("Theme_vqpnp")
+script = ExtResource("7_jxxff")
+metadata/_edit_use_anchors_ = true
+
+[node name="P2Label" type="Label" parent="CharSelect/CharacterSelection/P2 Select"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.019
+anchor_right = 0.948
+anchor_bottom = 0.148
+offset_left = -0.0800018
+offset_top = -0.26
+offset_right = -0.0800781
+offset_bottom = 0.0800018
+theme = SubResource("Theme_yfx76")
+text = "Press the A Button to Join!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P2Keyboard" type="GridContainer" parent="CharSelect/CharacterSelection/P2 Select"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.139
+anchor_right = 0.9
+anchor_bottom = 0.95
+offset_top = -0.0600052
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_khiy6")
+columns = 8
+
+[node name="A" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../H")
+focus_neighbor_top = NodePath("../Y")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../I")
+text = "A"
+
+[node name="B" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../Z")
+focus_neighbor_right = NodePath("../C")
+focus_neighbor_bottom = NodePath("../J")
+text = "B"
+
+[node name="C" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../B")
+focus_neighbor_top = NodePath("../!")
+focus_neighbor_right = NodePath("../D")
+focus_neighbor_bottom = NodePath("../K")
+text = "C"
+
+[node name="D" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../C")
+focus_neighbor_top = NodePath("../?")
+focus_neighbor_right = NodePath("../E")
+focus_neighbor_bottom = NodePath("../L")
+text = "D"
+
+[node name="E" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../D")
+focus_neighbor_top = NodePath("../At")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../M")
+text = "E"
+
+[node name="F" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../E")
+focus_neighbor_top = NodePath("../Cash")
+focus_neighbor_right = NodePath("../G")
+focus_neighbor_bottom = NodePath("../N")
+text = "F"
+
+[node name="G" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../F")
+focus_neighbor_top = NodePath("../Clear")
+focus_neighbor_right = NodePath("../H")
+focus_neighbor_bottom = NodePath("../O")
+text = "G"
+
+[node name="H" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../G")
+focus_neighbor_top = NodePath("../Enter")
+focus_neighbor_right = NodePath("../A")
+focus_neighbor_bottom = NodePath("../P")
+text = "H"
+
+[node name="I" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../P")
+focus_neighbor_top = NodePath("../A")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../Q")
+text = "I"
+
+[node name="J" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../I")
+focus_neighbor_top = NodePath("../B")
+focus_neighbor_right = NodePath("../K")
+focus_neighbor_bottom = NodePath("../R")
+text = "J"
+
+[node name="K" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../J")
+focus_neighbor_top = NodePath("../C")
+focus_neighbor_right = NodePath("../L")
+focus_neighbor_bottom = NodePath("../S")
+text = "K"
+
+[node name="L" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../K")
+focus_neighbor_top = NodePath("../D")
+focus_neighbor_right = NodePath("../M")
+focus_neighbor_bottom = NodePath("../T")
+text = "L"
+
+[node name="M" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../L")
+focus_neighbor_top = NodePath("../E")
+focus_neighbor_right = NodePath("../N")
+focus_neighbor_bottom = NodePath("../U")
+text = "M"
+
+[node name="N" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../M")
+focus_neighbor_top = NodePath("../F")
+focus_neighbor_right = NodePath("../O")
+focus_neighbor_bottom = NodePath("../W")
+text = "N"
+
+[node name="O" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../N")
+focus_neighbor_top = NodePath("../G")
+focus_neighbor_right = NodePath("../P")
+focus_neighbor_bottom = NodePath("../W")
+text = "O"
+
+[node name="P" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../O")
+focus_neighbor_top = NodePath("../H")
+focus_neighbor_right = NodePath("../I")
+focus_neighbor_bottom = NodePath("../X")
+text = "P"
+
+[node name="Q" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../X")
+focus_neighbor_top = NodePath("../I")
+focus_neighbor_right = NodePath("../R")
+focus_neighbor_bottom = NodePath("../Y")
+text = "Q"
+
+[node name="R" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Q")
+focus_neighbor_top = NodePath("../J")
+focus_neighbor_right = NodePath("../S")
+focus_neighbor_bottom = NodePath("../Z")
+text = "R"
+
+[node name="S" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../R")
+focus_neighbor_top = NodePath("../K")
+focus_neighbor_right = NodePath("../T")
+focus_neighbor_bottom = NodePath("../!")
+text = "S"
+
+[node name="T" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../S")
+focus_neighbor_top = NodePath("../L")
+focus_neighbor_right = NodePath("../U")
+focus_neighbor_bottom = NodePath("../?")
+text = "T"
+
+[node name="U" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../T")
+focus_neighbor_top = NodePath("../M")
+focus_neighbor_right = NodePath("../V")
+focus_neighbor_bottom = NodePath("../At")
+text = "U"
+
+[node name="V" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../U")
+focus_neighbor_top = NodePath("../N")
+focus_neighbor_right = NodePath("../W")
+focus_neighbor_bottom = NodePath("../Cash")
+text = "V"
+
+[node name="W" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../V")
+focus_neighbor_top = NodePath("../O")
+focus_neighbor_right = NodePath("../X")
+focus_neighbor_bottom = NodePath("../Clear")
+text = "W"
+
+[node name="X" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../W")
+focus_neighbor_top = NodePath("../P")
+focus_neighbor_right = NodePath("../Q")
+focus_neighbor_bottom = NodePath("../Enter")
+text = "X"
+
+[node name="Y" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Enter")
+focus_neighbor_top = NodePath("../Q")
+focus_neighbor_right = NodePath("../Z")
+focus_neighbor_bottom = NodePath("../A")
+text = "Y"
+
+[node name="Z" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Y")
+focus_neighbor_top = NodePath("../R")
+focus_neighbor_right = NodePath("../!")
+focus_neighbor_bottom = NodePath("../B")
+text = "Z"
+
+[node name="!" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Z")
+focus_neighbor_top = NodePath("../S")
+focus_neighbor_right = NodePath("../?")
+focus_neighbor_bottom = NodePath("../C")
+text = "!"
+
+[node name="?" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../!")
+focus_neighbor_top = NodePath("../T")
+focus_neighbor_right = NodePath("../At")
+focus_neighbor_bottom = NodePath("../D")
+text = "?"
+
+[node name="At" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../?")
+focus_neighbor_top = NodePath("../U")
+focus_neighbor_right = NodePath("../Cash")
+focus_neighbor_bottom = NodePath("../E")
+text = "@"
+
+[node name="Cash" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../At")
+focus_neighbor_top = NodePath("../V")
+focus_neighbor_right = NodePath("../Clear")
+focus_neighbor_bottom = NodePath("../F")
+text = "$"
+
+[node name="Clear" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cash")
+focus_neighbor_top = NodePath("../W")
+focus_neighbor_right = NodePath("../Enter")
+focus_neighbor_bottom = NodePath("../G")
+text = "Clr"
+
+[node name="Enter" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Clear")
+focus_neighbor_top = NodePath("../X")
+focus_neighbor_right = NodePath("../Y")
+focus_neighbor_bottom = NodePath("../H")
+text = "Ent"
+
+[node name="P2Char" type="GridContainer" parent="CharSelect/CharacterSelection/P2 Select"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 312.0
+offset_right = 768.0
+offset_bottom = 536.0
+
+[node name="HeadChange" type="Button" parent="CharSelect/CharacterSelection/P2 Select/P2Char"]
+layout_mode = 2
+text = "Change Head"
+
+[node name="RedSlider" type="HSlider" parent="CharSelect/CharacterSelection/P2 Select/P2Char"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 250.0
+step = 10.0
+
+[node name="GreenSlider" type="HSlider" parent="CharSelect/CharacterSelection/P2 Select/P2Char"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="BlueSlider" type="HSlider" parent="CharSelect/CharacterSelection/P2 Select/P2Char"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="P3 Select" type="Control" parent="CharSelect/CharacterSelection"]
+layout_mode = 3
+anchor_left = -0.5
+anchor_bottom = 0.5
+theme = SubResource("Theme_vqpnp")
+script = ExtResource("8_gbrx6")
+metadata/_edit_use_anchors_ = true
+
+[node name="P3Label" type="Label" parent="CharSelect/CharacterSelection/P3 Select"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.019
+anchor_right = 0.948
+anchor_bottom = 0.148
+offset_left = -0.0800018
+offset_top = -0.26
+offset_right = -0.0800781
+offset_bottom = 0.0800018
+theme = SubResource("Theme_yfx76")
+text = "Press the A Button to Join!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P3Keyboard" type="GridContainer" parent="CharSelect/CharacterSelection/P3 Select"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.139
+anchor_right = 0.9
+anchor_bottom = 0.95
+offset_top = -0.0600052
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_khiy6")
+columns = 8
+
+[node name="A" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../H")
+focus_neighbor_top = NodePath("../Y")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../I")
+text = "A"
+
+[node name="B" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../Z")
+focus_neighbor_right = NodePath("../C")
+focus_neighbor_bottom = NodePath("../J")
+text = "B"
+
+[node name="C" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../B")
+focus_neighbor_top = NodePath("../!")
+focus_neighbor_right = NodePath("../D")
+focus_neighbor_bottom = NodePath("../K")
+text = "C"
+
+[node name="D" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../C")
+focus_neighbor_top = NodePath("../?")
+focus_neighbor_right = NodePath("../E")
+focus_neighbor_bottom = NodePath("../L")
+text = "D"
+
+[node name="E" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../D")
+focus_neighbor_top = NodePath("../At")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../M")
+text = "E"
+
+[node name="F" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../E")
+focus_neighbor_top = NodePath("../Cash")
+focus_neighbor_right = NodePath("../G")
+focus_neighbor_bottom = NodePath("../N")
+text = "F"
+
+[node name="G" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../F")
+focus_neighbor_top = NodePath("../Clear")
+focus_neighbor_right = NodePath("../H")
+focus_neighbor_bottom = NodePath("../O")
+text = "G"
+
+[node name="H" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../G")
+focus_neighbor_top = NodePath("../Enter")
+focus_neighbor_right = NodePath("../A")
+focus_neighbor_bottom = NodePath("../P")
+text = "H"
+
+[node name="I" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../P")
+focus_neighbor_top = NodePath("../A")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../Q")
+text = "I"
+
+[node name="J" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../I")
+focus_neighbor_top = NodePath("../B")
+focus_neighbor_right = NodePath("../K")
+focus_neighbor_bottom = NodePath("../R")
+text = "J"
+
+[node name="K" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../J")
+focus_neighbor_top = NodePath("../C")
+focus_neighbor_right = NodePath("../L")
+focus_neighbor_bottom = NodePath("../S")
+text = "K"
+
+[node name="L" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../K")
+focus_neighbor_top = NodePath("../D")
+focus_neighbor_right = NodePath("../M")
+focus_neighbor_bottom = NodePath("../T")
+text = "L"
+
+[node name="M" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../L")
+focus_neighbor_top = NodePath("../E")
+focus_neighbor_right = NodePath("../N")
+focus_neighbor_bottom = NodePath("../U")
+text = "M"
+
+[node name="N" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../M")
+focus_neighbor_top = NodePath("../F")
+focus_neighbor_right = NodePath("../O")
+focus_neighbor_bottom = NodePath("../W")
+text = "N"
+
+[node name="O" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../N")
+focus_neighbor_top = NodePath("../G")
+focus_neighbor_right = NodePath("../P")
+focus_neighbor_bottom = NodePath("../W")
+text = "O"
+
+[node name="P" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../O")
+focus_neighbor_top = NodePath("../H")
+focus_neighbor_right = NodePath("../I")
+focus_neighbor_bottom = NodePath("../X")
+text = "P"
+
+[node name="Q" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../X")
+focus_neighbor_top = NodePath("../I")
+focus_neighbor_right = NodePath("../R")
+focus_neighbor_bottom = NodePath("../Y")
+text = "Q"
+
+[node name="R" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Q")
+focus_neighbor_top = NodePath("../J")
+focus_neighbor_right = NodePath("../S")
+focus_neighbor_bottom = NodePath("../Z")
+text = "R"
+
+[node name="S" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../R")
+focus_neighbor_top = NodePath("../K")
+focus_neighbor_right = NodePath("../T")
+focus_neighbor_bottom = NodePath("../!")
+text = "S"
+
+[node name="T" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../S")
+focus_neighbor_top = NodePath("../L")
+focus_neighbor_right = NodePath("../U")
+focus_neighbor_bottom = NodePath("../?")
+text = "T"
+
+[node name="U" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../T")
+focus_neighbor_top = NodePath("../M")
+focus_neighbor_right = NodePath("../V")
+focus_neighbor_bottom = NodePath("../At")
+text = "U"
+
+[node name="V" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../U")
+focus_neighbor_top = NodePath("../N")
+focus_neighbor_right = NodePath("../W")
+focus_neighbor_bottom = NodePath("../Cash")
+text = "V"
+
+[node name="W" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../V")
+focus_neighbor_top = NodePath("../O")
+focus_neighbor_right = NodePath("../X")
+focus_neighbor_bottom = NodePath("../Clear")
+text = "W"
+
+[node name="X" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../W")
+focus_neighbor_top = NodePath("../P")
+focus_neighbor_right = NodePath("../Q")
+focus_neighbor_bottom = NodePath("../Enter")
+text = "X"
+
+[node name="Y" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Enter")
+focus_neighbor_top = NodePath("../Q")
+focus_neighbor_right = NodePath("../Z")
+focus_neighbor_bottom = NodePath("../A")
+text = "Y"
+
+[node name="Z" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Y")
+focus_neighbor_top = NodePath("../R")
+focus_neighbor_right = NodePath("../!")
+focus_neighbor_bottom = NodePath("../B")
+text = "Z"
+
+[node name="!" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Z")
+focus_neighbor_top = NodePath("../S")
+focus_neighbor_right = NodePath("../?")
+focus_neighbor_bottom = NodePath("../C")
+text = "!"
+
+[node name="?" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../!")
+focus_neighbor_top = NodePath("../T")
+focus_neighbor_right = NodePath("../At")
+focus_neighbor_bottom = NodePath("../D")
+text = "?"
+
+[node name="At" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../?")
+focus_neighbor_top = NodePath("../U")
+focus_neighbor_right = NodePath("../Cash")
+focus_neighbor_bottom = NodePath("../E")
+text = "@"
+
+[node name="Cash" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../At")
+focus_neighbor_top = NodePath("../V")
+focus_neighbor_right = NodePath("../Clear")
+focus_neighbor_bottom = NodePath("../F")
+text = "$"
+
+[node name="Clear" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cash")
+focus_neighbor_top = NodePath("../W")
+focus_neighbor_right = NodePath("../Enter")
+focus_neighbor_bottom = NodePath("../G")
+text = "Clr"
+
+[node name="Enter" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Clear")
+focus_neighbor_top = NodePath("../X")
+focus_neighbor_right = NodePath("../Y")
+focus_neighbor_bottom = NodePath("../H")
+text = "Ent"
+
+[node name="P3Char" type="GridContainer" parent="CharSelect/CharacterSelection/P3 Select"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 312.0
+offset_right = 768.0
+offset_bottom = 536.0
+
+[node name="HeadChange" type="Button" parent="CharSelect/CharacterSelection/P3 Select/P3Char"]
+layout_mode = 2
+text = "Change Head"
+
+[node name="RedSlider" type="HSlider" parent="CharSelect/CharacterSelection/P3 Select/P3Char"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 250.0
+step = 10.0
+
+[node name="GreenSlider" type="HSlider" parent="CharSelect/CharacterSelection/P3 Select/P3Char"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="BlueSlider" type="HSlider" parent="CharSelect/CharacterSelection/P3 Select/P3Char"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="P4 Select" type="Control" parent="CharSelect/CharacterSelection"]
+layout_mode = 3
+anchor_right = 0.5
+anchor_bottom = 0.5
+theme = SubResource("Theme_vqpnp")
+script = ExtResource("9_7sido")
+metadata/_edit_use_anchors_ = true
+
+[node name="P4Label" type="Label" parent="CharSelect/CharacterSelection/P4 Select"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.019
+anchor_right = 0.948
+anchor_bottom = 0.148
+offset_left = -0.0800018
+offset_top = -0.26
+offset_right = -0.0800781
+offset_bottom = 0.0800018
+theme = SubResource("Theme_yfx76")
+text = "Press the A Button to Join!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P4Keyboard" type="GridContainer" parent="CharSelect/CharacterSelection/P4 Select"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.139
+anchor_right = 0.9
+anchor_bottom = 0.95
+offset_top = -0.0600052
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_khiy6")
+columns = 8
+
+[node name="A" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../H")
+focus_neighbor_top = NodePath("../Y")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../I")
+text = "A"
+
+[node name="B" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../Z")
+focus_neighbor_right = NodePath("../C")
+focus_neighbor_bottom = NodePath("../J")
+text = "B"
+
+[node name="C" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../B")
+focus_neighbor_top = NodePath("../!")
+focus_neighbor_right = NodePath("../D")
+focus_neighbor_bottom = NodePath("../K")
+text = "C"
+
+[node name="D" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../C")
+focus_neighbor_top = NodePath("../?")
+focus_neighbor_right = NodePath("../E")
+focus_neighbor_bottom = NodePath("../L")
+text = "D"
+
+[node name="E" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../D")
+focus_neighbor_top = NodePath("../At")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../M")
+text = "E"
+
+[node name="F" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../E")
+focus_neighbor_top = NodePath("../Cash")
+focus_neighbor_right = NodePath("../G")
+focus_neighbor_bottom = NodePath("../N")
+text = "F"
+
+[node name="G" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../F")
+focus_neighbor_top = NodePath("../Clear")
+focus_neighbor_right = NodePath("../H")
+focus_neighbor_bottom = NodePath("../O")
+text = "G"
+
+[node name="H" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../G")
+focus_neighbor_top = NodePath("../Enter")
+focus_neighbor_right = NodePath("../A")
+focus_neighbor_bottom = NodePath("../P")
+text = "H"
+
+[node name="I" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../P")
+focus_neighbor_top = NodePath("../A")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../Q")
+text = "I"
+
+[node name="J" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../I")
+focus_neighbor_top = NodePath("../B")
+focus_neighbor_right = NodePath("../K")
+focus_neighbor_bottom = NodePath("../R")
+text = "J"
+
+[node name="K" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../J")
+focus_neighbor_top = NodePath("../C")
+focus_neighbor_right = NodePath("../L")
+focus_neighbor_bottom = NodePath("../S")
+text = "K"
+
+[node name="L" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../K")
+focus_neighbor_top = NodePath("../D")
+focus_neighbor_right = NodePath("../M")
+focus_neighbor_bottom = NodePath("../T")
+text = "L"
+
+[node name="M" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../L")
+focus_neighbor_top = NodePath("../E")
+focus_neighbor_right = NodePath("../N")
+focus_neighbor_bottom = NodePath("../U")
+text = "M"
+
+[node name="N" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../M")
+focus_neighbor_top = NodePath("../F")
+focus_neighbor_right = NodePath("../O")
+focus_neighbor_bottom = NodePath("../W")
+text = "N"
+
+[node name="O" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../N")
+focus_neighbor_top = NodePath("../G")
+focus_neighbor_right = NodePath("../P")
+focus_neighbor_bottom = NodePath("../W")
+text = "O"
+
+[node name="P" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../O")
+focus_neighbor_top = NodePath("../H")
+focus_neighbor_right = NodePath("../I")
+focus_neighbor_bottom = NodePath("../X")
+text = "P"
+
+[node name="Q" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../X")
+focus_neighbor_top = NodePath("../I")
+focus_neighbor_right = NodePath("../R")
+focus_neighbor_bottom = NodePath("../Y")
+text = "Q"
+
+[node name="R" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Q")
+focus_neighbor_top = NodePath("../J")
+focus_neighbor_right = NodePath("../S")
+focus_neighbor_bottom = NodePath("../Z")
+text = "R"
+
+[node name="S" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../R")
+focus_neighbor_top = NodePath("../K")
+focus_neighbor_right = NodePath("../T")
+focus_neighbor_bottom = NodePath("../!")
+text = "S"
+
+[node name="T" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../S")
+focus_neighbor_top = NodePath("../L")
+focus_neighbor_right = NodePath("../U")
+focus_neighbor_bottom = NodePath("../?")
+text = "T"
+
+[node name="U" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../T")
+focus_neighbor_top = NodePath("../M")
+focus_neighbor_right = NodePath("../V")
+focus_neighbor_bottom = NodePath("../At")
+text = "U"
+
+[node name="V" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../U")
+focus_neighbor_top = NodePath("../N")
+focus_neighbor_right = NodePath("../W")
+focus_neighbor_bottom = NodePath("../Cash")
+text = "V"
+
+[node name="W" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../V")
+focus_neighbor_top = NodePath("../O")
+focus_neighbor_right = NodePath("../X")
+focus_neighbor_bottom = NodePath("../Clear")
+text = "W"
+
+[node name="X" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../W")
+focus_neighbor_top = NodePath("../P")
+focus_neighbor_right = NodePath("../Q")
+focus_neighbor_bottom = NodePath("../Enter")
+text = "X"
+
+[node name="Y" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Enter")
+focus_neighbor_top = NodePath("../Q")
+focus_neighbor_right = NodePath("../Z")
+focus_neighbor_bottom = NodePath("../A")
+text = "Y"
+
+[node name="Z" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Y")
+focus_neighbor_top = NodePath("../R")
+focus_neighbor_right = NodePath("../!")
+focus_neighbor_bottom = NodePath("../B")
+text = "Z"
+
+[node name="!" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Z")
+focus_neighbor_top = NodePath("../S")
+focus_neighbor_right = NodePath("../?")
+focus_neighbor_bottom = NodePath("../C")
+text = "!"
+
+[node name="?" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../!")
+focus_neighbor_top = NodePath("../T")
+focus_neighbor_right = NodePath("../At")
+focus_neighbor_bottom = NodePath("../D")
+text = "?"
+
+[node name="At" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../?")
+focus_neighbor_top = NodePath("../U")
+focus_neighbor_right = NodePath("../Cash")
+focus_neighbor_bottom = NodePath("../E")
+text = "@"
+
+[node name="Cash" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../At")
+focus_neighbor_top = NodePath("../V")
+focus_neighbor_right = NodePath("../Clear")
+focus_neighbor_bottom = NodePath("../F")
+text = "$"
+
+[node name="Clear" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cash")
+focus_neighbor_top = NodePath("../W")
+focus_neighbor_right = NodePath("../Enter")
+focus_neighbor_bottom = NodePath("../G")
+text = "Clr"
+
+[node name="Enter" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Clear")
+focus_neighbor_top = NodePath("../X")
+focus_neighbor_right = NodePath("../Y")
+focus_neighbor_bottom = NodePath("../H")
+text = "Ent"
+
+[node name="P4Char" type="GridContainer" parent="CharSelect/CharacterSelection/P4 Select"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 312.0
+offset_right = 768.0
+offset_bottom = 536.0
+
+[node name="HeadChange" type="Button" parent="CharSelect/CharacterSelection/P4 Select/P4Char"]
+layout_mode = 2
+text = "Change Head"
+
+[node name="RedSlider" type="HSlider" parent="CharSelect/CharacterSelection/P4 Select/P4Char"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 250.0
+step = 10.0
+
+[node name="GreenSlider" type="HSlider" parent="CharSelect/CharacterSelection/P4 Select/P4Char"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="BlueSlider" type="HSlider" parent="CharSelect/CharacterSelection/P4 Select/P4Char"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
