@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bg38irsjup7f8"]
+[gd_scene load_steps=19 format=3 uid="uid://bg38irsjup7f8"]
 
 [ext_resource type="Script" path="res://Mingames/BabyMinigame/BabyMinigame.cs" id="1_v0h26"]
 [ext_resource type="Texture2D" uid="uid://cqmjavrenul53" path="res://Mingames/BabyMinigame/baby_bomb.png" id="2_khl4s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhwd5qro51vdr" path="res://Mingames/BabyMinigame/audience.png" id="3_b6ub4"]
 [ext_resource type="Texture2D" uid="uid://bjrrfhh3qgxck" path="res://Mingames/BabyMinigame/paparazzi.png" id="4_poa3k"]
 [ext_resource type="Texture2D" uid="uid://dmrf0yedx67uh" path="res://Mingames/BabyMinigame/explody.png" id="6_2q1iw"]
+[ext_resource type="AudioStream" uid="uid://db173nnnlac0t" path="res://Sound/Music/babygame.wav" id="7_xf1he"]
 
 [sub_resource type="Animation" id="Animation_rw5c8"]
 length = 0.001
@@ -145,6 +146,32 @@ _data = {
 [node name="BabyMinigame" type="Node2D"]
 script = ExtResource("1_v0h26")
 
+[node name="BG3" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_kyne4")
+hframes = 5
+frame = 4
+
+[node name="BG2" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_kyne4")
+hframes = 5
+frame = 2
+
+[node name="BG4" type="Sprite2D" parent="."]
+z_index = -20
+z_as_relative = false
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_kyne4")
+hframes = 5
+
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(540, 300)
 scale = Vector2(2, 2)
@@ -197,3 +224,7 @@ hframes = 12
 libraries = {
 "": SubResource("AnimationLibrary_t81jx")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xf1he")
+autoplay = true

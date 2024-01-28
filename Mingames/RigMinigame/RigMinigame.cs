@@ -71,7 +71,7 @@ public partial class RigMinigame : Node2D
 
             _ballotNames.Add(player.PlayerName);
         }
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             var spawnBallotTimer = new Timer();
             spawnBallotTimer.Name = "SpawnBallotTimer" + i;

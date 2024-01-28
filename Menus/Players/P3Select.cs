@@ -25,10 +25,10 @@ public partial class P3Select : Control
     private Color Green = new Color(0, 255, 0, 1);
     private Color Blue = new Color(0, 0, 255, 1);
 
-    public int red;
-    public int green;
-    public int blue;
-    
+    public float red;
+    public float green;
+    public float blue;
+
 
     public string PlayerName;
 
@@ -46,21 +46,21 @@ public partial class P3Select : Control
 
     private void changeSliderVal(bool positive, char editor)
     {
-        int addTo= positive ? 10 : -10;
+        float addTo = positive ? 0.05f : -0.05f;
 
         switch (editor)
         {
             case 'R':
                 p1CharEdit.GetNode<Slider>("RedSlider").Value = p1CharEdit.GetNode<Slider>("RedSlider").Value+addTo;
-                red = (int)p1CharEdit.GetNode<Slider>("RedSlider").Value;
+                red = (float)p1CharEdit.GetNode<Slider>("RedSlider").Value;
                 return;
             case 'G':
                 p1CharEdit.GetNode<Slider>("GreenSlider").Value = p1CharEdit.GetNode<Slider>("GreenSlider").Value+addTo;
-                green = (int)p1CharEdit.GetNode<Slider>("GreenSlider").Value;
+                green = (float)p1CharEdit.GetNode<Slider>("GreenSlider").Value;
                 return;
             case 'B':
                 p1CharEdit.GetNode<Slider>("BlueSlider").Value = p1CharEdit.GetNode<Slider>("BlueSlider").Value + addTo;
-                blue = (int)p1CharEdit.GetNode<Slider>("BlueSlider").Value;
+                blue = (float)p1CharEdit.GetNode<Slider>("BlueSlider").Value;
                 return;
         }
     }

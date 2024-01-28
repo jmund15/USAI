@@ -7,6 +7,8 @@ public partial class DebtMinigame : Node2D
     private Global _global { get; set; }
     private Events _signalBus { get; set; }
 
+    //private AudioStreamOggVorbis makeDing;
+
     private readonly Random Rnd = new Random(Guid.NewGuid().GetHashCode());
 
     private Sprite2D _usaiSprite;
@@ -20,18 +22,20 @@ public partial class DebtMinigame : Node2D
     private Vector2 _timeIgnoringInterval = new Vector2(2f, 8f);
     private Vector2 _timePeekingInterval = new Vector2(1f, 4f);
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
         GD.Print("start debt minigame");
         _signalBus = GetNode<Events>("/root/Events");
         _global = GetNode<Global>("/root/Global");
-        
-        _usaiSprite = GetNode<Sprite2D>("Usai");
-		_usaiAnimPlayer = GetNode<AnimationPlayer>("UsaiAnimationPlayer");
-		_usaiTimer = GetNode<Timer>("UsaiTimer");
 
-		_usaiTimer.Timeout += OnUsaiTimeout;
+
+
+        _usaiSprite = GetNode<Sprite2D>("Usai");
+        _usaiAnimPlayer = GetNode<AnimationPlayer>("UsaiAnimationPlayer");
+        _usaiTimer = GetNode<Timer>("UsaiTimer");
+
+        _usaiTimer.Timeout += OnUsaiTimeout;
 
 
         foreach (var player in _global.Players)
@@ -61,6 +65,7 @@ public partial class DebtMinigame : Node2D
         _usaiTimer.WaitTime = timeDub * (_timeIgnoringInterval.Y - _timeIgnoringInterval.X) + _timeIgnoringInterval.X; //Generates double within a range
         _usaiTimer.Start();
     }
+
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)

@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 Label
 Node2D
 AnimationPlayer
 Sprite2D
 Polygon2D
+=======
+Sprite2D
+AudioStreamPlayer
+>>>>>>> 35c87b56abce6e886101d681224f559310a9bf1b
 Timer
 CanvasLayer
 Control

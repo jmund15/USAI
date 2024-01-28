@@ -109,6 +109,7 @@ public partial class Candidate : CharacterBody2D
 
         //_signalBus.DebtPlayerStunned += OnDebtPlayerStunned;
 
+        _suitSprite.Modulate = new Color(255,255,255,1);
         _suitSprite.Modulate = SuitColor;
         _playerDebtGame.GetNode<Sprite2D>("Suit").Modulate = SuitColor;
         _playerRigGame.GetNode<Sprite2D>("Arm").Modulate = SuitColor;

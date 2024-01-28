@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyfsdxetyyghd"]
+[gd_scene load_steps=5 format=3 uid="uid://dyfsdxetyyghd"]
 
 [ext_resource type="Script" path="res://Mingames/RigMinigame/RigMinigame.cs" id="1_8uym5"]
+[ext_resource type="AudioStream" uid="uid://bir6g2md0cjs4" path="res://Sound/Music/ballot.wav" id="2_yvjoj"]
+[ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="3_vwg47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_68ivo"]
 font_size = 48
@@ -22,3 +24,24 @@ text = "Voting Closes in:"
 label_settings = SubResource("LabelSettings_68ivo")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yvjoj")
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -11
+z_as_relative = false
+position = Vector2(538.5, 300)
+scale = Vector2(2.00185, 2)
+texture = ExtResource("3_vwg47")
+hframes = 5
+frame = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -11
+z_as_relative = false
+position = Vector2(538.5, 300)
+scale = Vector2(2.00185, 2)
+texture = ExtResource("3_vwg47")
+hframes = 5

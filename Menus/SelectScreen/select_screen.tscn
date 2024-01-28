@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://02cmgq20t62p"]
+[gd_scene load_steps=13 format=3 uid="uid://02cmgq20t62p"]
 
 [ext_resource type="Script" path="res://Menus/SelectScreen/CharSelectScreen.cs" id="1_jr6v0"]
+[ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="2_6n5f7"]
 [ext_resource type="Script" path="res://Menus/Players/P1Select.cs" id="3_dwwal"]
 [ext_resource type="Script" path="res://Menus/Players/P2Select.cs" id="4_glcpt"]
 [ext_resource type="Script" path="res://Menus/Players/P3Select.cs" id="5_rjstm"]
 [ext_resource type="Script" path="res://Menus/Players/P4Select.cs" id="6_rinis"]
 [ext_resource type="PackedScene" uid="uid://d0ppbdqatqs0l" path="res://Menus/SelectScreen/base_player_select.tscn" id="6_tjx20"]
+[ext_resource type="AudioStream" uid="uid://qh1b6eygvn1o" path="res://Sound/Music/MidScene.wav" id="8_ngggi"]
 
 [sub_resource type="Theme" id="Theme_fasmn"]
 
@@ -22,6 +24,20 @@ font_size = 48
 
 [node name="CharSelectScreen" type="Node2D"]
 script = ExtResource("1_jr6v0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(540, 301)
+scale = Vector2(1.9963, 1.99333)
+texture = ExtResource("2_6n5f7")
+hframes = 5
+frame = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(540, 301)
+scale = Vector2(1.9963, 1.99333)
+texture = ExtResource("2_6n5f7")
+hframes = 5
+frame = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(540, 300)
@@ -341,20 +357,20 @@ text = "Change Head"
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="GreenSlider" type="HSlider" parent="CanvasLayer/P1Select/P1Char"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="BlueSlider" type="HSlider" parent="CanvasLayer/P1Select/P1Char"]
 modulate = Color(0, 0, 1, 1)
 layout_mode = 2
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="P2Select" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -667,20 +683,20 @@ text = "Change Head"
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="GreenSlider" type="HSlider" parent="CanvasLayer/P2Select/P2Char"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="BlueSlider" type="HSlider" parent="CanvasLayer/P2Select/P2Char"]
 modulate = Color(0, 0, 1, 1)
 layout_mode = 2
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="P3Select" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -993,20 +1009,20 @@ text = "Change Head"
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="GreenSlider" type="HSlider" parent="CanvasLayer/P3Select/P3Char"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="BlueSlider" type="HSlider" parent="CanvasLayer/P3Select/P3Char"]
 modulate = Color(0, 0, 1, 1)
 layout_mode = 2
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="P4Select" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1319,20 +1335,20 @@ text = "Change Head"
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="GreenSlider" type="HSlider" parent="CanvasLayer/P4Select/P4Char"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="BlueSlider" type="HSlider" parent="CanvasLayer/P4Select/P4Char"]
 modulate = Color(0, 0, 1, 1)
 layout_mode = 2
-max_value = 250.0
-step = 10.0
+max_value = 1.0
+step = 0.05
 
 [node name="P1SelectVis" parent="." instance=ExtResource("6_tjx20")]
 position = Vector2(150, 250)
@@ -1359,3 +1375,7 @@ text = "Game Starts in:"
 label_settings = SubResource("LabelSettings_1amby")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ngggi")
+autoplay = true
