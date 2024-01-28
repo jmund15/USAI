@@ -1,9 +1,9 @@
+Timer
 Sprite2D
 CanvasLayer
 Control
 CollisionShape2D
 AnimationPlayer
-Timer
 Node2D
 Label
 Area2D

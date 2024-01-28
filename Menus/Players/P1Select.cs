@@ -12,7 +12,7 @@ public partial class P1Select : Control
 	
     private int playerNum = 1;
 
-    private int head;
+    public int head;
 
     private int maxHeads=4;
 
@@ -25,12 +25,12 @@ public partial class P1Select : Control
     private Color Green = new Color(0, 255, 0, 1);
     private Color Blue = new Color(0, 0, 255, 1);
 
-    private int red;
-    private int green;
-    private int blue;
+    public int red;
+    public int green;
+    public int blue;
     
 
-    private string name;
+    public string PlayerName;
 
 	private int selectorX;
 	private int selectorY;
@@ -39,8 +39,8 @@ public partial class P1Select : Control
     private List<List<char>> selections;
     private List<char> selectionsEdit;
 
-    private bool state;
-    private bool charState;
+    public bool state;
+    public bool charState;
 
 	private List<bool> controllersConnected;
 
@@ -52,12 +52,15 @@ public partial class P1Select : Control
         {
             case 'R':
                 p1CharEdit.GetNode<Slider>("RedSlider").Value = p1CharEdit.GetNode<Slider>("RedSlider").Value+addTo;
+                red = (int)p1CharEdit.GetNode<Slider>("RedSlider").Value;
                 return;
             case 'G':
                 p1CharEdit.GetNode<Slider>("GreenSlider").Value = p1CharEdit.GetNode<Slider>("GreenSlider").Value+addTo;
+                green = (int)p1CharEdit.GetNode<Slider>("GreenSlider").Value;
                 return;
             case 'B':
                 p1CharEdit.GetNode<Slider>("BlueSlider").Value = p1CharEdit.GetNode<Slider>("BlueSlider").Value + addTo;
+                blue = (int)p1CharEdit.GetNode<Slider>("BlueSlider").Value;
                 return;
         }
     }
@@ -124,7 +127,7 @@ public partial class P1Select : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		name = "";
+		PlayerName = "";
         head = 0;
 		selectorX = 0;
 		selectorY = 0;
@@ -184,7 +187,7 @@ public partial class P1Select : Control
 		{
 			p1keyboard.Hide();
             p1CharEdit.Hide();
-            name = "";
+            PlayerName = "";
 			p1Label.Text = "Press the A Button to Join";
 			state = false;
 		}
@@ -329,24 +332,24 @@ public partial class P1Select : Control
                 {
                     if (selections[selectorY][selectorX] != '(' && selections[selectorY][selectorX] != ')')
                     {
-                        if (name.Length < 6)
+                        if (PlayerName.Length < 6)
                         {
-                            name += selections[selectorY][selectorX];
-                            p1Label.Text = "Name: " + name;
+                            PlayerName += selections[selectorY][selectorX];
+                            p1Label.Text = "Name: " + PlayerName;
                         }
                     }
                     else if (selections[selectorY][selectorX] == '(')
                     {
-                        if (name.Length!=0)
+                        if (PlayerName.Length!=0)
                         {
                             //GD.Print("got to remove");
-                            name=name.Remove(name.Length - 1);
-                            p1Label.Text = "Name: " + name;
+                            PlayerName=PlayerName.Remove(PlayerName.Length - 1);
+                            p1Label.Text = "Name: " + PlayerName;
                         }
                     }
                     else if (selections[selectorY][selectorX] == ')')
                     {
-                        if (name.Length != 0)
+                        if (PlayerName.Length != 0)
                         {
                             charState = true;
                             p1keyboard.Hide();
@@ -362,10 +365,10 @@ public partial class P1Select : Control
             {
                 if (@event.IsActionPressed(string.Format("B{0}", playerNum)))
                 {
-                    if (!string.IsNullOrEmpty(name))
+                    if (!string.IsNullOrEmpty(PlayerName))
                     {
-                        name=name.Remove(name.Length - 1);
-                        p1Label.Text = "Name: " + name;
+                        PlayerName=PlayerName.Remove(PlayerName.Length - 1);
+                        p1Label.Text = "Name: " + PlayerName;
                     }
                 }
             }

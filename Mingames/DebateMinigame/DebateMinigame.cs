@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 public partial class DebateMinigame : Node2D
 {
@@ -60,25 +61,25 @@ public partial class DebateMinigame : Node2D
         _funnyQuestions.Add(1, "Why does Florida Look Similar to Italy??");
         _funnyQuestions.Add(2, "Should New California Citizen's be Given Rights?");
         _funnyQuestions.Add(3, "How to Deal with Nikocado Avocado?????");
-        for (int i = 0; i < _global.Players.Count; i++)
-        {
-            if (i == 0)
-            {
-                _funnyQuestions.Add(4, "Does " + _global.Players[i].PlayerName + "\nstill pee their bed?");
-            }
-            if (i == 1)
-            {
-                _funnyQuestions.Add(5, "How does " + _global.Players[i].PlayerName + "\nfeel about the rising popularity of\nbody pillows of them being sold?");
-            }
-            if (i == 2)
-            {
-                _funnyQuestions.Add(6, "At what point will " + _global.Players[i].PlayerName + "\nfinally admit to their undying love for Monopoly?");
-            }
-            else
-            {
-                _funnyQuestions.Add(7, "Did " + _global.Players[i].PlayerName + "\nreally encourage public nudity\nat their last pep rally?");
-            }
-        }
+        //for (int i = 0; i < _global.Players.Count; i++)
+        //{
+        //    if (i == 0)
+        //    {
+        //        _funnyQuestions.Add(4, "Does " + _global.Players[i].PlayerName + "\nstill pee their bed?");
+        //    }
+        //    if (i == 1)
+        //    {
+        //        _funnyQuestions.Add(5, "How does " + _global.Players[i].PlayerName + "\nfeel about the rising popularity of\nbody pillows of them being sold?");
+        //    }
+        //    if (i == 2)
+        //    {
+        //        _funnyQuestions.Add(6, "At what point will " + _global.Players[i].PlayerName + "\nfinally admit to their undying love for Monopoly?");
+        //    }
+        //    else
+        //    {
+        //        _funnyQuestions.Add(7, "Did " + _global.Players[i].PlayerName + "\nreally encourage public nudity\nat their last pep rally?");
+        //    }
+        //}
 
         _minigameTime = GetNode<Label>("GameTime");
 
@@ -95,24 +96,22 @@ public partial class DebateMinigame : Node2D
         {
             var playerLabel = new Label { Text = player.PlayerName + "'s Debate Performance: 0"};
             playerLabel.Modulate = player.SuitColor;
-
+            playerLabel.HorizontalAlignment = HorizontalAlignment.Center;
+            playerLabel.VerticalAlignment = VerticalAlignment.Top;
+            playerLabel.LabelSettings = new LabelSettings() { FontSize = 28 };
             switch (player.PlayerNum)
             {
                 case 1:
-                    playerLabel.HorizontalAlignment = HorizontalAlignment.Left;
-                    playerLabel.VerticalAlignment = VerticalAlignment.Top;
+                    playerLabel.Position = new Vector2(150, 0);
                     break;
                 case 2:
-                    playerLabel.HorizontalAlignment = HorizontalAlignment.Right;
-                    playerLabel.VerticalAlignment = VerticalAlignment.Top;
+                    playerLabel.Position = new Vector2(410, 0);
                     break;
                 case 3:
-                    playerLabel.HorizontalAlignment = HorizontalAlignment.Left;
-                    playerLabel.VerticalAlignment = VerticalAlignment.Bottom;
+                    playerLabel.Position = new Vector2(670, 0);
                     break;
                 case 4:
-                    playerLabel.HorizontalAlignment = HorizontalAlignment.Right;
-                    playerLabel.VerticalAlignment = VerticalAlignment.Bottom;
+                    playerLabel.Position = new Vector2(930, 0);
                     break;
                 default:
                     //error msg
@@ -121,8 +120,6 @@ public partial class DebateMinigame : Node2D
             playerLabel.Name = "playerLabel" + player.PlayerNum;
             AddChild(playerLabel);
         }
-
-
 
         QuestionSpawner();
     }
@@ -165,6 +162,7 @@ public partial class DebateMinigame : Node2D
             if (player.IsAlive)
             {
                 alivePlayers++;
+                player.DebateScore += 500;
             }
         }
         if (alivePlayers <= 1)
@@ -219,9 +217,11 @@ public partial class DebateMinigame : Node2D
         debateQuestion.Position = new Vector2(x, 0);
     }
 
-    private void EndMinigame()
+    private async void EndMinigame()
     {
         //EXIT ANIM
+        _global.CurtainAnim.Play("closeCurtain");
+        await Task.Delay(TimeSpan.FromSeconds(1.5f));
         QueueFree(); 
         _signalBus.EmitSignal(nameof(Events.MinigameOver), Variant.From(Minigame.Debate));
     }

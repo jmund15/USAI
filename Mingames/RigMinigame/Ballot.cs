@@ -54,18 +54,18 @@ public partial class Ballot : Node2D
 
     private void OnBallotAreaEntered(Area2D area)
     {
-		var otherBal = area.GetParent() as Ballot;
-        if (otherBal != null && Position.Y < 100)
-		{
-			if (otherBal.Position.Y < Position.Y)
-			{
-				otherBal.QueueFree();
-			}
-			else
-			{
-				QueueFree();
-			}
-		}
+		//var otherBal = area.GetParent() as Ballot;
+  //      if (otherBal != null && Position.Y < 100)
+		//{
+		//	if (otherBal.Position.Y < Position.Y)
+		//	{
+		//		otherBal.QueueFree();
+		//	}
+		//	else
+		//	{
+		//		QueueFree();
+		//	}
+		//}
     }
 
 	public void BallotHit(bool hitRight)

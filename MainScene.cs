@@ -29,6 +29,7 @@ public partial class MainScene : Node
     public override void _Ready()
 	{
         _global = GetNode<Global>("/root/Global");
+
         _signalBus = GetNode<Events>("/root/Events");
 
         _signalBus.MinigameStart += OnMinigameStart;
@@ -71,7 +72,10 @@ public partial class MainScene : Node
     public async void OnStartGame()
     {
         //INTROs
-
+        //foreach (var player in _global.Players)
+        //{
+        //    GD.Print(player.PlayerNum);
+        //}
         //_signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.Debate));
         //_signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.Debt));
         _signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.Debate));
@@ -79,6 +83,7 @@ public partial class MainScene : Node
 
     public void OnMinigameStart(Minigame game)
     {
+        _global.CurtainAnim.Play("openCurtain");
         switch (game)
         {
             case Minigame.Debate:
@@ -155,5 +160,23 @@ public partial class MainScene : Node
     {
         _global.CurrentMinigame = Minigame.Cutscene;
         _playerManager.DisablePlayers();
+        await Task.Delay(TimeSpan.FromSeconds(1f));
+
+        switch (minigame)
+        {
+            case Minigame.Debate:
+                _signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.Debt));
+                break;
+            case Minigame.Debt:
+                _signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.Rig));
+                break;
+            case Minigame.Rig:
+                _signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.BabyKisser));
+                break;
+            case Minigame.BabyKisser:
+                // ENDING
+                break;
+        }
+
     }
 }

@@ -128,11 +128,11 @@ public partial class InputManager : Node
         //Remove from the List
         Controllers.RemoveAt(controllerID);
 
-        
+        EmitSignal(SignalName.ControllersConnected, mappedSlots[0], mappedSlots[1], mappedSlots[2], mappedSlots[3]);
     }
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		//Init resources
 		Controllers = new List<Controller>();
@@ -172,10 +172,7 @@ public partial class InputManager : Node
             }
 
         }
-
-    EmitSignal(SignalName.ControllersConnected, mappedSlots[0], mappedSlots[1], mappedSlots[2], mappedSlots[3]);
-
-}
+    }
 
 /*public override void _Input(InputEvent @event)
 {
@@ -292,6 +289,12 @@ public override void _Input(InputEvent @event)
 
     public override void _UnhandledInput(InputEvent @event)
     {
+        List<bool> beginMap = new List<bool>();
+        foreach (var mappedSlot in mappedSlots)
+        {
+            beginMap.Add(mappedSlot);
+        }
+
         //Fail if already mapped failsafe
         foreach (Controller cont in Controllers)
         {
@@ -360,15 +363,17 @@ public override void _Input(InputEvent @event)
                    //GD.Print(string.Format("\n{0}", coreAction.ToString()));
                 }
             }
-
-                return;
 		}
+        if (beginMap != mappedSlots)
+        {
+            EmitSignal(SignalName.ControllersConnected, mappedSlots[0], mappedSlots[1], mappedSlots[2], mappedSlots[3]);
+        }
     }
 
-	/*Controller Object
+    /*Controller Object
 	 * Holds Input State and Device/Player Binding
 	*/
-	public class Controller
+    public class Controller
 	{
 		//Input State is an Array of 6 Bools representing buttons pressed as follows:
 		// Up, Left, Down, Right, A, B

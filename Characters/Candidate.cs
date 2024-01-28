@@ -12,6 +12,13 @@ public partial class Candidate : CharacterBody2D
     public string CharSelectedName { get; set; }
     public Color SuitColor { get; set; } = Colors.Black;
 
+    private string _leftInAction;
+    private string _rightInAction;
+    private string _upInAction;
+    private string _downInAction;
+    private string _aInAction;
+    private string _bInAction;
+
     public Vector2 CharacterSize { get; protected set; }
 
     protected readonly Random _rnd = new Random(Guid.NewGuid().GetHashCode());
@@ -54,8 +61,6 @@ public partial class Candidate : CharacterBody2D
     public float RigScore { get; set; } = 0;   
     public float BabyScore { get; set; } = 0;
     public bool IsAlive { get; set; } = true;
-
-    private string _leftInput;
 
     #endregion
 
@@ -106,6 +111,8 @@ public partial class Candidate : CharacterBody2D
 
         _suitSprite.Modulate = SuitColor;
         _playerDebtGame.GetNode<Sprite2D>("Suit").Modulate = SuitColor;
+        _playerRigGame.GetNode<Sprite2D>("Arm").Modulate = SuitColor;
+        _playerBabyGame.GetNode<Sprite2D>("Suit").Modulate = SuitColor;
 
         switch (CharSelected)
         {
@@ -168,11 +175,11 @@ public partial class Candidate : CharacterBody2D
                         _signalBus.EmitSignal(nameof(Events.ThrowBaby));
                         HoldingBaby = false;
                     }
-                    if (Input.IsActionJustPressed("left1"))
+                    if (Input.IsActionJustPressed(_leftInAction))
                     {
                         _signalBus.EmitSignal(nameof(Events.ThrowSelectChange), false);
                     }
-                    else if (Input.IsActionJustPressed("right1"))
+                    else if (Input.IsActionJustPressed(_rightInAction))
                     {
                         _signalBus.EmitSignal(nameof(Events.ThrowSelectChange), true);
                     }
@@ -197,7 +204,7 @@ public partial class Candidate : CharacterBody2D
             case Minigame.Cutscene:
                 return;
             case Minigame.Debate:
-                Direction = Input.GetVector("left1", "right1", "up1", "down1").Normalized();
+                Direction = Input.GetVector(_leftInAction, _rightInAction, _upInAction, _downInAction).Normalized();
                 velocity.X = Direction.X * RunSpeed * (float)delta;
 
                 // Add the gravity.
@@ -207,14 +214,20 @@ public partial class Candidate : CharacterBody2D
                 }
 
                 // Handle Jump.
-                if (Input.IsActionJustPressed("A1") && IsOnFloor())
+                if (Input.IsActionJustPressed(_aInAction) && IsOnFloor())
                 {
                     velocity.Y = JumpVelocity;
                 }
                 break;
             case Minigame.Debt:
+                velocity = Vector2.Zero;
                 break; // NO MOVEMENT
-            case Minigame.BabyKisser: break;
+            case Minigame.BabyKisser:
+                velocity = Vector2.Zero;
+                break;
+            case Minigame.Rig:
+                velocity = Vector2.Zero;
+                break;
             default: break;
         }
         Velocity = velocity;
@@ -229,33 +242,33 @@ public partial class Candidate : CharacterBody2D
             case Minigame.Debate:
                 if (Velocity.Length() == 0)
                 {
-                    _animPlayer.Play("idleRight"); // change to based on curr direction!
+                    _animPlayer.Play("idleRight" + CharSelectedName); // change to based on curr direction!
                 }
                 if (Velocity.X < 0)
                 {
-                    _animPlayer.Play("runRight"); // CHANGE LATER
+                    _animPlayer.Play("runRight" + CharSelectedName); // CHANGE LATER
                 }
                 else if (Velocity.X > 0)
                 {
-                    _animPlayer.Play("runRight");
+                    _animPlayer.Play("runRight" + CharSelectedName);
                 }
                 break;
             case Minigame.Debt:
-                if (Input.IsActionJustPressed("A1") && !IsDebtStunned)
+                if (Input.IsActionJustPressed(_aInAction) && !IsDebtStunned)
                 {
                     _debtAnimPlayer.Play("press" + CharSelectedName);
                     IsRaisingDebt = true;
                 }
                 break;
             case Minigame.Rig:
-                if (!_rigAnimPlayer.IsPlaying() && Input.IsActionJustPressed("right1"))
+                if (!_rigAnimPlayer.IsPlaying() && Input.IsActionJustPressed(_rightInAction))
                 {
                     _rigAnimPlayer.Play("swatRight" + CharSelectedName);
                     _rigHitBoxArea.Monitoring = true;
                     _rigHitBoxArea.Monitorable = true;
                     _hitBallotRight = true;
                 }
-                else if (!_rigAnimPlayer.IsPlaying() && Input.IsActionJustPressed("left1"))
+                else if (!_rigAnimPlayer.IsPlaying() && Input.IsActionJustPressed(_leftInAction))
                 {
                     _rigAnimPlayer.Play("swatLeft" + CharSelectedName);
                     _rigHitBoxArea.Monitoring = true;
@@ -264,7 +277,7 @@ public partial class Candidate : CharacterBody2D
                 }
                 break;
             case Minigame.BabyKisser:
-                if (Input.IsActionJustPressed("A1") && !PerparingCatch && !OutBabyGame)
+                if (Input.IsActionJustPressed(_aInAction) && !PerparingCatch && !OutBabyGame)
                 {
                     _babyAnimPlayer.Play("throw" + CharSelectedName);
                 }
@@ -371,6 +384,15 @@ public partial class Candidate : CharacterBody2D
     #endregion
     #region HELPER_FUNCITONS
 
+    public void SetInputActions(string left, string right, string up, string down, string a, string b)
+    {
+        _leftInAction = left;
+        _rightInAction = right;
+        _upInAction = up;
+        _downInAction = down;
+        _aInAction = a;
+        _bInAction = b;
+    }
     public void PrepareCatchBaby()
     {
         _babyAnimPlayer.Play("hold" + CharSelectedName);

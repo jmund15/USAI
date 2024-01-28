@@ -23,7 +23,7 @@ public partial class PlayerManager : Node
 
         _candidate = GD.Load<PackedScene>("res://Characters/candidate.tscn");
 
-        AddPlayer(1, "JIZZLE", PlayableChar.NotObama, Colors.Black);
+        //AddPlayer(1, "JIZZLE", PlayableChar.NotObama, Colors.Black);
         //AddPlayer(2, "JOEL", PlayableChar.NotHillary, Colors.Blue);
         //AddPlayer(3, "JESWY", PlayableChar.NotTrump, Colors.Red);
         //AddPlayer(4, "L-STAR", PlayableChar.NotBiden, Colors.HotPink);
@@ -45,7 +45,7 @@ public partial class PlayerManager : Node
     #endregion
 
     #region HELPER_FUNCITONS
-    public void AddPlayer(int num, string name, PlayableChar character, Color suitColor)
+    public void AddPlayer(int num, string name, PlayableChar character, Color suitColor, List<string> inputs)
     {
         foreach (var player in _global.Players)
         {
@@ -65,8 +65,10 @@ public partial class PlayerManager : Node
             newPlayer.ProcessMode = ProcessModeEnum.Disabled;
             newPlayer.Hide();
         }
+        newPlayer.SetInputActions(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4], inputs[5]);
         _global.Players.Add(newPlayer);
 
+        GD.Print("ADDED PLAYER! Name: " + newPlayer.PlayerName);
     }
     public void RemovePlayer(int playerNum)
     {
