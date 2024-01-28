@@ -1,10 +1,5 @@
+res://Mingames/MidStatus.tscn
 res://main_scene.tscn
-res://Mingames/DebateMinigame/debate_minigame.tscn
-res://Mingames/DebateMinigame/debate_question.tscn
-res://Characters/candidate.tscn
-res://Mingames/SelectScreen/select_screen.tscn
-res://Mingames/intro_scene.tscn
-res://Mingames/SelectScreen/base_player_select.tscn
 res://Characters/Candidate.cs
 res://External Assets/BaseTopDownScripts/HUD.cs
 res://External Assets/BaseTopDownScripts/Interactable.cs
@@ -23,5 +18,6 @@ res://Managers/InputManager.cs
 res://Managers/PlayerManager.cs
 res://Mingames/DebateMinigame/DebateMinigame.cs
 res://Mingames/DebateMinigame/DebateQuestion.cs
+res://Mingames/MidStatus.cs
 res://Mingames/SelectScreen/SelectScreen.cs
 res://test.cs

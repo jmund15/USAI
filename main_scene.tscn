@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnpsgogmt5of6"]
+[gd_scene load_steps=5 format=3 uid="uid://cnpsgogmt5of6"]
 
 [ext_resource type="Script" path="res://MainScene.cs" id="1_ci164"]
 [ext_resource type="Script" path="res://Managers/PlayerManager.cs" id="1_e4i2j"]
 [ext_resource type="Script" path="res://Managers/InputManager.cs" id="2_pn3rr"]
+[ext_resource type="PackedScene" uid="uid://b8834232acl" path="res://Mingames/MidStatus.tscn" id="4_pdo2s"]
 
 [node name="MainScene" type="Node"]
 script = ExtResource("1_ci164")
@@ -34,3 +35,8 @@ script = ExtResource("2_pn3rr")
 script = ExtResource("1_e4i2j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MidStatus" parent="." instance=ExtResource("4_pdo2s")]
+position = Vector2(-587, -316)
+
+[editable path="MidStatus"]
