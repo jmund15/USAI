@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://bywfapaawq371"]
+
+[ext_resource type="Script" path="res://Mingames/EndStatus.cs" id="1_jyh1b"]
+[ext_resource type="Texture2D" uid="uid://onfvjkvdwgn2" path="res://Backgrounds/MidStatus/background.png" id="2_r1c5y"]
+
+[node name="EndStatus" type="Node2D"]
+position = Vector2(90, 90)
+script = ExtResource("1_jyh1b")
+
+[node name="BreakingNews" type="Sprite2D" parent="."]
+position = Vector2(600, 320)
+scale = Vector2(2.12281, 2.17333)
+texture = ExtResource("2_r1c5y")
+hframes = 6
+
+[node name="Results" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 589.0
+offset_top = 68.0
+offset_right = 1009.0
+offset_bottom = 288.0
+
+[node name="P1Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P2Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 420.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P3Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 420.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P4Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 165.0
+offset_right = 420.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40

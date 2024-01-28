@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://MainScene.cs" id="1_ci164"]
 [ext_resource type="Script" path="res://Managers/PlayerManager.cs" id="1_e4i2j"]
 [ext_resource type="Script" path="res://Managers/InputManager.cs" id="2_pn3rr"]
-[ext_resource type="PackedScene" uid="uid://b8834232acl" path="res://Mingames/MidStatus.tscn" id="4_pdo2s"]
+[ext_resource type="PackedScene" uid="uid://bywfapaawq371" path="res://Mingames/EndStatus.tscn" id="4_wo66j"]
 
 [node name="MainScene" type="Node"]
 script = ExtResource("1_ci164")
@@ -36,11 +36,7 @@ script = ExtResource("1_e4i2j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MidStatus" parent="." instance=ExtResource("4_pdo2s")]
-position = Vector2(-587, -316)
+[node name="EndStatus" parent="." instance=ExtResource("4_wo66j")]
+position = Vector2(-601, -315)
 
-[node name="BreakingNews" parent="MidStatus" index="2"]
-position = Vector2(584, 320)
-scale = Vector2(2.15926, 2.17333)
-
-[editable path="MidStatus"]
+[editable path="EndStatus"]

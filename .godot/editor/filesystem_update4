@@ -1,3 +1,6 @@
+res://Mingames/EndStatus.tscn
+res://Mingames/MidStatus.cs
+res://main_scene.tscn
 res://Mingames/MidStatus.tscn
 res://Characters/Candidate.cs
 res://External Assets/BaseTopDownScripts/HUD.cs
@@ -17,7 +20,6 @@ res://Managers/InputManager.cs
 res://Managers/PlayerManager.cs
 res://Mingames/DebateMinigame/DebateMinigame.cs
 res://Mingames/DebateMinigame/DebateQuestion.cs
-res://Mingames/MidStatus.cs
+res://Mingames/EndStatus.cs
 res://Mingames/SelectScreen/SelectScreen.cs
 res://test.cs
-res://main_scene.tscn
