@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyfsdxetyyghd"]
+[gd_scene load_steps=4 format=3 uid="uid://dyfsdxetyyghd"]
 
 [ext_resource type="Script" path="res://Mingames/RigMinigame/RigMinigame.cs" id="1_8uym5"]
+[ext_resource type="AudioStream" uid="uid://bir6g2md0cjs4" path="res://Sound/Music/ballot.wav" id="2_yvjoj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_68ivo"]
 font_size = 48
@@ -22,3 +23,7 @@ text = "Voting Closes in:"
 label_settings = SubResource("LabelSettings_68ivo")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yvjoj")
+autoplay = true

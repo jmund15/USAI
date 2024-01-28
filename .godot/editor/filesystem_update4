@@ -38,3 +38,5 @@ res://Mingames/DebtMinigame/DebtMinigame.cs
 res://Mingames/RigMinigame/Ballot.cs
 res://Mingames/RigMinigame/RigMinigame.cs
 res://test.cs
+res://Mingames/DebtMinigame/debt_minigame.tscn
+res://Mingames/intro_scene.tscn
