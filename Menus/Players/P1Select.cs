@@ -14,7 +14,7 @@ public partial class P1Select : Control
 
     private int head;
 
-    private int maxHeads=8;
+    private int maxHeads=4;
 
 	private Button currentButton;
 
@@ -212,12 +212,12 @@ public partial class P1Select : Control
         {
             if (charState)
             {
-                GD.Print(selectorEdit, " Got to New Code");
+                //GD.Print(selectorEdit, " Got to New Code");
                 if(@event.IsActionPressed(string.Format("up{0}", playerNum)))
                 {
                     if (selectorEdit != 0)
                     {
-                        GD.Print(selectorEdit, " Got to New Up");
+                       // GD.Print(selectorEdit, " Got to New Up");
                         selectorEdit = selectorEdit-1;
                         changeSliderColor(selectionsEdit[selectorEdit]);
                     }
