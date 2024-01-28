@@ -1,3 +1,4 @@
+AudioStreamPlayer
 Sprite2D
 Timer
 CanvasLayer
@@ -11,4 +12,3 @@ ColorRect
 ProgressBar
 Button
 StaticBody2D
-MeshInstance2D

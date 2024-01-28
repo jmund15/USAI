@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5bqt6fbhdch8"]
+[gd_scene load_steps=11 format=3 uid="uid://b5bqt6fbhdch8"]
 
 [ext_resource type="Script" path="res://Mingames/DebateMinigame/DebateMinigame.cs" id="1_qa01p"]
 [ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="2_x0luq"]
 [ext_resource type="Texture2D" uid="uid://dhwd5qro51vdr" path="res://Mingames/BabyMinigame/audience.png" id="3_1a8jn"]
+[ext_resource type="AudioStream" uid="uid://cyqkrpft8kfva" path="res://Sound/Music/Question.wav" id="4_ga23a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sopfx"]
 size = Vector2(1000, 50)
@@ -65,6 +66,20 @@ one_shot = true
 [node name="Floor" type="StaticBody2D" parent="."]
 collision_layer = 2
 
+[node name="BG2" type="Sprite2D" parent="Floor"]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_x0luq")
+hframes = 5
+frame = 4
+
+[node name="BG3" type="Sprite2D" parent="Floor"]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_x0luq")
+hframes = 5
+frame = 2
+
 [node name="BG" type="Sprite2D" parent="Floor"]
 position = Vector2(540, 300)
 scale = Vector2(2, 2)
@@ -109,3 +124,8 @@ text = "Debate Ends in:"
 label_settings = SubResource("LabelSettings_ec5ic")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ga23a")
+volume_db = -1.874
+autoplay = true

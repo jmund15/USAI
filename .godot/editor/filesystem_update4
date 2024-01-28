@@ -1,3 +1,15 @@
+res://main_scene.tscn
+res://Mingames/DebateMinigame/debate_minigame.tscn
+res://Mingames/RigMinigame/rig_minigame.tscn
+res://Mingames/RigMinigame/ballot.tscn
+res://Mingames/BabyMinigame/baby_minigame.tscn
+res://Mingames/RigMinigame/voting_scene.tscn
+res://Menus/SelectScreen/select_screen.tscn
+res://Menus/SelectScreen/base_player_select.tscn
+res://Characters/candidate.tscn
+res://Mingames/BabyMinigame/player_baby_game.tscn
+res://Mingames/DebtMinigame/player_debt_game.tscn
+res://Mingames/RigMinigame/player_rig_game.tscn
 res://Characters/Candidate.cs
 res://External Assets/BaseTopDownScripts/HUD.cs
 res://External Assets/BaseTopDownScripts/Interactable.cs
@@ -26,15 +38,3 @@ res://Mingames/DebtMinigame/DebtMinigame.cs
 res://Mingames/RigMinigame/Ballot.cs
 res://Mingames/RigMinigame/RigMinigame.cs
 res://test.cs
-res://main_scene.tscn
-res://Mingames/DebateMinigame/debate_minigame.tscn
-res://Mingames/RigMinigame/rig_minigame.tscn
-res://Mingames/RigMinigame/ballot.tscn
-res://Mingames/BabyMinigame/baby_minigame.tscn
-res://Mingames/RigMinigame/voting_scene.tscn
-res://Menus/SelectScreen/select_screen.tscn
-res://Menus/SelectScreen/base_player_select.tscn
-res://Characters/candidate.tscn
-res://Mingames/BabyMinigame/player_baby_game.tscn
-res://Mingames/DebtMinigame/player_debt_game.tscn
-res://Mingames/RigMinigame/player_rig_game.tscn
