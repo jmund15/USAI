@@ -22,6 +22,8 @@ public partial class DebtMinigame : Node2D
     private Vector2 _timeIgnoringInterval = new Vector2(2f, 8f);
     private Vector2 _timePeekingInterval = new Vector2(1f, 4f);
 
+    private bool _endGame = false;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -70,10 +72,15 @@ public partial class DebtMinigame : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
+        if (_endGame)
+        {
+            return;
+        }
         foreach (var player in _global.Players)
         {
             if (player.DebtScore > DebtGoal)
             {
+                _endGame = true;
                 EndMinigame();
             }
             GetNode<ProgressBar>("progBar" + player.PlayerNum).Value = player.DebtScore;
@@ -86,6 +93,10 @@ public partial class DebtMinigame : Node2D
 	}
     private void OnUsaiTimeout()
     {
+        if (_endGame) 
+        {
+            return;
+        } 
         if (UsaiPeeking)
         {
             _usaiAnimPlayer.Play("usaiIgnore");

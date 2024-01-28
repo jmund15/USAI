@@ -103,9 +103,9 @@ frame = 3
 layout_mode = 3
 anchors_preset = 0
 offset_left = 550.0
-offset_top = 55.0
+offset_top = 150.0
 offset_right = 970.0
-offset_bottom = 275.0
+offset_bottom = 370.0
 
 [node name="P1Result" type="Label" parent="Results"]
 layout_mode = 0

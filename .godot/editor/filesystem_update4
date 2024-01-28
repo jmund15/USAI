@@ -1,3 +1,4 @@
+res://main_scene.tscn
 res://Backgrounds/MidStatus/EndScene.cs
 res://Characters/Candidate.cs
 res://External Assets/BaseTopDownScripts/HUD.cs
@@ -30,12 +31,6 @@ res://Mingames/MidStatus.cs
 res://Mingames/RigMinigame/Ballot.cs
 res://Mingames/RigMinigame/RigMinigame.cs
 res://test.cs
-res://main_scene.tscn
-res://Mingames/RigMinigame/voting_scene.tscn
-res://Menus/SelectScreen/select_screen.tscn
-res://Characters/candidate.tscn
-res://Mingames/RigMinigame/player_rig_game.tscn
 res://Mingames/MidStatus.tscn
 res://Backgrounds/MidStatus/end_scene.tscn
-res://Mingames/DebateMinigame/debate_minigame.tscn
-res://Mingames/RigMinigame/rig_minigame.tscn
+res://Mingames/EndStatus.tscn

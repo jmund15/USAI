@@ -6,6 +6,8 @@ using static Godot.Projection;
 
 public partial class MainScene : Node
 {
+    private bool debug = true;
+
     private Global _global;
     private Events _signalBus;
 
@@ -54,7 +56,7 @@ public partial class MainScene : Node
         _rigMinigame = GD.Load<PackedScene>("res://Mingames/RigMinigame/rig_minigame.tscn");
         _babyMinigame = GD.Load<PackedScene>("res://Mingames/BabyMinigame/baby_minigame.tscn");
         _midStatus = GD.Load<PackedScene>("res://Mingames/MidStatus.tscn");
-        _endScene = GD.Load<PackedScene>("res://Mingames/EndStatus.tscn");
+        _endScene = GD.Load<PackedScene>("res://Backgrounds/MidStatus/end_scene.tscn");
 
         CurrentScene = _selectScreen.Instantiate();
         var selectScreen = CurrentScene as CharSelectScreen;
@@ -78,6 +80,12 @@ public partial class MainScene : Node
 
     public async void OnStartGame()
     {
+        if (debug)
+        {
+            players[0].TotalScore = 1000;
+            _signalBus.EmitSignal(nameof(Events.MinigameOver), Variant.From(Minigame.BabyKisser));
+            return;
+        }
         _global.CurtainAnim.Play("openCurtain");
 
         _signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.Cutscene));
@@ -117,12 +125,12 @@ public partial class MainScene : Node
         AddChild(midStatus);
 
         //PLACE PLAYERS IN STAGE
-        int cutscenetartX = 150;
+        int cutscenetartX = 100;
         foreach (var player in players)
         {
-            player.Position = new Vector2(cutscenetartX, 425);
+            player.Position = new Vector2(cutscenetartX, 430);
             player.IsAlive = true;
-            cutscenetartX += 260;
+            cutscenetartX += 150;
             player.ZIndex += 1;
         }
         _playerManager.EnablePlayers();
@@ -159,6 +167,7 @@ public partial class MainScene : Node
 
     public async void OnMinigameStart(Minigame game)
     {
+
         if (game == Minigame.Cutscene)
         {
             return;
@@ -242,15 +251,16 @@ public partial class MainScene : Node
     }
     private async void OnMinigameOver(Minigame minigame)
     {
-
+        _signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.Cutscene));
         _global.CurrentMinigame = Minigame.Cutscene;
+
         //PLACE PLAYERS IN STAGE
-        int cutscenetartX = 150;
+        int cutscenetartX = 100;
         foreach (var player in players)
         {
-            player.Position = new Vector2(cutscenetartX, 400);
+            player.Position = new Vector2(cutscenetartX, 410);
             player.IsAlive = true;
-            cutscenetartX += 260;
+            cutscenetartX += 150;
         }
         _playerManager.EnablePlayers();
 
@@ -337,6 +347,7 @@ public partial class MainScene : Node
                 _signalBus.EmitSignal(nameof(Events.MinigameStart), Variant.From(Minigame.BabyKisser));
                 break;
             case Minigame.BabyKisser:
+                _playerManager.DisablePlayers();
                 _global.CurtainAnim.Play("openCurtain");
                 var endScene = _endScene.Instantiate() as EndScene;
                 AddChild(endScene);
@@ -355,7 +366,7 @@ public partial class MainScene : Node
                         loserPlayer = player;
                     }
                 }
-                endScene.WinnerLabel.Text = "Congratulations to the 2032 Presidental Elect:\n" + topPlayer.PlayerName + "!";
+                endScene.WinnerText = "Congratulations to the 2032 Presidental Elect:\n" + topPlayer.PlayerName + "!";
                 switch (topPlayer.CharSelected)
                 {
                     case PlayableChar.NotBiden:

@@ -370,7 +370,7 @@ public partial class Candidate : CharacterBody2D
     }
     private void OnMinigameOver(Minigame minigame)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
     public void OnDebtPlayerStunned()
     {

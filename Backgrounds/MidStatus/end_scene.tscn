@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvbrcc26xhqst"]
+[gd_scene load_steps=7 format=3 uid="uid://bvbrcc26xhqst"]
 
 [ext_resource type="Texture2D" uid="uid://ddeua33ax7ei4" path="res://player_pile.png" id="1_0n6dg"]
 [ext_resource type="Script" path="res://Backgrounds/MidStatus/EndScene.cs" id="1_w64em"]
 [ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="1_ysp48"]
+[ext_resource type="Texture2D" uid="uid://onfvjkvdwgn2" path="res://Backgrounds/MidStatus/background.png" id="2_t4vrp"]
 [ext_resource type="Texture2D" uid="uid://dhwd5qro51vdr" path="res://Mingames/BabyMinigame/audience.png" id="3_0lbmp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ooed2"]
@@ -10,6 +11,20 @@ font_size = 48
 
 [node name="EndScene" type="Node2D"]
 script = ExtResource("1_w64em")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_t4vrp")
+hframes = 6
+frame = 5
+
+[node name="BG2" type="Sprite2D" parent="."]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("2_t4vrp")
+hframes = 6
+frame = 2
 
 [node name="Stage" type="Sprite2D" parent="."]
 position = Vector2(540, 300)
@@ -81,5 +96,63 @@ offset_left = 334.0
 offset_top = 165.0
 offset_right = 734.0
 offset_bottom = 275.0
+text = "Congratulations!!"
 label_settings = SubResource("LabelSettings_ooed2")
 horizontal_alignment = 1
+
+[node name="Results" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 612.0
+offset_top = 235.0
+offset_right = 1032.0
+offset_bottom = 510.0
+
+[node name="Winner" type="Label" parent="Results"]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P1Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 420.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P2Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 420.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P3Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 165.0
+offset_right = 420.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P4Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 220.0
+offset_right = 420.0
+offset_bottom = 275.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40

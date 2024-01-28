@@ -52,6 +52,7 @@ public partial class RigMinigame : Node2D
             votingScene.GetNode<Area2D>("VotingBoxHitBox").AreaEntered += (area2D) => OnBallotReachBox(area2D, player.PlayerNum);
             AddChild(votingScene);
 
+            
             var playerLabel = new Label { Text = player.PlayerName + "'s Votes: 0" };
             playerLabel.ZIndex = 3;
             playerLabel.HorizontalAlignment = HorizontalAlignment.Center;
@@ -71,7 +72,12 @@ public partial class RigMinigame : Node2D
 
             _ballotNames.Add(player.PlayerName);
         }
-        for (int i = 0; i < 2; i++)
+        int x = 4;
+        if (_global.Players.Count == 2)
+        {
+            x = 3;
+        }
+        for (int i = 0; i < x; i++)
         {
             var spawnBallotTimer = new Timer();
             spawnBallotTimer.Name = "SpawnBallotTimer" + i;
