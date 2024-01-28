@@ -5,6 +5,8 @@ using static System.Collections.Specialized.BitVector32;
 
 public partial class InputManager : Node
 {
+    [Signal]
+    public delegate void ControllersConnectedEventHandler(bool p1, bool p2, bool p3, bool p4);
 
 	private List<Controller> Controllers;
 
@@ -108,20 +110,20 @@ public partial class InputManager : Node
 
         foreach (bool mPlay in mappedSlots)
         {
-            GD.Print("\n", mPlay);
+            //GD.Print("\n", mPlay);
         }
 
         //Free the slot
         mappedSlots[playerID - 1] = false;
 
-        GD.Print("\n", "new");
+        //GD.Print("\n", "new");
 
         foreach (bool mPlay in mappedSlots)
         {
-            GD.Print("\n", mPlay);
+           // GD.Print("\n", mPlay);
         }
 
-        GD.Print(string.Format("{0} Disconnected as Player {1}", Controllers[controllerID].device, playerID));
+        //GD.Print(string.Format("{0} Disconnected as Player {1}", Controllers[controllerID].device, playerID));
 
         //Remove from the List
         Controllers.RemoveAt(controllerID);
@@ -170,121 +172,120 @@ public partial class InputManager : Node
             }
 
         }
+
+    EmitSignal(SignalName.ControllersConnected, mappedSlots[0], mappedSlots[1], mappedSlots[2], mappedSlots[3]);
+
+}
+
+/*public override void _Input(InputEvent @event)
+{
+    int playerID=-1;
+    int controllerID = -1;
+
+    //See if this is a mapped device, get player num
+    for (int i = 0; i<Controllers.Count; i++)
+    {
+        if (@event.Device == Controllers[i].device)
+        {
+            playerID = Controllers[i].playerNum;
+            controllerID = i; 
+            break;
+
+        }
     }
 
-	/*public override void _Input(InputEvent @event)
-	{
-        int playerID=-1;
-        int controllerID = -1;
+    if (playerID == -1)
+    {
+        return;
+    }
 
-        //See if this is a mapped device, get player num
-        for (int i = 0; i<Controllers.Count; i++)
+    //Get input for device here
+    if (@event is InputEventJoypadButton joyEvent)
+    {
+     //Up
+        if(InputMap.EventIsAction(@event, string.Format("up{0}", playerID)))
         {
-            if (@event.Device == Controllers[i].device)
+            if (joyEvent.IsActionPressed(string.Format("up{0}", playerID)))
             {
-                playerID = Controllers[i].playerNum;
-                controllerID = i; 
-                break;
-
+                Controllers[controllerID].setInputStateBit(0, true);
+            }
+            else if (joyEvent.IsActionReleased(string.Format("up{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(0, false);
+            }
+        }
+        //Left
+        if (InputMap.EventIsAction(@event, string.Format("left{0}", playerID)))
+        {
+            if (joyEvent.IsActionPressed(string.Format("left{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(1, true);
+            }
+            else if (joyEvent.IsActionReleased(string.Format("left{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(1, false);
+            }
+        }
+        //Down
+        if (InputMap.EventIsAction(@event, string.Format("down{0}", playerID)))
+        {
+            if (joyEvent.IsActionPressed(string.Format("down{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(2, true);
+            }
+            else if (joyEvent.IsActionReleased(string.Format("down{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(2, false);
+            }
+        }
+        //Right
+        if (InputMap.EventIsAction(@event, string.Format("right{0}", playerID)))
+        {
+            if (joyEvent.IsActionPressed(string.Format("right{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(3, true);
+            }
+            else if (joyEvent.IsActionReleased(string.Format("right{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(3, false);
+            }
+        }
+        //A
+        if (InputMap.EventIsAction(@event, string.Format("A{0}", playerID)))
+        {
+            if (joyEvent.IsActionPressed(string.Format("A{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(4, true);
+            }
+            else if (joyEvent.IsActionReleased(string.Format("A{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(4, false);
+            }
+        }
+        //B
+        if (InputMap.EventIsAction(@event, string.Format("B{0}", playerID)))
+        {
+            if (joyEvent.IsActionPressed(string.Format("B{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(5, true);
+            }
+            else if (joyEvent.IsActionReleased(string.Format("B{0}", playerID)))
+            {
+                Controllers[controllerID].setInputStateBit(5, false);
             }
         }
 
-        if (playerID == -1)
-        {
-            return;
-        }
+    }
+}*/
 
-        //Get input for device here
-        if (@event is InputEventJoypadButton joyEvent)
-        {
-         //Up
-            if(InputMap.EventIsAction(@event, string.Format("up{0}", playerID)))
-            {
-                if (joyEvent.IsActionPressed(string.Format("up{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(0, true);
-                }
-                else if (joyEvent.IsActionReleased(string.Format("up{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(0, false);
-                }
-            }
-            //Left
-            if (InputMap.EventIsAction(@event, string.Format("left{0}", playerID)))
-            {
-                if (joyEvent.IsActionPressed(string.Format("left{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(1, true);
-                }
-                else if (joyEvent.IsActionReleased(string.Format("left{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(1, false);
-                }
-            }
-            //Down
-            if (InputMap.EventIsAction(@event, string.Format("down{0}", playerID)))
-            {
-                if (joyEvent.IsActionPressed(string.Format("down{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(2, true);
-                }
-                else if (joyEvent.IsActionReleased(string.Format("down{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(2, false);
-                }
-            }
-            //Right
-            if (InputMap.EventIsAction(@event, string.Format("right{0}", playerID)))
-            {
-                if (joyEvent.IsActionPressed(string.Format("right{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(3, true);
-                }
-                else if (joyEvent.IsActionReleased(string.Format("right{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(3, false);
-                }
-            }
-            //A
-            if (InputMap.EventIsAction(@event, string.Format("A{0}", playerID)))
-            {
-                if (joyEvent.IsActionPressed(string.Format("A{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(4, true);
-                }
-                else if (joyEvent.IsActionReleased(string.Format("A{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(4, false);
-                }
-            }
-            //B
-            if (InputMap.EventIsAction(@event, string.Format("B{0}", playerID)))
-            {
-                if (joyEvent.IsActionPressed(string.Format("B{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(5, true);
-                }
-                else if (joyEvent.IsActionReleased(string.Format("B{0}", playerID)))
-                {
-                    Controllers[controllerID].setInputStateBit(5, false);
-                }
-            }
-
-        }
-    }*/
-
-    public override void _Input(InputEvent @event)
+public override void _Input(InputEvent @event)
     {
         var _coreActions = InputMap.GetActions();
         foreach (var coreAction in _coreActions)
         {
-            if (coreAction.ToString().Contains("ui"))
-            {
-                continue;
-            }
             if (@event.IsAction(coreAction.ToString()))
             {
-                GD.Print("\n", coreAction.ToString());
+                //GD.Print("\n", coreAction.ToString());
             }
         }
      }
@@ -316,11 +317,11 @@ public partial class InputManager : Node
                 }
             }
 
-            GD.Print("\n Old Mapped Players");
+            //GD.Print("\n Old Mapped Players");
 
             foreach (bool mPlay in mappedSlots)
             {
-                GD.Print("\n", mPlay);
+                //GD.Print("\n", mPlay);
             }
 
             //Fails if all players are mapped
@@ -331,7 +332,7 @@ public partial class InputManager : Node
 
             //GD.Print("\n", mappedSlots.ToString());
 
-            GD.Print("\n", mapPlayer);
+           // GD.Print("\n", mapPlayer);
 
             //Add Controller to InputMan
             Controllers.Add(new Controller(@event.Device, mapPlayer));
@@ -342,21 +343,21 @@ public partial class InputManager : Node
             //Add to mapped slots
             mappedSlots[mapPlayer - 1] = true;
 
-            GD.Print("\n New Mapped Players");
+            //GD.Print("\n New Mapped Players");
 
             foreach (bool mPlay in mappedSlots)
             {
-                GD.Print("\n", mPlay);
+               //GD.Print("\n", mPlay);
             }
 
-            GD.Print(string.Format("{0} Connected as Player {1}\nActions: ", Controllers[Controllers.Count - 1].device, mapPlayer));
+            //GD.Print(string.Format("{0} Connected as Player {1}\nActions: ", Controllers[Controllers.Count - 1].device, mapPlayer));
 
             var _coreActions = InputMap.GetActions();
             foreach (var coreAction in _coreActions)
             {
                 if (!coreAction.ToString().Contains("ui"))
                 {
-                    GD.Print(string.Format("\n{0}", coreAction.ToString()));
+                   //GD.Print(string.Format("\n{0}", coreAction.ToString()));
                 }
             }
 

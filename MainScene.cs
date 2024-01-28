@@ -42,14 +42,14 @@ public partial class MainScene : Node
 
         _playerManager = GetNode<PlayerManager>("PlayerManager");
 
-        _selectScreen = GD.Load<PackedScene>("res://Mingames/SelectScreen/select_screen.tscn");
+        _selectScreen = GD.Load<PackedScene>("res://Menus/SelectScreen/select_screen.tscn");
         _debateMinigame = GD.Load<PackedScene>("res://Mingames/DebateMinigame/debate_minigame.tscn");
         _debtMinigame = GD.Load<PackedScene>("res://Mingames/DebtMinigame/debt_minigame.tscn");
         _rigMinigame = GD.Load<PackedScene>("res://Mingames/RigMinigame/rig_minigame.tscn");
         _babyMinigame = GD.Load<PackedScene>("res://Mingames/BabyMinigame/baby_minigame.tscn");
 
         CurrentScene = _selectScreen.Instantiate();
-        var selectScreen = CurrentScene as SelectScreen;
+        var selectScreen = CurrentScene as CharSelectScreen;
         selectScreen.StartGame += OnStartGame;
         AddChild(CurrentScene);
 

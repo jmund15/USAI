@@ -1,0 +1,1331 @@
+[gd_scene load_steps=9 format=3 uid="uid://02cmgq20t62p"]
+
+[ext_resource type="Script" path="res://Menus/SelectScreen/CharSelectScreen.cs" id="1_jr6v0"]
+[ext_resource type="Script" path="res://Menus/Players/P1Select.cs" id="3_dwwal"]
+[ext_resource type="Script" path="res://Menus/Players/P2Select.cs" id="4_glcpt"]
+[ext_resource type="Script" path="res://Menus/Players/P3Select.cs" id="5_rjstm"]
+[ext_resource type="Script" path="res://Menus/Players/P4Select.cs" id="6_rinis"]
+
+[sub_resource type="Theme" id="Theme_fasmn"]
+
+[sub_resource type="Theme" id="Theme_7i3oo"]
+default_font_size = 43
+
+[sub_resource type="Theme" id="Theme_q8poc"]
+default_font_size = 32
+GridContainer/constants/h_separation = 10
+GridContainer/constants/v_separation = 6
+
+[node name="CharSelectScreen" type="Node2D"]
+script = ExtResource("1_jr6v0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(540, 300)
+transform = Transform2D(1, 0, 0, 1, 540, 300)
+
+[node name="P1 Select" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = -0.5
+anchor_top = -0.498
+offset_top = -2.15997
+theme = SubResource("Theme_fasmn")
+script = ExtResource("3_dwwal")
+metadata/_edit_use_anchors_ = true
+
+[node name="P1Label" type="Label" parent="CanvasLayer/P1 Select"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.019
+anchor_right = 0.948
+anchor_bottom = 0.148
+offset_left = -0.0800018
+offset_top = -0.26
+offset_right = -0.0800781
+offset_bottom = 0.0800018
+theme = SubResource("Theme_7i3oo")
+text = "Press the A Button to Join!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P1Keyboard" type="GridContainer" parent="CanvasLayer/P1 Select"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.139
+anchor_right = 0.9
+anchor_bottom = 0.95
+offset_left = 46.0
+offset_top = 8.16656
+offset_right = -46.0
+offset_bottom = -57.912
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_q8poc")
+columns = 8
+
+[node name="A" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../H")
+focus_neighbor_top = NodePath("../Y")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../I")
+text = "A"
+
+[node name="B" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../Z")
+focus_neighbor_right = NodePath("../C")
+focus_neighbor_bottom = NodePath("../J")
+text = "B"
+
+[node name="C" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../B")
+focus_neighbor_top = NodePath("../!")
+focus_neighbor_right = NodePath("../D")
+focus_neighbor_bottom = NodePath("../K")
+text = "C"
+
+[node name="D" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../C")
+focus_neighbor_top = NodePath("../?")
+focus_neighbor_right = NodePath("../E")
+focus_neighbor_bottom = NodePath("../L")
+text = "D"
+
+[node name="E" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../D")
+focus_neighbor_top = NodePath("../At")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../M")
+text = "E"
+
+[node name="F" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../E")
+focus_neighbor_top = NodePath("../Cash")
+focus_neighbor_right = NodePath("../G")
+focus_neighbor_bottom = NodePath("../N")
+text = "F"
+
+[node name="G" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../F")
+focus_neighbor_top = NodePath("../Clear")
+focus_neighbor_right = NodePath("../H")
+focus_neighbor_bottom = NodePath("../O")
+text = "G"
+
+[node name="H" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../G")
+focus_neighbor_top = NodePath("../Enter")
+focus_neighbor_right = NodePath("../A")
+focus_neighbor_bottom = NodePath("../P")
+text = "H"
+
+[node name="I" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../P")
+focus_neighbor_top = NodePath("../A")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../Q")
+text = "I"
+
+[node name="J" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../I")
+focus_neighbor_top = NodePath("../B")
+focus_neighbor_right = NodePath("../K")
+focus_neighbor_bottom = NodePath("../R")
+text = "J"
+
+[node name="K" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../J")
+focus_neighbor_top = NodePath("../C")
+focus_neighbor_right = NodePath("../L")
+focus_neighbor_bottom = NodePath("../S")
+text = "K"
+
+[node name="L" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../K")
+focus_neighbor_top = NodePath("../D")
+focus_neighbor_right = NodePath("../M")
+focus_neighbor_bottom = NodePath("../T")
+text = "L"
+
+[node name="M" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../L")
+focus_neighbor_top = NodePath("../E")
+focus_neighbor_right = NodePath("../N")
+focus_neighbor_bottom = NodePath("../U")
+text = "M"
+
+[node name="N" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../M")
+focus_neighbor_top = NodePath("../F")
+focus_neighbor_right = NodePath("../O")
+focus_neighbor_bottom = NodePath("../W")
+text = "N"
+
+[node name="O" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../N")
+focus_neighbor_top = NodePath("../G")
+focus_neighbor_right = NodePath("../P")
+focus_neighbor_bottom = NodePath("../W")
+text = "O"
+
+[node name="P" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../O")
+focus_neighbor_top = NodePath("../H")
+focus_neighbor_right = NodePath("../I")
+focus_neighbor_bottom = NodePath("../X")
+text = "P"
+
+[node name="Q" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../X")
+focus_neighbor_top = NodePath("../I")
+focus_neighbor_right = NodePath("../R")
+focus_neighbor_bottom = NodePath("../Y")
+text = "Q"
+
+[node name="R" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Q")
+focus_neighbor_top = NodePath("../J")
+focus_neighbor_right = NodePath("../S")
+focus_neighbor_bottom = NodePath("../Z")
+text = "R"
+
+[node name="S" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../R")
+focus_neighbor_top = NodePath("../K")
+focus_neighbor_right = NodePath("../T")
+focus_neighbor_bottom = NodePath("../!")
+text = "S"
+
+[node name="T" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../S")
+focus_neighbor_top = NodePath("../L")
+focus_neighbor_right = NodePath("../U")
+focus_neighbor_bottom = NodePath("../?")
+text = "T"
+
+[node name="U" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../T")
+focus_neighbor_top = NodePath("../M")
+focus_neighbor_right = NodePath("../V")
+focus_neighbor_bottom = NodePath("../At")
+text = "U"
+
+[node name="V" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../U")
+focus_neighbor_top = NodePath("../N")
+focus_neighbor_right = NodePath("../W")
+focus_neighbor_bottom = NodePath("../Cash")
+text = "V"
+
+[node name="W" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../V")
+focus_neighbor_top = NodePath("../O")
+focus_neighbor_right = NodePath("../X")
+focus_neighbor_bottom = NodePath("../Clear")
+text = "W"
+
+[node name="X" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../W")
+focus_neighbor_top = NodePath("../P")
+focus_neighbor_right = NodePath("../Q")
+focus_neighbor_bottom = NodePath("../Enter")
+text = "X"
+
+[node name="Y" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Enter")
+focus_neighbor_top = NodePath("../Q")
+focus_neighbor_right = NodePath("../Z")
+focus_neighbor_bottom = NodePath("../A")
+text = "Y"
+
+[node name="Z" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Y")
+focus_neighbor_top = NodePath("../R")
+focus_neighbor_right = NodePath("../!")
+focus_neighbor_bottom = NodePath("../B")
+text = "Z"
+
+[node name="!" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Z")
+focus_neighbor_top = NodePath("../S")
+focus_neighbor_right = NodePath("../?")
+focus_neighbor_bottom = NodePath("../C")
+text = "!"
+
+[node name="?" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../!")
+focus_neighbor_top = NodePath("../T")
+focus_neighbor_right = NodePath("../At")
+focus_neighbor_bottom = NodePath("../D")
+text = "?"
+
+[node name="At" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../?")
+focus_neighbor_top = NodePath("../U")
+focus_neighbor_right = NodePath("../Cash")
+focus_neighbor_bottom = NodePath("../E")
+text = "@"
+
+[node name="Cash" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../At")
+focus_neighbor_top = NodePath("../V")
+focus_neighbor_right = NodePath("../Clear")
+focus_neighbor_bottom = NodePath("../F")
+text = "$"
+
+[node name="Clear" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cash")
+focus_neighbor_top = NodePath("../W")
+focus_neighbor_right = NodePath("../Enter")
+focus_neighbor_bottom = NodePath("../G")
+text = "Clr"
+
+[node name="Enter" type="Button" parent="CanvasLayer/P1 Select/P1Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Clear")
+focus_neighbor_top = NodePath("../X")
+focus_neighbor_right = NodePath("../Y")
+focus_neighbor_bottom = NodePath("../H")
+text = "Ent"
+
+[node name="P1Char" type="GridContainer" parent="CanvasLayer/P1 Select"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 156.0
+offset_right = 520.0
+offset_bottom = 380.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HeadChange" type="Button" parent="CanvasLayer/P1 Select/P1Char"]
+layout_mode = 2
+text = "Change Head"
+
+[node name="RedSlider" type="HSlider" parent="CanvasLayer/P1 Select/P1Char"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 250.0
+step = 10.0
+
+[node name="GreenSlider" type="HSlider" parent="CanvasLayer/P1 Select/P1Char"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="BlueSlider" type="HSlider" parent="CanvasLayer/P1 Select/P1Char"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="P2 Select" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_top = -0.5
+anchor_right = 0.5
+theme = SubResource("Theme_fasmn")
+script = ExtResource("4_glcpt")
+metadata/_edit_use_anchors_ = true
+
+[node name="P2Label" type="Label" parent="CanvasLayer/P2 Select"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.019
+anchor_right = 0.948
+anchor_bottom = 0.148
+offset_left = -0.0800018
+offset_top = -0.26
+offset_right = -0.0800781
+offset_bottom = 0.0800018
+theme = SubResource("Theme_7i3oo")
+text = "Press the A Button to Join!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P2Keyboard" type="GridContainer" parent="CanvasLayer/P2 Select"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.139
+anchor_right = 0.9
+anchor_bottom = 0.95
+offset_top = -0.0600052
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_q8poc")
+columns = 8
+
+[node name="A" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../H")
+focus_neighbor_top = NodePath("../Y")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../I")
+text = "A"
+
+[node name="B" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../Z")
+focus_neighbor_right = NodePath("../C")
+focus_neighbor_bottom = NodePath("../J")
+text = "B"
+
+[node name="C" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../B")
+focus_neighbor_top = NodePath("../!")
+focus_neighbor_right = NodePath("../D")
+focus_neighbor_bottom = NodePath("../K")
+text = "C"
+
+[node name="D" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../C")
+focus_neighbor_top = NodePath("../?")
+focus_neighbor_right = NodePath("../E")
+focus_neighbor_bottom = NodePath("../L")
+text = "D"
+
+[node name="E" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../D")
+focus_neighbor_top = NodePath("../At")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../M")
+text = "E"
+
+[node name="F" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../E")
+focus_neighbor_top = NodePath("../Cash")
+focus_neighbor_right = NodePath("../G")
+focus_neighbor_bottom = NodePath("../N")
+text = "F"
+
+[node name="G" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../F")
+focus_neighbor_top = NodePath("../Clear")
+focus_neighbor_right = NodePath("../H")
+focus_neighbor_bottom = NodePath("../O")
+text = "G"
+
+[node name="H" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../G")
+focus_neighbor_top = NodePath("../Enter")
+focus_neighbor_right = NodePath("../A")
+focus_neighbor_bottom = NodePath("../P")
+text = "H"
+
+[node name="I" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../P")
+focus_neighbor_top = NodePath("../A")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../Q")
+text = "I"
+
+[node name="J" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../I")
+focus_neighbor_top = NodePath("../B")
+focus_neighbor_right = NodePath("../K")
+focus_neighbor_bottom = NodePath("../R")
+text = "J"
+
+[node name="K" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../J")
+focus_neighbor_top = NodePath("../C")
+focus_neighbor_right = NodePath("../L")
+focus_neighbor_bottom = NodePath("../S")
+text = "K"
+
+[node name="L" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../K")
+focus_neighbor_top = NodePath("../D")
+focus_neighbor_right = NodePath("../M")
+focus_neighbor_bottom = NodePath("../T")
+text = "L"
+
+[node name="M" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../L")
+focus_neighbor_top = NodePath("../E")
+focus_neighbor_right = NodePath("../N")
+focus_neighbor_bottom = NodePath("../U")
+text = "M"
+
+[node name="N" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../M")
+focus_neighbor_top = NodePath("../F")
+focus_neighbor_right = NodePath("../O")
+focus_neighbor_bottom = NodePath("../W")
+text = "N"
+
+[node name="O" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../N")
+focus_neighbor_top = NodePath("../G")
+focus_neighbor_right = NodePath("../P")
+focus_neighbor_bottom = NodePath("../W")
+text = "O"
+
+[node name="P" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../O")
+focus_neighbor_top = NodePath("../H")
+focus_neighbor_right = NodePath("../I")
+focus_neighbor_bottom = NodePath("../X")
+text = "P"
+
+[node name="Q" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../X")
+focus_neighbor_top = NodePath("../I")
+focus_neighbor_right = NodePath("../R")
+focus_neighbor_bottom = NodePath("../Y")
+text = "Q"
+
+[node name="R" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Q")
+focus_neighbor_top = NodePath("../J")
+focus_neighbor_right = NodePath("../S")
+focus_neighbor_bottom = NodePath("../Z")
+text = "R"
+
+[node name="S" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../R")
+focus_neighbor_top = NodePath("../K")
+focus_neighbor_right = NodePath("../T")
+focus_neighbor_bottom = NodePath("../!")
+text = "S"
+
+[node name="T" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../S")
+focus_neighbor_top = NodePath("../L")
+focus_neighbor_right = NodePath("../U")
+focus_neighbor_bottom = NodePath("../?")
+text = "T"
+
+[node name="U" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../T")
+focus_neighbor_top = NodePath("../M")
+focus_neighbor_right = NodePath("../V")
+focus_neighbor_bottom = NodePath("../At")
+text = "U"
+
+[node name="V" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../U")
+focus_neighbor_top = NodePath("../N")
+focus_neighbor_right = NodePath("../W")
+focus_neighbor_bottom = NodePath("../Cash")
+text = "V"
+
+[node name="W" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../V")
+focus_neighbor_top = NodePath("../O")
+focus_neighbor_right = NodePath("../X")
+focus_neighbor_bottom = NodePath("../Clear")
+text = "W"
+
+[node name="X" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../W")
+focus_neighbor_top = NodePath("../P")
+focus_neighbor_right = NodePath("../Q")
+focus_neighbor_bottom = NodePath("../Enter")
+text = "X"
+
+[node name="Y" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Enter")
+focus_neighbor_top = NodePath("../Q")
+focus_neighbor_right = NodePath("../Z")
+focus_neighbor_bottom = NodePath("../A")
+text = "Y"
+
+[node name="Z" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Y")
+focus_neighbor_top = NodePath("../R")
+focus_neighbor_right = NodePath("../!")
+focus_neighbor_bottom = NodePath("../B")
+text = "Z"
+
+[node name="!" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Z")
+focus_neighbor_top = NodePath("../S")
+focus_neighbor_right = NodePath("../?")
+focus_neighbor_bottom = NodePath("../C")
+text = "!"
+
+[node name="?" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../!")
+focus_neighbor_top = NodePath("../T")
+focus_neighbor_right = NodePath("../At")
+focus_neighbor_bottom = NodePath("../D")
+text = "?"
+
+[node name="At" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../?")
+focus_neighbor_top = NodePath("../U")
+focus_neighbor_right = NodePath("../Cash")
+focus_neighbor_bottom = NodePath("../E")
+text = "@"
+
+[node name="Cash" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../At")
+focus_neighbor_top = NodePath("../V")
+focus_neighbor_right = NodePath("../Clear")
+focus_neighbor_bottom = NodePath("../F")
+text = "$"
+
+[node name="Clear" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cash")
+focus_neighbor_top = NodePath("../W")
+focus_neighbor_right = NodePath("../Enter")
+focus_neighbor_bottom = NodePath("../G")
+text = "Clr"
+
+[node name="Enter" type="Button" parent="CanvasLayer/P2 Select/P2Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Clear")
+focus_neighbor_top = NodePath("../X")
+focus_neighbor_right = NodePath("../Y")
+focus_neighbor_bottom = NodePath("../H")
+text = "Ent"
+
+[node name="P2Char" type="GridContainer" parent="CanvasLayer/P2 Select"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 156.0
+offset_right = 520.0
+offset_bottom = 380.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HeadChange" type="Button" parent="CanvasLayer/P2 Select/P2Char"]
+layout_mode = 2
+text = "Change Head"
+
+[node name="RedSlider" type="HSlider" parent="CanvasLayer/P2 Select/P2Char"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 250.0
+step = 10.0
+
+[node name="GreenSlider" type="HSlider" parent="CanvasLayer/P2 Select/P2Char"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="BlueSlider" type="HSlider" parent="CanvasLayer/P2 Select/P2Char"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="P3 Select" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = -0.5
+anchor_bottom = 0.5
+theme = SubResource("Theme_fasmn")
+script = ExtResource("5_rjstm")
+metadata/_edit_use_anchors_ = true
+
+[node name="P3Label" type="Label" parent="CanvasLayer/P3 Select"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.019
+anchor_right = 0.948
+anchor_bottom = 0.148
+offset_left = -0.0800018
+offset_top = -0.26
+offset_right = -0.0800781
+offset_bottom = 0.0800018
+theme = SubResource("Theme_7i3oo")
+text = "Press the A Button to Join!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P3Keyboard" type="GridContainer" parent="CanvasLayer/P3 Select"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.139
+anchor_right = 0.9
+anchor_bottom = 0.95
+offset_top = -0.0600052
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_q8poc")
+columns = 8
+
+[node name="A" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../H")
+focus_neighbor_top = NodePath("../Y")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../I")
+text = "A"
+
+[node name="B" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../Z")
+focus_neighbor_right = NodePath("../C")
+focus_neighbor_bottom = NodePath("../J")
+text = "B"
+
+[node name="C" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../B")
+focus_neighbor_top = NodePath("../!")
+focus_neighbor_right = NodePath("../D")
+focus_neighbor_bottom = NodePath("../K")
+text = "C"
+
+[node name="D" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../C")
+focus_neighbor_top = NodePath("../?")
+focus_neighbor_right = NodePath("../E")
+focus_neighbor_bottom = NodePath("../L")
+text = "D"
+
+[node name="E" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../D")
+focus_neighbor_top = NodePath("../At")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../M")
+text = "E"
+
+[node name="F" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../E")
+focus_neighbor_top = NodePath("../Cash")
+focus_neighbor_right = NodePath("../G")
+focus_neighbor_bottom = NodePath("../N")
+text = "F"
+
+[node name="G" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../F")
+focus_neighbor_top = NodePath("../Clear")
+focus_neighbor_right = NodePath("../H")
+focus_neighbor_bottom = NodePath("../O")
+text = "G"
+
+[node name="H" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../G")
+focus_neighbor_top = NodePath("../Enter")
+focus_neighbor_right = NodePath("../A")
+focus_neighbor_bottom = NodePath("../P")
+text = "H"
+
+[node name="I" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../P")
+focus_neighbor_top = NodePath("../A")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../Q")
+text = "I"
+
+[node name="J" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../I")
+focus_neighbor_top = NodePath("../B")
+focus_neighbor_right = NodePath("../K")
+focus_neighbor_bottom = NodePath("../R")
+text = "J"
+
+[node name="K" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../J")
+focus_neighbor_top = NodePath("../C")
+focus_neighbor_right = NodePath("../L")
+focus_neighbor_bottom = NodePath("../S")
+text = "K"
+
+[node name="L" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../K")
+focus_neighbor_top = NodePath("../D")
+focus_neighbor_right = NodePath("../M")
+focus_neighbor_bottom = NodePath("../T")
+text = "L"
+
+[node name="M" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../L")
+focus_neighbor_top = NodePath("../E")
+focus_neighbor_right = NodePath("../N")
+focus_neighbor_bottom = NodePath("../U")
+text = "M"
+
+[node name="N" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../M")
+focus_neighbor_top = NodePath("../F")
+focus_neighbor_right = NodePath("../O")
+focus_neighbor_bottom = NodePath("../W")
+text = "N"
+
+[node name="O" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../N")
+focus_neighbor_top = NodePath("../G")
+focus_neighbor_right = NodePath("../P")
+focus_neighbor_bottom = NodePath("../W")
+text = "O"
+
+[node name="P" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../O")
+focus_neighbor_top = NodePath("../H")
+focus_neighbor_right = NodePath("../I")
+focus_neighbor_bottom = NodePath("../X")
+text = "P"
+
+[node name="Q" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../X")
+focus_neighbor_top = NodePath("../I")
+focus_neighbor_right = NodePath("../R")
+focus_neighbor_bottom = NodePath("../Y")
+text = "Q"
+
+[node name="R" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Q")
+focus_neighbor_top = NodePath("../J")
+focus_neighbor_right = NodePath("../S")
+focus_neighbor_bottom = NodePath("../Z")
+text = "R"
+
+[node name="S" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../R")
+focus_neighbor_top = NodePath("../K")
+focus_neighbor_right = NodePath("../T")
+focus_neighbor_bottom = NodePath("../!")
+text = "S"
+
+[node name="T" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../S")
+focus_neighbor_top = NodePath("../L")
+focus_neighbor_right = NodePath("../U")
+focus_neighbor_bottom = NodePath("../?")
+text = "T"
+
+[node name="U" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../T")
+focus_neighbor_top = NodePath("../M")
+focus_neighbor_right = NodePath("../V")
+focus_neighbor_bottom = NodePath("../At")
+text = "U"
+
+[node name="V" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../U")
+focus_neighbor_top = NodePath("../N")
+focus_neighbor_right = NodePath("../W")
+focus_neighbor_bottom = NodePath("../Cash")
+text = "V"
+
+[node name="W" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../V")
+focus_neighbor_top = NodePath("../O")
+focus_neighbor_right = NodePath("../X")
+focus_neighbor_bottom = NodePath("../Clear")
+text = "W"
+
+[node name="X" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../W")
+focus_neighbor_top = NodePath("../P")
+focus_neighbor_right = NodePath("../Q")
+focus_neighbor_bottom = NodePath("../Enter")
+text = "X"
+
+[node name="Y" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Enter")
+focus_neighbor_top = NodePath("../Q")
+focus_neighbor_right = NodePath("../Z")
+focus_neighbor_bottom = NodePath("../A")
+text = "Y"
+
+[node name="Z" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Y")
+focus_neighbor_top = NodePath("../R")
+focus_neighbor_right = NodePath("../!")
+focus_neighbor_bottom = NodePath("../B")
+text = "Z"
+
+[node name="!" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Z")
+focus_neighbor_top = NodePath("../S")
+focus_neighbor_right = NodePath("../?")
+focus_neighbor_bottom = NodePath("../C")
+text = "!"
+
+[node name="?" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../!")
+focus_neighbor_top = NodePath("../T")
+focus_neighbor_right = NodePath("../At")
+focus_neighbor_bottom = NodePath("../D")
+text = "?"
+
+[node name="At" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../?")
+focus_neighbor_top = NodePath("../U")
+focus_neighbor_right = NodePath("../Cash")
+focus_neighbor_bottom = NodePath("../E")
+text = "@"
+
+[node name="Cash" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../At")
+focus_neighbor_top = NodePath("../V")
+focus_neighbor_right = NodePath("../Clear")
+focus_neighbor_bottom = NodePath("../F")
+text = "$"
+
+[node name="Clear" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cash")
+focus_neighbor_top = NodePath("../W")
+focus_neighbor_right = NodePath("../Enter")
+focus_neighbor_bottom = NodePath("../G")
+text = "Clr"
+
+[node name="Enter" type="Button" parent="CanvasLayer/P3 Select/P3Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Clear")
+focus_neighbor_top = NodePath("../X")
+focus_neighbor_right = NodePath("../Y")
+focus_neighbor_bottom = NodePath("../H")
+text = "Ent"
+
+[node name="P3Char" type="GridContainer" parent="CanvasLayer/P3 Select"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 156.0
+offset_right = 520.0
+offset_bottom = 380.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HeadChange" type="Button" parent="CanvasLayer/P3 Select/P3Char"]
+layout_mode = 2
+text = "Change Head"
+
+[node name="RedSlider" type="HSlider" parent="CanvasLayer/P3 Select/P3Char"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 250.0
+step = 10.0
+
+[node name="GreenSlider" type="HSlider" parent="CanvasLayer/P3 Select/P3Char"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="BlueSlider" type="HSlider" parent="CanvasLayer/P3 Select/P3Char"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="P4 Select" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 0.5
+anchor_bottom = 0.5
+theme = SubResource("Theme_fasmn")
+script = ExtResource("6_rinis")
+metadata/_edit_use_anchors_ = true
+
+[node name="P4Label" type="Label" parent="CanvasLayer/P4 Select"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.019
+anchor_right = 0.948
+anchor_bottom = 0.148
+offset_left = -0.0800018
+offset_top = -0.26
+offset_right = -0.0800781
+offset_bottom = 0.0800018
+theme = SubResource("Theme_7i3oo")
+text = "Press the A Button to Join!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P4Keyboard" type="GridContainer" parent="CanvasLayer/P4 Select"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.139
+anchor_right = 0.9
+anchor_bottom = 0.95
+offset_top = -0.0600052
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_q8poc")
+columns = 8
+
+[node name="A" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../H")
+focus_neighbor_top = NodePath("../Y")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../I")
+text = "A"
+
+[node name="B" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../Z")
+focus_neighbor_right = NodePath("../C")
+focus_neighbor_bottom = NodePath("../J")
+text = "B"
+
+[node name="C" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../B")
+focus_neighbor_top = NodePath("../!")
+focus_neighbor_right = NodePath("../D")
+focus_neighbor_bottom = NodePath("../K")
+text = "C"
+
+[node name="D" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../C")
+focus_neighbor_top = NodePath("../?")
+focus_neighbor_right = NodePath("../E")
+focus_neighbor_bottom = NodePath("../L")
+text = "D"
+
+[node name="E" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../D")
+focus_neighbor_top = NodePath("../At")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../M")
+text = "E"
+
+[node name="F" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../E")
+focus_neighbor_top = NodePath("../Cash")
+focus_neighbor_right = NodePath("../G")
+focus_neighbor_bottom = NodePath("../N")
+text = "F"
+
+[node name="G" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../F")
+focus_neighbor_top = NodePath("../Clear")
+focus_neighbor_right = NodePath("../H")
+focus_neighbor_bottom = NodePath("../O")
+text = "G"
+
+[node name="H" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../G")
+focus_neighbor_top = NodePath("../Enter")
+focus_neighbor_right = NodePath("../A")
+focus_neighbor_bottom = NodePath("../P")
+text = "H"
+
+[node name="I" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../P")
+focus_neighbor_top = NodePath("../A")
+focus_neighbor_right = NodePath("../B")
+focus_neighbor_bottom = NodePath("../Q")
+text = "I"
+
+[node name="J" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../I")
+focus_neighbor_top = NodePath("../B")
+focus_neighbor_right = NodePath("../K")
+focus_neighbor_bottom = NodePath("../R")
+text = "J"
+
+[node name="K" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../J")
+focus_neighbor_top = NodePath("../C")
+focus_neighbor_right = NodePath("../L")
+focus_neighbor_bottom = NodePath("../S")
+text = "K"
+
+[node name="L" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../K")
+focus_neighbor_top = NodePath("../D")
+focus_neighbor_right = NodePath("../M")
+focus_neighbor_bottom = NodePath("../T")
+text = "L"
+
+[node name="M" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../L")
+focus_neighbor_top = NodePath("../E")
+focus_neighbor_right = NodePath("../N")
+focus_neighbor_bottom = NodePath("../U")
+text = "M"
+
+[node name="N" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../M")
+focus_neighbor_top = NodePath("../F")
+focus_neighbor_right = NodePath("../O")
+focus_neighbor_bottom = NodePath("../W")
+text = "N"
+
+[node name="O" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../N")
+focus_neighbor_top = NodePath("../G")
+focus_neighbor_right = NodePath("../P")
+focus_neighbor_bottom = NodePath("../W")
+text = "O"
+
+[node name="P" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../O")
+focus_neighbor_top = NodePath("../H")
+focus_neighbor_right = NodePath("../I")
+focus_neighbor_bottom = NodePath("../X")
+text = "P"
+
+[node name="Q" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../X")
+focus_neighbor_top = NodePath("../I")
+focus_neighbor_right = NodePath("../R")
+focus_neighbor_bottom = NodePath("../Y")
+text = "Q"
+
+[node name="R" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Q")
+focus_neighbor_top = NodePath("../J")
+focus_neighbor_right = NodePath("../S")
+focus_neighbor_bottom = NodePath("../Z")
+text = "R"
+
+[node name="S" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../R")
+focus_neighbor_top = NodePath("../K")
+focus_neighbor_right = NodePath("../T")
+focus_neighbor_bottom = NodePath("../!")
+text = "S"
+
+[node name="T" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../S")
+focus_neighbor_top = NodePath("../L")
+focus_neighbor_right = NodePath("../U")
+focus_neighbor_bottom = NodePath("../?")
+text = "T"
+
+[node name="U" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../T")
+focus_neighbor_top = NodePath("../M")
+focus_neighbor_right = NodePath("../V")
+focus_neighbor_bottom = NodePath("../At")
+text = "U"
+
+[node name="V" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../U")
+focus_neighbor_top = NodePath("../N")
+focus_neighbor_right = NodePath("../W")
+focus_neighbor_bottom = NodePath("../Cash")
+text = "V"
+
+[node name="W" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../V")
+focus_neighbor_top = NodePath("../O")
+focus_neighbor_right = NodePath("../X")
+focus_neighbor_bottom = NodePath("../Clear")
+text = "W"
+
+[node name="X" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../W")
+focus_neighbor_top = NodePath("../P")
+focus_neighbor_right = NodePath("../Q")
+focus_neighbor_bottom = NodePath("../Enter")
+text = "X"
+
+[node name="Y" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Enter")
+focus_neighbor_top = NodePath("../Q")
+focus_neighbor_right = NodePath("../Z")
+focus_neighbor_bottom = NodePath("../A")
+text = "Y"
+
+[node name="Z" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Y")
+focus_neighbor_top = NodePath("../R")
+focus_neighbor_right = NodePath("../!")
+focus_neighbor_bottom = NodePath("../B")
+text = "Z"
+
+[node name="!" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Z")
+focus_neighbor_top = NodePath("../S")
+focus_neighbor_right = NodePath("../?")
+focus_neighbor_bottom = NodePath("../C")
+text = "!"
+
+[node name="?" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../!")
+focus_neighbor_top = NodePath("../T")
+focus_neighbor_right = NodePath("../At")
+focus_neighbor_bottom = NodePath("../D")
+text = "?"
+
+[node name="At" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../?")
+focus_neighbor_top = NodePath("../U")
+focus_neighbor_right = NodePath("../Cash")
+focus_neighbor_bottom = NodePath("../E")
+text = "@"
+
+[node name="Cash" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../At")
+focus_neighbor_top = NodePath("../V")
+focus_neighbor_right = NodePath("../Clear")
+focus_neighbor_bottom = NodePath("../F")
+text = "$"
+
+[node name="Clear" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Cash")
+focus_neighbor_top = NodePath("../W")
+focus_neighbor_right = NodePath("../Enter")
+focus_neighbor_bottom = NodePath("../G")
+text = "Clr"
+
+[node name="Enter" type="Button" parent="CanvasLayer/P4 Select/P4Keyboard"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Clear")
+focus_neighbor_top = NodePath("../X")
+focus_neighbor_right = NodePath("../Y")
+focus_neighbor_bottom = NodePath("../H")
+text = "Ent"
+
+[node name="P4Char" type="GridContainer" parent="CanvasLayer/P4 Select"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 156.0
+offset_right = 520.0
+offset_bottom = 380.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HeadChange" type="Button" parent="CanvasLayer/P4 Select/P4Char"]
+layout_mode = 2
+text = "Change Head"
+
+[node name="RedSlider" type="HSlider" parent="CanvasLayer/P4 Select/P4Char"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 250.0
+step = 10.0
+
+[node name="GreenSlider" type="HSlider" parent="CanvasLayer/P4 Select/P4Char"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0
+
+[node name="BlueSlider" type="HSlider" parent="CanvasLayer/P4 Select/P4Char"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 250.0
+step = 10.0

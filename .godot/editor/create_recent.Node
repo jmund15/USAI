@@ -1,6 +1,8 @@
+Sprite2D
+CanvasLayer
+Control
 CollisionShape2D
 AnimationPlayer
-Sprite2D
 Timer
 Node2D
 Label
@@ -8,7 +10,5 @@ Area2D
 ColorRect
 ProgressBar
 Button
-CanvasLayer
 StaticBody2D
 MeshInstance2D
-Polygon2D
