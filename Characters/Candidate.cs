@@ -10,7 +10,7 @@ public partial class Candidate : CharacterBody2D
     public string PlayerName { get; set; }
     public PlayableChar CharSelected { get; set; }
     public string CharSelectedName { get; set; }
-    public Color SuitColor { get; set; } = Colors.Black;
+    public Color SuitColor { get; set; }
 
     private string _leftInAction;
     private string _rightInAction;

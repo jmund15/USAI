@@ -59,6 +59,7 @@ public partial class PlayerManager : Node
         newPlayer.PlayerNum = num;
         newPlayer.PlayerName = name;
         newPlayer.CharSelected = character;
+        newPlayer.SuitColor = suitColor;
         AddChild(newPlayer);
         if (!_global.PlayersEnabled)
         {
