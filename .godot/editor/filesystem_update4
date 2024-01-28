@@ -1,5 +1,4 @@
 res://Mingames/MidStatus.tscn
-res://main_scene.tscn
 res://Characters/Candidate.cs
 res://External Assets/BaseTopDownScripts/HUD.cs
 res://External Assets/BaseTopDownScripts/Interactable.cs
@@ -21,3 +20,4 @@ res://Mingames/DebateMinigame/DebateQuestion.cs
 res://Mingames/MidStatus.cs
 res://Mingames/SelectScreen/SelectScreen.cs
 res://test.cs
+res://main_scene.tscn

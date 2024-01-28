@@ -1,17 +1,18 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1706418269
+::res://::1706450951
 .gitignore.txt::TextFile::-1::1706414735::0::1::::<><>::
 icon.svg::CompressedTexture2D::6995036628106393770::1706324133::1706409642::1::::<><>::
 MainScene.cs::CSharpScript::-1::1706414735::0::1::::<>Node<>::
-main_scene.tscn::PackedScene::5717366366792284961::1706417592::0::1::::<><>::res://MainScene.cs<>res://Managers/PlayerManager.cs<>res://Managers/InputManager.cs<>uid://b8834232acl::::res://Mingames/MidStatus.tscn
+main_scene.tscn::PackedScene::5717366366792284961::1706450942::0::1::::<><>::res://MainScene.cs<>res://Managers/PlayerManager.cs<>res://Managers/InputManager.cs<>uid://b8834232acl::::res://Mingames/MidStatus.tscn
 test.cs::CSharpScript::-1::1706414735::0::1::::<>CharacterBody2D<>::
-::res://Backgrounds/::1706416617
-::res://Backgrounds/MidStatus/::1706418269
-background.png::CompressedTexture2D::1009822297488286061::1706418248::1706418269::1::::<><>::
-::res://Characters/::1706414735
+::res://Backgrounds/::1706450942
+::res://Backgrounds/MidStatus/::1706450942
+background.png::CompressedTexture2D::1009822297488286061::1706450942::1706450942::1::::<><>::
+::res://Characters/::1706452762
 Candidate.cs::CSharpScript::-1::1706414735::0::1::::Candidate<>CharacterBody2D<>::
 candidate.tscn::PackedScene::8924364031874246542::1706414735::0::1::::<><>::res://Characters/Candidate.cs<>uid://ca8wanhk2qfur::::res://Characters/player_movement.png
 player_movement.png::CompressedTexture2D::4842302301219290365::1706414735::1706414735::1::::<><>::
+usai_talking.png::CompressedTexture2D::506289701347107313::1706452762::1706452762::1::::<><>::
 ::res://External Assets/::1706414735
 ::res://External Assets/BaseTopDownScripts/::1706414735
 HUD.cs::CSharpScript::-1::1706324859::0::1::::<>Control<>::
@@ -30,10 +31,10 @@ Global.cs::CSharpScript::-1::1706414735::0::1::::Global<>Node<>::
 GameManager.cs::CSharpScript::-1::1706414735::0::1::::<>Node<>::
 InputManager.cs::CSharpScript::-1::1706414735::0::1::::<>Node<>::
 PlayerManager.cs::CSharpScript::-1::1706414735::0::1::::<>Node<>::
-::res://Mingames/::1706417594
+::res://Mingames/::1706452673
 intro_scene.tscn::PackedScene::1976945857425450199::1706414735::0::1::::<><>::
-MidStatus.cs::CSharpScript::-1::1706416143::0::1::::<><>::
-MidStatus.tscn::PackedScene::4128486432581895::1706417594::0::1::::<><>::res://Mingames/MidStatus.cs<>uid://82w0gymmutbk::::res://Backgrounds/MidStatus/background.png
+MidStatus.cs::CSharpScript::-1::1706452645::0::1::::<>Node2D<>::
+MidStatus.tscn::PackedScene::4128486432581895::1706452673::0::1::::<><>::res://Mingames/MidStatus.cs<>uid://onfvjkvdwgn2::::res://Backgrounds/MidStatus/background.png
 ::res://Mingames/DebateMinigame/::1706414735
 DebateMinigame.cs::CSharpScript::-1::1706414735::0::1::::<>Node2D<>::
 DebateQuestion.cs::CSharpScript::-1::1706414735::0::1::::<>Node2D<>::

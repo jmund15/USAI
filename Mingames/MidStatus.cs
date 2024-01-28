@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class MidStatus : Node2D
 {
+    private Global _global;
+
     private Label chironLabel;
 
 	private List<string> chironFirstPart;
@@ -47,6 +49,8 @@ public partial class MidStatus : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
+        _global = GetNode<Global>("/root/Global");
+
 		chironFirstPart = new List<string> {
             "",
 			"",
@@ -71,7 +75,20 @@ public partial class MidStatus : Node2D
             };
 
         //TODO:GRAB PLAYER NAMES
-        playerNames = new List<string> { "DEFAULT" , "disabled", "disabled", "disabled" };
+        var candidates = _global.Players;
+        playerNames = new List<string> { "disabled" , "disabled", "disabled", "disabled" };
+
+        for(int i = 0; i < candidates.Count; i++)
+        {
+            playerNames[i] = candidates[i].PlayerName;
+        }
+
+        for (int i=0; i<candidates.Count;i++) 
+        {
+            Label resLabel = GetNode<Label>((string.Format("Results/P{0}Result", candidates[i].PlayerNum)));
+            resLabel.Text= string.Format("{0} has {1} Points!", candidates[i].PlayerName, candidates[i].TotalScore);
+        }
+
 
         chironLabel = GetNode<Label>("TheNews/Chiron");
 
