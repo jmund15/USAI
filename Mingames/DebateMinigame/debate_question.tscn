@@ -6,6 +6,7 @@
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.588235)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8j217"]
+font_size = 20
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.490196)
 

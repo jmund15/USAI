@@ -274,6 +274,16 @@ public partial class BabyMinigame : Node2D
 
     private void EndMinigame()
     {
+        float totalPoints = 0;
+        foreach (var player in _global.Players)
+        {
+            totalPoints += player.BabyScore;
+        }
+        foreach (var player in _global.Players)
+        {
+            player.TotalScore = (player.BabyScore / totalPoints) * 100;
+        }
+
         QueueFree();
         _signalBus.EmitSignal(nameof(Events.MinigameOver), Variant.From(Minigame.BabyKisser));
     }

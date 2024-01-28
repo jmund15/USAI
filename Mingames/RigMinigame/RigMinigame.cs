@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
 public partial class RigMinigame : Node2D
@@ -19,8 +20,8 @@ public partial class RigMinigame : Node2D
     private Label _minigameTime;
 
     private int _currentPlayerToSpawnBallot = 1;
-    private Vector2 _spawnTimeInterval = new Vector2(3f, 8f);
-    private Vector2 _ballotSpeedInterval = new Vector2(100f, 200f);
+    private Vector2 _spawnTimeInterval = new Vector2(3f, 9f);
+    private Vector2 _ballotSpeedInterval = new Vector2(100f, 250f);
 
     int _xBasePlacement = -75;
     int _xPlacementInterval = 275;
@@ -51,14 +52,6 @@ public partial class RigMinigame : Node2D
             votingScene.GetNode<Area2D>("VotingBoxHitBox").AreaEntered += (area2D) => OnBallotReachBox(area2D, player.PlayerNum);
             AddChild(votingScene);
 
-            var spawnBallotTimer = new Timer();
-            spawnBallotTimer.Name = "SpawnBallotTimer" + player.PlayerNum;
-            spawnBallotTimer.Timeout += () => OnBallotSpawnTimeout(spawnBallotTimer);
-            AddChild(spawnBallotTimer);
-            var timeDub = Rnd.NextDouble();
-            spawnBallotTimer.WaitTime = timeDub * (_spawnTimeInterval.Y - _spawnTimeInterval.X) + _spawnTimeInterval.X; //Generates double within a range
-            spawnBallotTimer.Start();
-
             var playerLabel = new Label { Text = player.PlayerName + "'s Votes: 0" };
             playerLabel.ZIndex = 3;
             playerLabel.HorizontalAlignment = HorizontalAlignment.Center;
@@ -78,6 +71,16 @@ public partial class RigMinigame : Node2D
 
             _ballotNames.Add(player.PlayerName);
         }
+        for (int i = 0; i < 4; i++)
+        {
+            var spawnBallotTimer = new Timer();
+            spawnBallotTimer.Name = "SpawnBallotTimer" + i;
+            spawnBallotTimer.Timeout += () => OnBallotSpawnTimeout(spawnBallotTimer);
+            AddChild(spawnBallotTimer);
+            var timeDub = Rnd.NextDouble();
+            spawnBallotTimer.WaitTime = timeDub * (_spawnTimeInterval.Y - _spawnTimeInterval.X) + _spawnTimeInterval.X; //Generates double within a range
+            spawnBallotTimer.Start();
+        }
     }
 
 
@@ -87,11 +90,22 @@ public partial class RigMinigame : Node2D
         _minigameTime.Text = "Voting Closes in:\n" + (int)_minigameTimer.TimeLeft + " Seconds!";
     }
 
-    private void OnMinigameTimeout()
+    private async void OnMinigameTimeout()
     {
-        //EXIT ANIM
-        QueueFree();
+        float totalPoints = 0;
+        foreach (var player in _global.Players)
+        {
+            totalPoints += player.RigScore;
+        }
+        foreach (var player in _global.Players)
+        {
+            player.TotalScore = (player.RigScore / totalPoints) * 100;
+        }
+
+        _global.CurtainAnim.Play("closeCurtain");
+        await Task.Delay(TimeSpan.FromSeconds(1.5f));
         _signalBus.EmitSignal(nameof(Events.MinigameOver), Variant.From(Minigame.Rig));
+        QueueFree();
     }
 
     private void OnBallotSpawnTimeout(Timer timer)

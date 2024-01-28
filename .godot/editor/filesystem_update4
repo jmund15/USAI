@@ -38,3 +38,10 @@ res://Mingames/DebtMinigame/DebtMinigame.cs
 res://Mingames/RigMinigame/Ballot.cs
 res://Mingames/RigMinigame/RigMinigame.cs
 res://test.cs
+res://Mingames/MidStatus.tscn
+res://Mingames/EndStatus.cs
+res://Mingames/MidStatus.cs
+res://Mingames/DebateMinigame/debate_question.tscn
+res://Mingames/intro_scene.tscn
+res://Mingames/IntroScene.cs
+res://Backgrounds/MidStatus/end_scene.tscn

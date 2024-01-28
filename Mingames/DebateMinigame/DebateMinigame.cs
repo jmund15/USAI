@@ -162,7 +162,7 @@ public partial class DebateMinigame : Node2D
             if (player.IsAlive)
             {
                 alivePlayers++;
-                player.DebateScore += 500;
+                player.DebateScore += 100;
             }
         }
         if (alivePlayers <= 1)
@@ -219,7 +219,16 @@ public partial class DebateMinigame : Node2D
 
     private async void EndMinigame()
     {
-        //EXIT ANIM
+        float totalPoints = 0;
+        foreach (var player in _global.Players)
+        {
+            totalPoints += player.DebateScore;
+        }
+        foreach (var player in _global.Players)
+        {
+            player.TotalScore = (player.DebateScore / totalPoints) * 100;
+        }
+
         _global.CurtainAnim.Play("closeCurtain");
         await Task.Delay(TimeSpan.FromSeconds(1.5f));
         QueueFree(); 

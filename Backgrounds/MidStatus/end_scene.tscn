@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvbrcc26xhqst"]
+
+[ext_resource type="Texture2D" uid="uid://ddeua33ax7ei4" path="res://player_pile.png" id="1_0n6dg"]
+[ext_resource type="Script" path="res://Backgrounds/MidStatus/EndScene.cs" id="1_w64em"]
+[ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="1_ysp48"]
+[ext_resource type="Texture2D" uid="uid://dhwd5qro51vdr" path="res://Mingames/BabyMinigame/audience.png" id="3_0lbmp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ooed2"]
+font_size = 48
+
+[node name="EndScene" type="Node2D"]
+script = ExtResource("1_w64em")
+
+[node name="Stage" type="Sprite2D" parent="."]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ysp48")
+hframes = 5
+frame = 1
+
+[node name="Curtain" type="Sprite2D" parent="."]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ysp48")
+hframes = 5
+
+[node name="Pile" type="Node2D" parent="."]
+position = Vector2(540, 375)
+scale = Vector2(2, 2)
+
+[node name="WinnerHead" type="Sprite2D" parent="Pile"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_0n6dg")
+hframes = 5
+vframes = 4
+frame = 1
+
+[node name="LastPlaceHead" type="Sprite2D" parent="Pile"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_0n6dg")
+hframes = 5
+vframes = 4
+frame = 13
+
+[node name="Suit" type="Sprite2D" parent="Pile"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_0n6dg")
+hframes = 5
+vframes = 4
+
+[node name="Suit2" type="Sprite2D" parent="Pile"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_0n6dg")
+hframes = 5
+vframes = 4
+frame = 5
+
+[node name="Suit3" type="Sprite2D" parent="Pile"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_0n6dg")
+hframes = 5
+vframes = 4
+frame = 10
+
+[node name="Suit4" type="Sprite2D" parent="Pile"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_0n6dg")
+hframes = 5
+vframes = 4
+frame = 15
+
+[node name="Audience" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(540, 535)
+scale = Vector2(2, 2)
+texture = ExtResource("3_0lbmp")
+vframes = 4
+
+[node name="WinnerLabel" type="Label" parent="."]
+offset_left = 334.0
+offset_top = 165.0
+offset_right = 734.0
+offset_bottom = 275.0
+label_settings = SubResource("LabelSettings_ooed2")
+horizontal_alignment = 1

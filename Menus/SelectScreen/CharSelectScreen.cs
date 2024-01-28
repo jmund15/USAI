@@ -130,6 +130,10 @@ public partial class CharSelectScreen : Node2D
             {
 				_startTimer.Start();
 			} 
+            if (Input.IsKeyPressed(Key.Space))
+            {
+                OnStartTimeout();
+            }
 		}
 		else if (_startTimer.TimeLeft != 0)
 		{

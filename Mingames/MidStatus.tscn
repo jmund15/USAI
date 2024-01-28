@@ -1,0 +1,206 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdsjhhrgufq3p"]
+
+[ext_resource type="Script" path="res://Mingames/MidStatus.cs" id="1_djcb6"]
+[ext_resource type="Texture2D" uid="uid://onfvjkvdwgn2" path="res://Backgrounds/MidStatus/background.png" id="2_0nhqy"]
+[ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="3_6suii"]
+[ext_resource type="Texture2D" uid="uid://drnkrpdmffix7" path="res://Characters/usai_talking.png" id="3_tbf4i"]
+[ext_resource type="Texture2D" uid="uid://dhwd5qro51vdr" path="res://Mingames/BabyMinigame/audience.png" id="5_rw7jy"]
+
+[sub_resource type="Theme" id="Theme_ubjqq"]
+default_font_size = 48
+
+[sub_resource type="Animation" id="Animation_yxvh4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("USAI:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5jurm"]
+resource_name = "usaiTalk"
+length = 0.3
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("USAI:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thyss"]
+_data = {
+"RESET": SubResource("Animation_yxvh4"),
+"usaiTalk": SubResource("Animation_5jurm")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_oivn1"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7jj1"]
+size = Vector2(1000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ng2b"]
+size = Vector2(50, 250)
+
+[node name="MidStatus" type="Node2D"]
+script = ExtResource("1_djcb6")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-14.6071, 282.664)
+scale = Vector2(1.03972, 0.986577)
+color = Color(0.968627, 1, 0, 1)
+polygon = PackedVector2Array(116, -25, 116, 116, 821, 124, 819, 45, 820, -23)
+
+[node name="TheNews" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_top = -17.0
+offset_right = 1126.0
+offset_bottom = 625.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Chiron" type="Label" parent="TheNews"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 335.0
+offset_right = 5941.0
+offset_bottom = 421.0
+theme = SubResource("Theme_ubjqq")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+text = "??????"
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(540, 305)
+scale = Vector2(2, 2)
+texture = ExtResource("2_0nhqy")
+hframes = 6
+frame = 3
+
+[node name="Results" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 550.0
+offset_top = 55.0
+offset_right = 970.0
+offset_bottom = 275.0
+
+[node name="P1Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P2Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 420.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P3Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 420.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="P4Result" type="Label" parent="Results"]
+layout_mode = 0
+offset_top = 165.0
+offset_right = 420.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+
+[node name="UsaiAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_thyss")
+}
+
+[node name="Stage" type="Sprite2D" parent="."]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("3_6suii")
+hframes = 5
+frame = 1
+
+[node name="USAI" type="Sprite2D" parent="."]
+position = Vector2(300, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("3_tbf4i")
+hframes = 3
+
+[node name="Curtain" type="Sprite2D" parent="."]
+position = Vector2(540, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("3_6suii")
+hframes = 5
+
+[node name="SpeechBubble" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(343, 335, 472, 414, 500, 491, 872, 490, 913, 441, 891, 392, 473, 383)
+
+[node name="UsaiText" type="Label" parent="."]
+offset_left = 494.0
+offset_top = 382.0
+offset_right = 874.0
+offset_bottom = 493.0
+label_settings = SubResource("LabelSettings_oivn1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(550, 519)
+shape = SubResource("RectangleShape2D_r7jj1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(37, 420)
+shape = SubResource("RectangleShape2D_1ng2b")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1043, 416)
+shape = SubResource("RectangleShape2D_1ng2b")
+
+[node name="Audience" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(540, 535)
+scale = Vector2(2, 2)
+texture = ExtResource("5_rw7jy")
+vframes = 4

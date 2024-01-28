@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class DebtMinigame : Node2D
 {
@@ -14,7 +15,7 @@ public partial class DebtMinigame : Node2D
 
 	public int DebtGoal { get; private set; } = 100;
 	public bool UsaiPeeking { get; private set; } = false;
-    private float _peekingGracePeriod = 0.75f;
+    private float _peekingGracePeriod = 1.5f;
 
     private Vector2 _timeIgnoringInterval = new Vector2(2f, 8f);
     private Vector2 _timePeekingInterval = new Vector2(1f, 4f);
@@ -86,6 +87,8 @@ public partial class DebtMinigame : Node2D
             var timeDub = Rnd.NextDouble();
             _usaiTimer.WaitTime = timeDub * (_timeIgnoringInterval.Y - _timeIgnoringInterval.X) + _timeIgnoringInterval.X; //Generates double within a range
             UsaiPeeking = false;
+            //var gracePeriodTween = GetTree().CreateTween();
+            //gracePeriodTween.TweenProperty(this, "UsaiPeeking", false, _peekingGracePeriod / 2f);
         }
         else
         {
@@ -98,8 +101,20 @@ public partial class DebtMinigame : Node2D
         _usaiTimer.Start();
     }
 
-    private void EndMinigame()
+    private async void EndMinigame()
     {
+        float totalPoints = 0;
+        foreach (var player in _global.Players)
+        {
+            totalPoints += player.DebtScore;
+        }
+        foreach (var player in _global.Players)
+        {
+            player.TotalScore = (player.DebtScore / totalPoints) * 100;
+        }
+
+        _global.CurtainAnim.Play("closeCurtain");
+        await Task.Delay(TimeSpan.FromSeconds(1.5f));
         _signalBus.EmitSignal(nameof(Events.MinigameOver), Variant.From(Minigame.Debt));
         QueueFree();
     }

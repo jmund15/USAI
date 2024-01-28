@@ -156,11 +156,11 @@ public partial class Candidate : CharacterBody2D
                 {
                     if (IsDebtStunned)
                     {
-                        DebtScore -= 8 * (float)delta;
+                        DebtScore -= 6 * (float)delta;
                     }
                     else
                     {
-                        DebtScore -= 3 * (float)delta;
+                        DebtScore -= 2.5f * (float)delta;
                     }
                     DebtScore = Mathf.Max(0, DebtScore);
                 }
@@ -202,6 +202,20 @@ public partial class Candidate : CharacterBody2D
         switch (_global.CurrentMinigame)
         {
             case Minigame.Cutscene:
+                Direction = Input.GetVector(_leftInAction, _rightInAction, _upInAction, _downInAction).Normalized();
+                velocity.X = Direction.X * RunSpeed * (float)delta;
+
+                // Add the gravity.
+                if (!IsOnFloor())
+                {
+                    velocity.Y += gravity * (float)delta;
+                }
+
+                // Handle Jump.
+                if (Input.IsActionJustPressed(_aInAction) && IsOnFloor())
+                {
+                    velocity.Y = JumpVelocity;
+                }
                 return;
             case Minigame.Debate:
                 Direction = Input.GetVector(_leftInAction, _rightInAction, _upInAction, _downInAction).Normalized();
@@ -238,6 +252,18 @@ public partial class Candidate : CharacterBody2D
         switch (_global.CurrentMinigame)
         {
             case Minigame.Cutscene:
+                if (Velocity.Length() == 0)
+                {
+                    _animPlayer.Play("idleRight" + CharSelectedName); // change to based on curr direction!
+                }
+                if (Velocity.X < 0)
+                {
+                    _animPlayer.Play("runRight" + CharSelectedName); // CHANGE LATER
+                }
+                else if (Velocity.X > 0)
+                {
+                    _animPlayer.Play("runRight" + CharSelectedName);
+                }
                 return;
             case Minigame.Debate:
                 if (Velocity.Length() == 0)
@@ -293,6 +319,13 @@ public partial class Candidate : CharacterBody2D
         switch (minigame)
         {
             case Minigame.Cutscene:
+                _charSprite.Show();
+                _suitSprite.Show();
+                _hitboxArea.Monitorable = true;
+                _hitboxArea.Monitoring = true;
+                _playerDebtGame.Hide();
+                _playerRigGame.Hide();
+                _playerBabyGame.Hide();
                 break;
             case Minigame.Debate:
                 _charSprite.Show();
@@ -372,7 +405,7 @@ public partial class Candidate : CharacterBody2D
         if (animName.ToString().Contains("press"))
         {
             IsRaisingDebt = false;
-            DebtScore += 2;
+            DebtScore += 3;
         }
         if (animName.ToString().Contains("swat"))
         {
