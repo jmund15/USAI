@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvbrcc26xhqst"]
+[gd_scene load_steps=8 format=3 uid="uid://bvbrcc26xhqst"]
 
 [ext_resource type="Texture2D" uid="uid://ddeua33ax7ei4" path="res://player_pile.png" id="1_0n6dg"]
 [ext_resource type="Script" path="res://Backgrounds/MidStatus/EndScene.cs" id="1_w64em"]
 [ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="1_ysp48"]
 [ext_resource type="Texture2D" uid="uid://onfvjkvdwgn2" path="res://Backgrounds/MidStatus/background.png" id="2_t4vrp"]
 [ext_resource type="Texture2D" uid="uid://dhwd5qro51vdr" path="res://Mingames/BabyMinigame/audience.png" id="3_0lbmp"]
+[ext_resource type="AudioStream" uid="uid://bqr55jcpmafon" path="res://Sound/SFX/Results/Cheer.ogg" id="6_e6hga"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ooed2"]
 font_size = 48
@@ -156,3 +157,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 40
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e6hga")
+autoplay = true

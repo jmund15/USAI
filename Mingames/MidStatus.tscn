@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdsjhhrgufq3p"]
+[gd_scene load_steps=14 format=3 uid="uid://cdsjhhrgufq3p"]
 
 [ext_resource type="Script" path="res://Mingames/MidStatus.cs" id="1_djcb6"]
 [ext_resource type="Texture2D" uid="uid://onfvjkvdwgn2" path="res://Backgrounds/MidStatus/background.png" id="2_0nhqy"]
 [ext_resource type="Texture2D" uid="uid://cojx1hlux3lfn" path="res://background.png" id="3_6suii"]
 [ext_resource type="Texture2D" uid="uid://drnkrpdmffix7" path="res://Characters/usai_talking.png" id="3_tbf4i"]
 [ext_resource type="Texture2D" uid="uid://dhwd5qro51vdr" path="res://Mingames/BabyMinigame/audience.png" id="5_rw7jy"]
+[ext_resource type="AudioStream" uid="uid://qh1b6eygvn1o" path="res://Sound/Music/MidScene.wav" id="6_12x6o"]
 
 [sub_resource type="Theme" id="Theme_ubjqq"]
 default_font_size = 48
@@ -114,37 +115,37 @@ offset_bottom = 55.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 
 [node name="P2Result" type="Label" parent="Results"]
 layout_mode = 0
-offset_top = 55.0
+offset_top = 30.0
 offset_right = 420.0
-offset_bottom = 110.0
+offset_bottom = 85.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 
 [node name="P3Result" type="Label" parent="Results"]
 layout_mode = 0
-offset_top = 110.0
+offset_top = 70.0
 offset_right = 420.0
-offset_bottom = 165.0
+offset_bottom = 125.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 
 [node name="P4Result" type="Label" parent="Results"]
 layout_mode = 0
-offset_top = 165.0
+offset_top = 105.0
 offset_right = 420.0
-offset_bottom = 220.0
+offset_bottom = 160.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 
 [node name="UsaiAnim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -204,3 +205,7 @@ position = Vector2(540, 535)
 scale = Vector2(2, 2)
 texture = ExtResource("5_rw7jy")
 vframes = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_12x6o")
+autoplay = true

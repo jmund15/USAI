@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Cheer.ogg-a70050ffed17cb54e754ec67fcb08bff.og
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

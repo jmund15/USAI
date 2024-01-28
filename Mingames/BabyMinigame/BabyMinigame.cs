@@ -173,8 +173,9 @@ public partial class BabyMinigame : Node2D
         playerOut.Hide();
         _playersInGame.Remove(playerOut);
 
-        if (_playersInGame.Count == 0) {
+        if (_playersInGame.Count <= 1) {
             EndMinigame();
+            return;
         }
 
         _babyAnimPlayer.Play("RESET");

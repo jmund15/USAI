@@ -20,7 +20,7 @@ public partial class RigMinigame : Node2D
     private Label _minigameTime;
 
     private int _currentPlayerToSpawnBallot = 1;
-    private Vector2 _spawnTimeInterval = new Vector2(3f, 9f);
+    private Vector2 _spawnTimeInterval = new Vector2(2.5f, 7f);
     private Vector2 _ballotSpeedInterval = new Vector2(100f, 250f);
 
     int _xBasePlacement = -75;

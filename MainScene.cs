@@ -6,7 +6,7 @@ using static Godot.Projection;
 
 public partial class MainScene : Node
 {
-    private bool debug = true;
+    private bool debug = false;
 
     private Global _global;
     private Events _signalBus;
@@ -94,7 +94,18 @@ public partial class MainScene : Node
         var introScene = _introScene.Instantiate() as IntroScene;
         AddChild(introScene);
 
-        await Task.Delay(TimeSpan.FromSeconds(1.5f));
+        await Task.Delay(TimeSpan.FromSeconds(1f));
+
+        var logoTween = GetTree().CreateTween();
+        logoTween.TweenProperty(introScene.Logo, "modulate:a", 1, 1f);
+        logoTween.TweenProperty(introScene.Logo, "modulate:a", 0, 1f).SetDelay(3f);
+
+        await Task.Delay(TimeSpan.FromSeconds(5f));
+
+        var newTween = GetTree().CreateTween();
+        newTween.TweenProperty(introScene.NewAmerica, "modulate:a", 1, 1f);
+        var labelTween = GetTree().CreateTween();
+        labelTween.TweenProperty(introScene.IntroLabel, "modulate:a", 1, 1f);
 
         introScene.IntroLabel.Text = "The year is 2032...";
         await Task.Delay(TimeSpan.FromSeconds(3f));
@@ -104,15 +115,15 @@ public partial class MainScene : Node
         await Task.Delay(TimeSpan.FromSeconds(5f));
         var pic2Tween = GetTree().CreateTween();
         pic2Tween.TweenProperty(introScene._robot, "modulate:a", 1, 1f);
-        await Task.Delay(TimeSpan.FromSeconds(3f));
+        await Task.Delay(TimeSpan.FromSeconds(5f));
 
         introScene.IntroLabel.Text = "That AI was titled: USAI!!!";
         var pic3Tween = GetTree().CreateTween();
         pic3Tween.TweenProperty(introScene.Usai, "modulate:a", 1, 1f);
-        await Task.Delay(TimeSpan.FromSeconds(3f));
+        await Task.Delay(TimeSpan.FromSeconds(4f));
 
         introScene.IntroLabel.Text = "The top candidates will now preform the final debate based on USAI's top categories!";
-        await Task.Delay(TimeSpan.FromSeconds(3f));
+        await Task.Delay(TimeSpan.FromSeconds(4f));
 
 
         _global.CurtainAnim.Play("closeCurtain");

@@ -9,6 +9,7 @@ public partial class IntroScene : Node2D
 
     public Label IntroLabel;
 
+    public Sprite2D Logo;
     public Sprite2D NewAmerica;
     public Sprite2D _robot;
     public Sprite2D _mrica;
@@ -21,6 +22,7 @@ public partial class IntroScene : Node2D
 
         IntroLabel = GetNode<Label>("IntroLabel");
 
+        Logo = GetNode<Sprite2D>("Logo");
         NewAmerica = GetNode<Sprite2D>("NewAmerica");
         _robot = GetNode<Sprite2D>("Robot");
         _mrica = GetNode<Sprite2D>("Mrica");
