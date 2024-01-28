@@ -22,11 +22,25 @@ public partial class EndStatus : Node2D
             playerNames[i] = candidates[i].PlayerName;
         }
 
+        int maxPlayerID=-1;
+
         for (int i = 0; i < candidates.Count; i++)
         {
             Label resLabel = GetNode<Label>((string.Format("Results/P{0}Result", candidates[i].PlayerNum)));
             resLabel.Text = string.Format("{0} has {1} Points!", candidates[i].PlayerName, candidates[i].TotalScore);
+            if (maxPlayerID==-1 ) {
+                maxPlayerID = i;
+            } else if (candidates[i].TotalScore > candidates[maxPlayerID].TotalScore)
+            {
+                maxPlayerID = i;
+            }
         }
+
+        Label winLabel = GetNode<Label>((string.Format("Results/Winner")));
+
+        winLabel.Text = string.Format("{0} WINS!", candidates[maxPlayerID].PlayerName);
+
+
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
