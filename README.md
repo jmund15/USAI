@@ -1,6 +1,6 @@
 # USA.I
 
-This game was made for the Winter 2024 ICT Game Jam (Website [here]([https://itch.io/jam/ict-game-jam-summer-2024](https://globalgamejam.org/jam-sites/2024/ict-game-jam)))
+This game was made for the Winter 2024 ICT Game Jam (Website [here](https://globalgamejam.org/jam-sites/2024/ict-game-jam))
 
 Please locate our game [here](https://globalgamejam.org/games/2024/usai-2)
 
