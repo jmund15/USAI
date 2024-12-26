@@ -6,7 +6,9 @@ Please locate our game [here](https://globalgamejam.org/games/2024/usai-2)
 
 ## Credits
 Jacob M - Programmer (Game Architecture, Mechanics, & Minigames)
+
 Lorant M - Graphic Designer (Art & Animations)
+
 Joel A - Programmer (Character Select, Multiplayer Support, and Music)
 
 
